@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html{
+            width: 100%;
+        height: 100%;
+        }
+        body{
+            width: 100%;
+        height: 100%;
+        }
+        div{
+        width: 900px;
+        height: 600px;
+        position: absolute;
+        background-repeat: no-repeat;
+        opacity: 0;
+        }
+        input{
+            position:absolute;
+            z-index: 1;
+            left: 780px;
+            top:580px;
+            border: 0px;
+            height: 2em;
+        }
+        .i1 + input{
+            left:830px;
+        }
+        .i2 + input{
+            left:880px;
+        }
+        .i1{
+            background-size: cover;
+            background-image: url(http://tv06.tgbusdata.cn/v3/thumb/jpg/YTlmNiw5NzUsOTc1LDQsMSwxLC0xLDAsZGFuamksOSwwLA==/u/pc.tgbus.com/uploads/allimg/160309/287-160309144I0349.jpg);
+        }
+        .i2{
+            background-size: cover;
+            background: url(http://tv06.tgbusdata.cn/v3/thumb/jpg/ODJjMiw5NzUsOTc1LDQsMSwxLC0xLDAsZGFuamksOSwwLA==/u/pc.tgbus.com/uploads/allimg/160309/287-160309145J1646.jpg);
+        }
+        .i3{
+            background-size: cover;
+            background: url(http://i2.hdslb.com/bfs/archive/03409be3cda89647cabe723d5975a5c12626ee82.jpg);
+        }
+        input:checked + div{
+            opacity: 1;
+            transition: opacity 1s;
+        }
+        input:not(:checked) + div{
+            opacity: 0;
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <input type="radio" name="img" checked>
+    <div class="i1"></div>
+    <input type="radio" name="img">
+    <div class="i2"></div>
+    <input type="radio" name="img">
+    <div class="i3"></div>
+</body>
+</html>

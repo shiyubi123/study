@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div:hover{
+            cursor: pointer;
+        }
+        input{
+            display: none;
+        }
+        input:checked + label .a1{
+            transition: 1s steps(28);
+            background-position: -2800px 0px;
+        }
+        .a1{
+            background-image: url(https://abs.twimg.com/a/1557861269/img/animations/web_heart_animation_edge.png);
+            height: 100px;
+            width: 100px;
+        }
+        .a1:active{
+            position: relative;
+            transition: 1s steps(28);
+            background-position: -2800px 0px;
+        }
+    </style>
+</head>
+<body>
+    <input id="heart" type="checkbox" >
+    <label for="heart">
+        <div class="a1"></div>
+    </label>
+   
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:rgb(30,30,30);
+        }
+        .nav{
+            border: 0px ;
+            padding: 0px;
+        }
+        .nav > li{
+            float: left;
+            position: relative;
+            list-style: none;
+            background-color: rgb(60,60,60);
+            width: 70px;
+            line-height: 35px;
+        }
+        ul{ 
+            padding-top:5px;
+            padding: 0px;
+            list-style: none;
+            position: absolute;
+            white-space: nowrap;
+        }
+        li{ 
+            padding-left: 20px;
+            color:rgb(173,173,173);
+            background-color:rgb(37,37,38);
+            width: 280px;
+            line-height: 30px;
+            position: relative;
+            text-align: left;
+        }
+        .nav > li > ul{
+            left: 0%;
+            top: 100%;
+        }
+        ul ul{
+            top:0%;
+            left: 100%;
+            display: none;
+            background-color:rgb(37,37,38);
+        }
+        .nav>li:hover{
+            background-color:rgb(71,71,72);
+        }
+        li:hover{
+            background-color: rgb(0,122,204);
+            color:white;
+        }
+        li:hover>ul{
+            display: block;
+            box-shadow: 1px 1px 1px black;;
+        }
+        .hr{
+            margin:auto;
+            width: 260px;
+            border-top：0px;
+            border-bottom: 1px solid rgb(71,71,72);
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>文件(F)
+            <ul>
+                <li>新建文件</li>
+                <li>新建窗口</li>
+                <li class="hr">
+                <li>打开文件</li>
+                <li>打开文件夹</li>
+                <li>打开工作区</li>
+                <li>打开最近的文件</li>
+                <li class="hr">
+                <li>首选项
+                    <ul>
+                        <li>设置</li>
+                        <li>拓展</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>编辑(E)</li>
+        <li>选择(S)</li>
+    </ul>
+</body>
+</html>

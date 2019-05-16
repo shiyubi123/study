@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input{
+            display: none;
+        }
+        .slider-box{
+            position: relative;
+            box-sizing: border-box;
+            height: 120px;
+            width: 210px;
+            border-radius:60px;
+            background-color: rgb(221,221,221);
+        }
+        .radio{
+            top: 10px;
+            left: 5px;
+            position: absolute;
+            box-sizing: border-box;
+            height: 100px;
+            width: 100px;
+            border-radius:60px;
+            background-color: rgb(255,255,255);
+        }
+        input:checked + label .slider-box{
+            transition: 1s;
+            background-color: rgb(110,221,94);
+        }
+        input:checked + label .radio{
+            transition: 1s;
+            top: 10px;
+            left: 105px;
+        }
+        input:not(:checked) + label .radio{
+            transition: 1s;
+            top: 10px;
+            left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="slider">
+    <label for="slider">
+        <div class="slider-box">
+            <div class="radio"></div>
+        </div>
+    </label>
+</body>
+</html>
