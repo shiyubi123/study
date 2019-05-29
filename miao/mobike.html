@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html{
+            width: 100%;
+        }
+        body{
+            width: 100%;
+        }
+        .pic{
+            float: left;
+            margin-bottom: 2px;
+            background-size: cover;
+        }
+        .spic{
+            float: left;
+            box-sizing: border-box;
+            height: 95px;
+            position: relative;
+        }
+        div .icon{
+            position: absolute;
+            
+            width: 65px;
+            height: 65px;
+            background-size: cover;
+            top: 15px;
+            left: 20px;
+        }
+        div .text{
+            position: absolute;
+            top: 40px;
+            left: 100px;
+        }
+        .horizon{
+            display: block;
+            height: 1px;
+            width: 100%;
+            background-color: #eeeeee;
+            float: left;
+        }
+        footer{
+                height: 145px;
+                width:1044px;
+                float: left;
+                margin-left: calc(50% - 522px);
+                position: relative;
+        }
+        .f1{
+            float: left;
+            height: 100px;
+            width:522px;
+        }
+        .f1 a{
+            display: block;
+            background-image: url(https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=286509115,2409177990&fm=26&gp=0.jpg);
+            background-size: cover;
+            height: 100px;
+            width: 100px;
+        }
+        .f2{
+            float: right;
+            height: 100px;
+            width:522px;
+            position: relative;
+        }
+        .f2 a{
+            display: block;
+            height: 100px;
+            width: 100px;
+            background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3646519720,71532840&fm=11&gp=0.jpg);
+            background-size: cover;
+            position: absolute;
+            right: 1px;
+        }
+        .icon1{
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559059836518&di=0c9382d694d6ded9408b83f8a9ccbcfd&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fc73983b913f6dcda8692ef40afdc41679705ede22f055-UixeBK_fw658);
+        }
+        .icon2{
+            background-image: url(https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2549928019,1932229719&fm=26&gp=0.jpg);
+        }
+        .icon3{
+            background-image: url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2285455223,2211262381&fm=26&gp=0.jpg);
+        }
+        .pic1{
+            background-image: url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3020505482,3807875692&fm=26&gp=0.jpg);
+        }
+        .pic2{
+            background-image: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2295983427,3180491388&fm=15&gp=0.jpg);
+        }
+        .pic3{
+            background-image: url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=639468424,300516706&fm=15&gp=0.jpg);
+        }
+        .pic4{
+            background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=365776436,2550457627&fm=15&gp=0.jpg);
+        }
+        .pic5{
+            background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1358283638,4254628313&fm=26&gp=0.jpg);
+        }
+        @media (min-width:1064px) {
+            .pic1{
+            width: 100%;
+            min-width: 1044px;
+            height: 812px;
+            }
+            .pic2,.pic3,.pic4,.pic5{
+            width: calc(25% - 2px);
+            height: 258px;
+            }
+            .pic3,.pic4,.pic5{
+            margin-left: 2px;
+            }
+            .small{
+                height: 95px;
+                width: 1044px;
+                margin: auto;
+            }
+            .spic{
+                margin: 0px;
+                width: 340px;
+                height: 95px;
+            }
+            .bottoms{
+                float: left;
+                width:1044px;
+                margin-left: calc(50% - 522px);
+                position: relative;
+                height: 245px;
+            }
+            .bottom{
+                font-weight: bold;
+                font-size: 20px;
+                text-align: center;
+                box-sizing: border-box;
+                width: 174px;
+                height: 100%;
+                margin-top:30px;
+                float: left;
+            }
+            .bottom1{
+                width: 348px;
+            }
+        }
+        @media (max-width:1063px) and (min-width:624px) {
+            html{
+                min-width: 1044px;
+            }
+            .pic1{
+            width: 100%;
+            height: 490px;
+            }
+            .pic2,.pic3,.pic4,.pic5{
+            width: calc(50% - 2px);
+            height: 258px;
+            }
+            .pic3,.pic5{
+            margin-left: 2px;
+            }
+            .small{
+                height: 95px;
+                width: 1044px;
+                margin: auto;
+            }
+            .spic{
+                margin: 0px;
+                width: 340px;
+                height: 95px;
+            }
+            div{
+                width: 30%;
+                height: 95px;
+            }
+            .bottoms{
+                float: left;
+                width:1044px;
+                margin-left: calc(50% - 522px);
+                position: relative;
+                height: 245px;
+            }
+            .bottom{
+                font-weight: bold;
+                font-size: 20px;
+                text-align: center;
+                box-sizing: border-box;
+                width: 174px;
+                height: 100%;
+                margin-top:30px;
+                float: left;
+            }
+            .bottom1{
+                width: 348px;
+            }
+        }
+        @media (max-width:623px) {
+            html{
+                overflow-x: hidden;
+                width: 600px;
+                min-width: 600px;
+            }
+            .pic1{
+            width: 600px;
+            height: 490px;
+            background: cover;
+            }
+            .pic2,.pic3,.pic4,.pic5{
+            width:600px;
+            height: 258px;
+            }
+            .small{
+                width: 600px;
+            }
+            div{
+                width: 300px;
+                height: 95px;
+            }
+            .bottoms{
+                float: left;
+                width:600px;
+                position: relative;
+                height: 490px;
+            }
+            .bottom{
+                font-weight: bold;
+                font-size: 20px;
+                text-align: center;
+                box-sizing: border-box;
+                width: 122px;
+                height: 245px;
+                margin-top:30px;
+                float: left;
+            }
+            .bottom1{
+                width: 600px;
+            }
+            footer{
+                width: 520px;
+                margin: 0px;
+            }
+            footer .f1,footer .f2{
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="pic1 pic"></section>
+    <section class="pic2 pic"></section>
+    <section class="pic3 pic"></section>
+    <section class="pic4 pic"></section>
+    <section class="pic5 pic"></section>
+    <section class="small">
+        <div class="spic1 spic">
+            <div class="icon icon1"></div>
+            <div class="text">喵喵喵喵喵咪</div>
+        </div>
+        <div class="spic2 spic">
+            <div class="icon icon3"></div>
+            <div class="text">喵喵喵喵咪咪</div>
+        </div>
+        <div class="spic3 spic">
+            <div class="icon icon2"></div>
+            <div class="text">喵喵喵喵喵喵咪咪咪咪咪咪</div>
+        </div>
+    </section>
+    <div class="horizon"></div>
+    <section class="bottoms">
+        <div class="bottom1 bottom">铲屎官<br>铲屎官<br>铲屎官铲屎官铲屎官<br>铲屎官铲屎官铲屎官<br>铲屎官<br>铲屎官</div>
+        <div class="bottom2 bottom">猫粮<br>猫粮<br>猫粮<br>猫粮<br>猫粮<br>猫粮<br></div>
+        <div class="bottom3 bottom">猫砂<br>猫砂<br>猫砂<br>猫砂<br>猫砂<br>猫砂<br></div>
+        <div class="bottom4 bottom">毛刷<br>毛刷<br>毛刷<br>毛刷<br>毛刷<br>毛刷<br></div>
+        <div class="bottom5 bottom">小老鼠<br>小老鼠<br>小老鼠<br>小老鼠<br>小老鼠<br>小老鼠<br></div>
+    </section>
+    <div class="horizon"></div>
+    <footer>
+        <div class="f1"><a href=""></a></div>
+        <div class="f2"><a href=""></a></div>
+    </footer>
+</body>
+</html>
