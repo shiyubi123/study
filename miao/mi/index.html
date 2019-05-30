@@ -1343,7 +1343,7 @@
                     display: none;
                 }
                 .sliderradio{
-                    opacity: 0;
+                    xopacity: 0;
                 }
                 #s1:checked ~ .sidebar .r1 .radio1,#s2:checked ~ .sidebar .r2 .radio1,#s3:checked ~ .sidebar .r3 .radio1,#s4:checked ~ .sidebar .r4 .radio1,#s5:checked ~ .sidebar .r5 .radio1{
                     background-color: rgba(0, 0, 0, 0.1);
@@ -1382,15 +1382,15 @@
                     transition: 0.2s;
                 }
         </style>
-        <input class="sliderradio" type="radio" name="slider" checked  id="s1">
+        <input class="sliderradio" type="radio" name="slider" checked  id="s1" hidden>
         <section class="sliderpage1"></section>
-        <input class="sliderradio" type="radio" name="slider" id="s2">
+        <input class="sliderradio" type="radio" name="slider" id="s2" hidden>
         <section class="sliderpage2"></section>
-        <input class="sliderradio" type="radio" name="slider" id="s3">
+        <input class="sliderradio" type="radio" name="slider" id="s3" hidden>
         <section class="sliderpage3"></section>
-        <input class="sliderradio" type="radio" name="slider" id="s4">
+        <input class="sliderradio" type="radio" name="slider" id="s4" hidden>
         <section class="sliderpage4"></section>
-        <input class="sliderradio" type="radio" name="slider" id="s5" >
+        <input class="sliderradio" type="radio" name="slider" id="s5" hidden>
         <section class="sliderpage5"></section>
         <style>
             ul{
@@ -1905,7 +1905,7 @@
     <style>
         .others{
             box-sizing: border-box;
-            margin-top:454px;
+            margin-top:476px;
             width: 100%;
             height: 170px;           
         }
