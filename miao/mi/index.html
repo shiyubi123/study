@@ -5043,7 +5043,7 @@
         }
         .hotbody .hotcon{
             padding: 25px;
-            width:245.5;
+            width:245.5px;
             height: 75px;
             line-height: 24px;
             color:#333333;
@@ -5124,17 +5124,135 @@
             height: 100%;
             background-color: #f5f5f5;
         }
+        .conli{
+            position: relative;
+        }
         .page5 ul li:nth-child(1){
             border-top: 1px solid #ffac13;
+            margin-left:0px;
+            box-sizing: border-box;
         }
         .page5 ul li:nth-child(2){
             border-top: 1px solid #83c44e;
+            box-sizing: border-box;
         }
         .page5 ul li:nth-child(3){
             border-top: 1px solid #e53935;
+            box-sizing: border-box;
         }
         .page5 ul li:nth-child(4){
             border-top: 1px solid #2196f3;
+            box-sizing: border-box;
+        }
+        .constop{
+            line-height: 115px;
+            height: 90px;
+            width:100%;
+            box-sizing: border-box;
+            color:#ffac13;
+            font-size: 16px;
+            text-align: center;
+            vertical-align:bottom;
+        }
+        .consbodys{
+            height: 325px;
+            width:295px;
+            box-sizing:border-box;
+            position:relative;
+            overflow: hidden;
+        }
+        .consbody{
+            height: 325px;
+            width:295px;
+            box-sizing:border-box;
+            position:absolute;
+            overflow: hidden;
+        }
+        .consbodys :nth-child(n + 2){
+            left:295px;
+        }
+        .conli .conrr{
+            cursor: pointer;
+            box-sizing: border-box;
+            border:1px solid;
+            position: absolute;
+            top:190px;
+            right:0px;
+            width:20px;
+            height:50px;
+            z-index: 1;
+            vertical-align: middle;
+            line-height: 50px;
+            font-family: monospace;
+            font-size: 900;
+            text-align: center;
+            opacity: 0;
+            transition: 0.3s;
+            color:white;
+            background-color: #d9d9d9;
+        }
+        .conli .conll{
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 900;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 50px;
+            box-sizing: border-box;
+            border:1px solid;
+            position: absolute;
+            left:0px;
+            top:190px;
+            width:20px;
+            height:50px;
+            z-index: 1;
+            opacity: 0;
+            transition: 0.3s;
+            background-color: #d9d9d9;
+            color:white;
+        }
+        .page5 ul .conli:hover .conll,.page5 ul .conli:hover .conrr{
+            opacity: 1;
+            transition: 0.3s;
+        }
+        .page5 ul .conli:hover .conll:hover,.page5 ul .conli:hover .conrr:hover{
+            background-color: #8e8e8e;
+            transition: 0.3s;
+        }
+        .consbodys .consbodynotlast .conname{
+            width:295px;
+            line-height: 35px;
+            height:35px;
+            text-align:center;
+            color:#333333;
+            font-size:21px;
+            vertical-align: top;
+        }
+        .consbodys .consbodynotlast .condes{
+            width:195px;
+            line-height: 18px;
+            height:40px;
+            text-align:center;
+            color:#b0b0b0;
+            font-size:12px;
+            padding:0px 50px;
+        }
+        .consbodys .consbodynotlast .conprice{
+            width:295px;
+            height:25px;
+            text-align:center;
+            color:#333333;
+            vertical-align: middle;
+            line-height: 25px;
+        }
+        .consbody .conpic{
+            width:216px;
+            line-height: 300px;
+            height:154px;
+            margin:auto;
+            vertical-align: middle;
+            text-align: center;
+            background-size: cover;
         }
     </style>
     <section class="page5">
@@ -5142,19 +5260,1188 @@
             <header>
                 <div class="conh">内容</div>
             </header>
-            <ul>
-                <li></li>
-                <li>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+            <ul class="conul">
+                <li class="conli conli1">
+                        <style>
+                                .conli1 #conradio1:checked ~ .conradior label:nth-child(3),.conli1 #conradio2:checked ~ .conradior label:nth-child(1),.conli1 #conradio3:checked ~ .conradior label:nth-last-child(n+2)
+                                {
+                                    display:none;
+                                }
+                                .conli1 #conradio1:checked ~ .conradiol label:nth-child(n+2),
+                                .conli1 #conradio2:checked ~ .conradiol label:nth-child(n+2),
+                                .conli1 #conradio3:checked ~ .conradiol label:nth-child(1),
+                                .conli1 #conradio3:checked ~ .conradiol label:nth-child(3){
+                                    display:none;
+                                }
+                                .conli1 #conradio2:checked ~ .consbodys .consbody1,.conli1 #conradio3:checked ~ .consbodys .consbody2,.conli1 #conradio3:checked ~ .consbodys .consbody1{
+                                    left: -295px;
+                                    transition: 0.3s;
+                                }
+                                .conli1 #conradio1:checked ~ .consbodys .consbody1,.conli1 #conradio2:checked ~ .consbodys .consbody2,.conli1 #conradio3:checked ~ .consbodys .consbody3{
+                                    left: 0px;
+                                    transition: 0.3s;
+                                }
+                                .conli1 #conradio1:checked ~ .consbodys .consbody2,.conli1 #conradio2:checked ~ .consbodys .consbody3{
+                                    left:295px;
+                                    transition: 0.3s;
+                                }
+                                .conli1 .consbody1 .conpic{
+                                    background-image: url(https://i1.mifile.cn/a4/5e5da924-84e3-4959-9e25-5891cdf30757);
+                                }
+                                .conli1 .consbody2 .conpic{
+                                    background-image: url(https://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14);
+                                }
+                                .conli1 .consbody3 .conpic{
+                                    background-image: url(https://s01.mifile.cn/i/index/more-duokan.jpg);
+                                }
+                                .conli1 .consbot label:nth-child(1) .radio22{
+                                    left:110px;
+                                    bottom:25px;
+                                }
+                                .conli1 .consbot label:nth-child(2) .radio22{
+                                    left:143px;
+                                    bottom:25px;
+                                }
+                                .conli1 .consbot label:nth-child(3) .radio22{
+                                    left:178px;
+                                    bottom:25px;
+                                }
+                                .conli1 #conradio1:checked ~ .consbot label:nth-child(1) .radio22,.conli1 #conradio2:checked ~ .consbot label:nth-child(2) .radio22, .conli1 #conradio3:checked ~ .consbot label:nth-child(3) .radio22{
+                                    cursor: pointer;
+                                    width: 10px;
+                                    height: 10px;
+                                    background-color: #ff6700;
+                                    border-radius: 10px;
+                                    position: absolute;        
+                                }
+                                .conli1 #conradio1:checked ~ .consbot label:nth-child(1) .radio14,.conli1 #conradio2:checked ~ .consbot label:nth-child(2) .radio14,.conli1 #conradio3:checked ~ .consbot label:nth-child(3) .radio14{
+                                    width: 6px;
+                                    height: 6px;
+                                    background-color: white;
+                                    border-radius: 6px;
+                                    position: absolute;
+                                    z-index: 1;
+                                    left: 2px;
+                                    top:2px;
+                                }
+                                .conli1 #conradio1:not(:checked) ~ .consbot label:nth-child(1) .radio22,.conli1 #conradio2:not(:checked) ~ .consbot label:nth-child(2) .radio22,.conli1 #conradio3:not(:checked) ~ .consbot label:nth-child(3) .radio22{
+                                    cursor: pointer;
+                                    width: 10px;
+                                    height: 10px;
+                                    border-radius: 10px;
+                                    position: absolute;  
+                                    background-color: white;
+                                    transition:0.3s;
+                                }
+                                .conli1 #conradio1:not(:checked) ~ .consbot label:nth-child(1) .radio14,.conli1 #conradio2:not(:checked) ~ .consbot label:nth-child(2) .radio14,.conli1 #conradio3:not(:checked) ~ .consbot label:nth-child(3) .radio14{
+                                    background-color: #b0b0b0;
+                                    width: 6px;
+                                    height: 6px;
+                                    border-radius: 6px;
+                                    position: absolute;
+                                    z-index: 1;
+                                    left: 2px;
+                                    top:2px;
+                                    transition:0.3s;
+                                }
+                                .conli1 #conradio1:not(:checked) ~ .consbot label:nth-child(1) .radio22:hover .radio14,.conli1 #conradio2:not(:checked) ~ .consbot label:nth-child(2) .radio22:hover .radio14,.conli1 #conradio3:not(:checked) ~ .consbot label:nth-child(3) .radio22:hover .radio14{
+                                    transition:0.3s;
+                                    background-color: #ff6700;
+                                }
+                                .conli1 .consbodylast .condes{
+                                    text-align: center;
+                                    height:55px;
+                                    width:185px;
+                                    padding: 0px 55px;
+                                    line-height:20px;
+                                    font-size:12px;
+                                    color:#b0b0b0;
+                                }
+                                .conli1 .consbodylast .go{
+                                    height:30px;
+                                    width:120px;
+                                    color:#ff6700;
+                                    font-size: 12px;
+                                    text-align: center;
+                                    border:1px solid #ff6700;
+                                    line-height: 30px;
+                                    margin:auto;
+                                }
+                                .conli1 .consbodylast .conpic{
+                                    margin-top:20px;
+                                }
+                        </style>
+                    <input id="conradio1" name="conradio" type="radio" checked hidden>
+                    <input id="conradio2" name="conradio" type="radio" hidden>
+                    <input id="conradio3" name="conradio" type="radio" hidden>
+                    <div class="conradior">
+                        <label for="conradio1">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                        <label for="conradio2">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                        <label for="conradio3">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                    </div>
+                    <div class="conradiol">
+                        <label for="conradio1">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                        <label for="conradio2">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                        <label for="conradio3">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                    </div>    
+                    <div class="constop">图书</div>
+                    <div class="consbodys">
+                        <div class="consbody1 consbodynotlast consbody">
+                            <a href=""><div class="conname">哈利·波特与被诅咒的孩子</div></a> 
+                            <a href=""><div class="condes">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版本！</div></a> 
+                            <a href=""><div class="conprice">29.37元</div></a> 
+                            <a href=""><div class="conpic"></div></a>
+                        </div>
+                        <div class="consbody2 consbodynotlast consbody">
+                            <a href=""><div class="conname">好吗好的</div></a> 
+                            <a href=""><div class="condes">畅销大作家大冰2016年新书！将给你听，好吗好的！</div></a> 
+                            <a href=""><div class="conprice">17.99元</div></a> 
+                            <a href=""><div class="conpic"></div></a>
+                        </div>
+                        <div class="consbody3 consbodylast consbody">
+                            <div class="condes">海量好书，享受精品阅读时光 漂亮的中文排版，千万读者的选择！</div>
+                            <a href=""><div class="go">前往多看阅读</div></a> 
+                            <div class="conpic"></div>
+                        </div>
+                    </div>
+                    <div class="consbot">
+                        <label for="conradio1">
+                            <div class="radio22"><div class="radio14"></div></div>  
+                        </label>
+                        <label for="conradio2">
+                            <div class="radio22"><div class="radio14"></div></div>
+                        </label>
+                        <label for="conradio3">
+                            <div class="radio22"><div class="radio14"></div></div>
+                        </label>
+                    </div>
                 </li>
-                <li></li>
-                <li></li>
+                <li class="conli conli2">
+                    <style>
+                            .conli2 .constop{
+                                color:#83C44E;
+                            }
+                            .conli2 #conradio21:checked ~ .conradior label:nth-child(3),.conli2 #conradio22:checked ~ .conradior label:nth-child(1),.conli2 #conradio23:checked ~ .conradior label:nth-last-child(n+2)
+                            {
+                                display:none;
+                            }
+                            .conli2 #conradio21:checked ~ .conradiol label:nth-child(n+2),
+                            .conli2 #conradio22:checked ~ .conradiol label:nth-child(n+2),
+                            .conli2 #conradio23:checked ~ .conradiol label:nth-child(1),
+                            .conli2 #conradio23:checked ~ .conradiol label:nth-child(3){
+                                display:none;
+                            }
+                            .conli2 #conradio22:checked ~ .consbodys .consbody1,.conli2 #conradio23:checked ~ .consbodys .consbody2,.conli2 #conradio23:checked ~ .consbodys .consbody1{
+                                left: -295px;
+                                transition: 0.3s;
+                            }
+                            .conli2 #conradio21:checked ~ .consbodys .consbody1,.conli2 #conradio22:checked ~ .consbodys .consbody2,.conli2 #conradio23:checked ~ .consbodys .consbody3{
+                                left: 0px;
+                                transition: 0.3s;
+                            }
+                            .conli2 #conradio21:checked ~ .consbodys .consbody2,.conli2 #conradio22:checked ~ .consbodys .consbody3{
+                                left:295px;
+                                transition: 0.3s;
+                            }
+                            .conli2 .consbody1 .conpic{
+                                background-image: url(https://i1.mifile.cn/a4/xmad_1554795253_HKsNc.png);
+                            }
+                            .conli2 .consbody2 .conpic{
+                                background-image: url(https://i1.mifile.cn/a4/xmad_1551940859025_MrKLP.png);
+                            }
+                            .conli2 .consbody3 .conpic{
+                                background-image: url(https://s01.mifile.cn/i/index/more-miui.jpg);
+                            }
+                            .conli2 .consbot label:nth-child(1) .radio22{
+                                left:110px;
+                                bottom:25px;
+                            }
+                            .conli2 .consbot label:nth-child(2) .radio22{
+                                left:143px;
+                                bottom:25px;
+                            }
+                            .conli2 .consbot label:nth-child(3) .radio22{
+                                left:178px;
+                                bottom:25px;
+                            }
+                            .conli2 #conradio21:checked ~ .consbot label:nth-child(1) .radio22,.conli2 #conradio22:checked ~ .consbot label:nth-child(2) .radio22, .conli2 #conradio23:checked ~ .consbot label:nth-child(3) .radio22{
+                                cursor: pointer;
+                                width: 10px;
+                                height: 10px;
+                                background-color: #ff6700;
+                                border-radius: 10px;
+                                position: absolute;        
+                            }
+                            .conli2 #conradio21:checked ~ .consbot label:nth-child(1) .radio14,.conli2 #conradio22:checked ~ .consbot label:nth-child(2) .radio14,.conli2 #conradio23:checked ~ .consbot label:nth-child(3) .radio14{
+                                width: 6px;
+                                height: 6px;
+                                background-color: white;
+                                border-radius: 6px;
+                                position: absolute;
+                                z-index: 1;
+                                left: 2px;
+                                top:2px;
+                            }
+                            .conli2 #conradio21:not(:checked) ~ .consbot label:nth-child(1) .radio22,.conli2 #conradio22:not(:checked) ~ .consbot label:nth-child(2) .radio22,.conli2 #conradio23:not(:checked) ~ .consbot label:nth-child(3) .radio22{
+                                cursor: pointer;
+                                width: 10px;
+                                height: 10px;
+                                border-radius: 10px;
+                                position: absolute;  
+                                background-color: white;
+                                transition:0.3s;
+                            }
+                            .conli2 #conradio21:not(:checked) ~ .consbot label:nth-child(1) .radio14,.conli2 #conradio22:not(:checked) ~ .consbot label:nth-child(2) .radio14,.conli2 #conradio23:not(:checked) ~ .consbot label:nth-child(3) .radio14{
+                                background-color: #b0b0b0;
+                                width: 6px;
+                                height: 6px;
+                                border-radius: 6px;
+                                position: absolute;
+                                z-index: 1;
+                                left: 2px;
+                                top:2px;
+                                transition:0.3s;
+                            }
+                            .conli2 #conradio21:not(:checked) ~ .consbot label:nth-child(1) .radio22:hover .radio14,.conli2 #conradio22:not(:checked) ~ .consbot label:nth-child(2) .radio22:hover .radio14,.conli2 #conradio23:not(:checked) ~ .consbot label:nth-child(3) .radio22:hover .radio14{
+                                transition:0.3s;
+                                background-color: #ff6700;
+                            }
+                            .conli2 .consbodylast .condes{
+                                text-align: center;
+                                height:55px;
+                                width:185px;
+                                padding: 0px 55px;
+                                line-height:20px;
+                                font-size:12px;
+                                color:#b0b0b0;
+                            }
+                            .conli2 .consbodylast .go{
+                                height:30px;
+                                width:120px;
+                                color:#83C44E;
+                                font-size: 12px;
+                                text-align: center;
+                                border:1px solid #83C44E;
+                                line-height: 30px;
+                                margin:auto;
+                            }
+                            .conli2 .consbodylast .conpic{
+                                margin-top:20px;
+                            }
+                    </style>
+                <input id="conradio21" name="conradio2" type="radio" checked hidden>
+                <input id="conradio22" name="conradio2" type="radio" hidden>
+                <input id="conradio23" name="conradio2" type="radio" hidden>
+                <div class="conradior">
+                    <label for="conradio21">
+                        <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                    </label>
+                    <label for="conradio22">
+                        <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                    </label>
+                    <label for="conradio23">
+                        <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                    </label>
+                </div>
+                <div class="conradiol">
+                    <label for="conradio21">
+                        <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                    </label>
+                    <label for="conradio22">
+                        <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                    </label>
+                    <label for="conradio23">
+                        <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                    </label>
+                </div>    
+                <div class="constop">MIUI主题</div>
+                <div class="consbodys">
+                    <div class="consbody1 consbodynotlast consbody">
+                        <a href=""><div class="conname">BROWN&nbsp;&&nbsp;FRIENDS定制...</div></a> 
+                        <a href=""><div class="condes">BROWN & FRIENDS 小米定制主题，是LINE FRIENDS在与小米公司品牌</div></a> 
+                        <a href=""><div class="conprice"></div></a> 
+                        <a href=""><div class="conpic"></div></a>
+                    </div>
+                    <div class="consbody2 consbodynotlast consbody">
+                        <a href=""><div class="conname">好吗好的</div></a> 
+                        <a href=""><div class="condes">畅销大作家大冰2016年新书！将给你听，好吗好的！</div></a> 
+                        <a href=""><div class="conprice">17.99元</div></a> 
+                        <a href=""><div class="conpic"></div></a>
+                    </div>
+                    <div class="consbody3 consbodylast consbody">
+                        <div class="condes">众多个性主题、百变锁屏与自由桌面让你的手机与众不同！</div>
+                        <a href=""><div class="go">前往MIUI主题市场</div></a> 
+                        <div class="conpic"></div>
+                    </div>
+                </div>
+                <div class="consbot">
+                    <label for="conradio21">
+                        <div class="radio22"><div class="radio14"></div></div>  
+                    </label>
+                    <label for="conradio22">
+                        <div class="radio22"><div class="radio14"></div></div>
+                    </label>
+                    <label for="conradio23">
+                        <div class="radio22"><div class="radio14"></div></div>
+                    </label>
+                </div>
+                </li>
+                <li class="conli conli3">
+                    <style>
+                        .conli3 .constop{
+                            color:#83C44E;
+                        }
+                        .conli3 #conradio31:checked ~ .conradior label:nth-child(3),.conli3 #conradio32:checked ~ .conradior label:nth-child(1),.conli3 #conradio33:checked ~ .conradior label:nth-last-child(n+2)
+                        {
+                            display:none;
+                        }
+                        .conli3 #conradio31:checked ~ .conradiol label:nth-child(n+2),
+                        .conli3 #conradio32:checked ~ .conradiol label:nth-child(n+2),
+                        .conli3 #conradio33:checked ~ .conradiol label:nth-child(1),
+                        .conli3 #conradio33:checked ~ .conradiol label:nth-child(3){
+                            display:none;
+                        }
+                        .conli3 #conradio32:checked ~ .consbodys .consbody1,.conli3 #conradio33:checked ~ .consbodys .consbody2,.conli3 #conradio33:checked ~ .consbodys .consbody1{
+                            left: -295px;
+                            transition: 0.3s;
+                        }
+                        .conli3 #conradio31:checked ~ .consbodys .consbody1,.conli3 #conradio32:checked ~ .consbodys .consbody2,.conli3 #conradio33:checked ~ .consbodys .consbody3{
+                            left: 0px;
+                            transition: 0.3s;
+                        }
+                        .conli3 #conradio31:checked ~ .consbodys .consbody2,.conli3 #conradio32:checked ~ .consbodys .consbody3{
+                            left:295px;
+                            transition: 0.3s;
+                        }
+                        .conli3 .consbody1 .conpic{
+                            background-image: url(https://i1.mifile.cn/a4/xmad_15299832299419_eIPOw.png);
+                        }
+                        .conli3 .consbody2 .conpic{
+                            background-image: url(https://i1.mifile.cn/a4/xmad_15120234492499_MNEVo.png);
+                        }
+                        .conli3 .consbody3 .conpic{
+                            background-image: url(https://s01.mifile.cn/i/index/more-game.jpg);
+                        }
+                        .conli3 .consbot label:nth-child(1) .radio22{
+                            left:110px;
+                            bottom:25px;
+                        }
+                        .conli3 .consbot label:nth-child(2) .radio22{
+                            left:143px;
+                            bottom:25px;
+                        }
+                        .conli3 .consbot label:nth-child(3) .radio22{
+                            left:178px;
+                            bottom:25px;
+                        }
+                        .conli3 #conradio31:checked ~ .consbot label:nth-child(1) .radio22,.conli3 #conradio32:checked ~ .consbot label:nth-child(2) .radio22, .conli3 #conradio33:checked ~ .consbot label:nth-child(3) .radio22{
+                            cursor: pointer;
+                            width: 10px;
+                            height: 10px;
+                            background-color: #ff6700;
+                            border-radius: 10px;
+                            position: absolute;        
+                        }
+                        .conli3 #conradio31:checked ~ .consbot label:nth-child(1) .radio14,.conli3 #conradio32:checked ~ .consbot label:nth-child(2) .radio14,.conli3 #conradio33:checked ~ .consbot label:nth-child(3) .radio14{
+                            width: 6px;
+                            height: 6px;
+                            background-color: white;
+                            border-radius: 6px;
+                            position: absolute;
+                            z-index: 1;
+                            left: 2px;
+                            top:2px;
+                        }
+                        .conli3 #conradio31:not(:checked) ~ .consbot label:nth-child(1) .radio22,.conli3 #conradio32:not(:checked) ~ .consbot label:nth-child(2) .radio22,.conli3 #conradio33:not(:checked) ~ .consbot label:nth-child(3) .radio22{
+                            cursor: pointer;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 10px;
+                            position: absolute;  
+                            background-color: white;
+                            transition:0.3s;
+                        }
+                        .conli3 #conradio31:not(:checked) ~ .consbot label:nth-child(1) .radio14,.conli3 #conradio32:not(:checked) ~ .consbot label:nth-child(2) .radio14,.conli3 #conradio33:not(:checked) ~ .consbot label:nth-child(3) .radio14{
+                            background-color: #b0b0b0;
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 6px;
+                            position: absolute;
+                            z-index: 1;
+                            left: 2px;
+                            top:2px;
+                            transition:0.3s;
+                        }
+                        .conli3 #conradio31:not(:checked) ~ .consbot label:nth-child(1) .radio22:hover .radio14,.conli3 #conradio32:not(:checked) ~ .consbot label:nth-child(2) .radio22:hover .radio14,.conli3 #conradio33:not(:checked) ~ .consbot label:nth-child(3) .radio22:hover .radio14{
+                            transition:0.3s;
+                            background-color: #ff6700;
+                        }
+                        .conli3 .consbodylast .condes{
+                            text-align: center;
+                            height:55px;
+                            width:185px;
+                            padding: 0px 55px;
+                            line-height:20px;
+                            font-size:12px;
+                            color:#b0b0b0;
+                        }
+                        .conli3 .consbodylast .go{
+                            height:30px;
+                            width:120px;
+                            color:#e43935;
+                            font-size: 12px;
+                            text-align: center;
+                            border:1px solid #e43935;
+                            line-height: 30px;
+                            margin:auto;
+                        }
+                        .conli3 .consbodylast .conpic{
+                            margin-top:20px;
+                        }
+                    </style>
+                    <input id="conradio31" name="conradio3" type="radio" checked hidden>
+                    <input id="conradio32" name="conradio3" type="radio" hidden>
+                    <input id="conradio33" name="conradio3" type="radio" hidden>
+                    <div class="conradior">
+                        <label for="conradio31">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                        <label for="conradio32">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                        <label for="conradio33">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                    </div>
+                    <div class="conradiol">
+                        <label for="conradio31">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                        <label for="conradio32">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                        <label for="conradio33">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                    </div>    
+                    <div class="constop">游戏</div>
+                    <div class="consbodys">
+                        <div class="consbody1 consbodynotlast consbody">
+                            <a href=""><div class="conname">非人学园</div></a> 
+                            <a href=""><div class="condes">脑动大开的二次元竞技手游</div></a> 
+                            <a href=""><div class="conprice"></div></a> 
+                            <a href=""><div class="conpic"></div></a>
+                        </div>
+                        <div class="consbody2 consbodynotlast consbody">
+                            <a href=""><div class="conname">好吗好的</div></a> 
+                            <a href=""><div class="condes">畅销大作家大冰2016年新书！将给你听，好吗好的！</div></a> 
+                            <a href=""><div class="conprice">17.99元</div></a> 
+                            <a href=""><div class="conpic"></div></a>
+                        </div>
+                        <div class="consbody3 consbodylast consbody">
+                            <div class="condes">免费下载海量的手机游戏
+                                    天天都有现金福利赠送</div>
+                            <a href=""><div class="go">前往小米游戏商店</div></a> 
+                            <div class="conpic"></div>
+                        </div>
+                    </div>
+                    <div class="consbot">
+                        <label for="conradio31">
+                            <div class="radio22"><div class="radio14"></div></div>  
+                        </label>
+                        <label for="conradio32">
+                            <div class="radio22"><div class="radio14"></div></div>
+                        </label>
+                        <label for="conradio33">
+                            <div class="radio22"><div class="radio14"></div></div>
+                        </label>
+                    </div>
+                </li>
+                <li class="conli conli4">
+                    <style>
+                        .conli4 .constop{
+                            color:#83C44E;
+                        }
+                        .conli4 #conradio41:checked ~ .conradior label:nth-child(3),.conli4 #conradio42:checked ~ .conradior label:nth-child(1),.conli4 #conradio43:checked ~ .conradior label:nth-last-child(n+2)
+                        {
+                            display:none;
+                        }
+                        .conli4 #conradio41:checked ~ .conradiol label:nth-child(n+2),
+                        .conli4 #conradio42:checked ~ .conradiol label:nth-child(n+2),
+                        .conli4 #conradio43:checked ~ .conradiol label:nth-child(1),
+                        .conli4 #conradio43:checked ~ .conradiol label:nth-child(3){
+                            display:none;
+                        }
+                        .conli4 #conradio42:checked ~ .consbodys .consbody1,.conli4 #conradio43:checked ~ .consbodys .consbody2,.conli4 #conradio43:checked ~ .consbodys .consbody1{
+                            left: -295px;
+                            transition: 0.3s;
+                        }
+                        .conli4 #conradio41:checked ~ .consbodys .consbody1,.conli4 #conradio42:checked ~ .consbodys .consbody2,.conli4 #conradio43:checked ~ .consbodys .consbody3{
+                            left: 0px;
+                            transition: 0.3s;
+                        }
+                        .conli4 #conradio41:checked ~ .consbodys .consbody2,.conli4 #conradio42:checked ~ .consbodys .consbody3{
+                            left:295px;
+                            transition: 0.3s;
+                        }
+                        .conli4 .consbody1 .conpic{
+                            background-image: url(https://i1.mifile.cn/a4/3332da7d-4056-4694-9548-c83b7b3af7d3);
+                        }
+                        .conli4 .consbody2 .conpic{
+                            background-image: url(https://i1.mifile.cn/a4/T1TkKvBCKv1R4cSCrK.png);
+                        }
+                        .conli4 .consbody3 .conpic{
+                            background-image: url(https://s01.mifile.cn/i/index/more-app.jpg);
+                        }
+                        .conli4 .consbot label:nth-child(1) .radio22{
+                            left:110px;
+                            bottom:25px;
+                        }
+                        .conli4 .consbot label:nth-child(2) .radio22{
+                            left:143px;
+                            bottom:25px;
+                        }
+                        .conli4 .consbot label:nth-child(3) .radio22{
+                            left:178px;
+                            bottom:25px;
+                        }
+                        .conli4 #conradio41:checked ~ .consbot label:nth-child(1) .radio22,.conli4 #conradio42:checked ~ .consbot label:nth-child(2) .radio22, .conli4 #conradio43:checked ~ .consbot label:nth-child(3) .radio22{
+                            cursor: pointer;
+                            width: 10px;
+                            height: 10px;
+                            background-color: #ff6700;
+                            border-radius: 10px;
+                            position: absolute;        
+                        }
+                        .conli4 #conradio41:checked ~ .consbot label:nth-child(1) .radio14,.conli4 #conradio42:checked ~ .consbot label:nth-child(2) .radio14,.conli4 #conradio43:checked ~ .consbot label:nth-child(3) .radio14{
+                            width: 6px;
+                            height: 6px;
+                            background-color: white;
+                            border-radius: 6px;
+                            position: absolute;
+                            z-index: 1;
+                            left: 2px;
+                            top:2px;
+                        }
+                        .conli4 #conradio41:not(:checked) ~ .consbot label:nth-child(1) .radio22,.conli4 #conradio42:not(:checked) ~ .consbot label:nth-child(2) .radio22,.conli4 #conradio43:not(:checked) ~ .consbot label:nth-child(3) .radio22{
+                            cursor: pointer;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 10px;
+                            position: absolute;  
+                            background-color: white;
+                            transition:0.3s;
+                        }
+                        .conli4 #conradio41:not(:checked) ~ .consbot label:nth-child(1) .radio14,.conli4 #conradio42:not(:checked) ~ .consbot label:nth-child(2) .radio14,.conli4 #conradio43:not(:checked) ~ .consbot label:nth-child(3) .radio14{
+                            background-color: #b0b0b0;
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 6px;
+                            position: absolute;
+                            z-index: 1;
+                            left: 2px;
+                            top:2px;
+                            transition:0.3s;
+                        }
+                        .conli4 #conradio41:not(:checked) ~ .consbot label:nth-child(1) .radio22:hover .radio14,.conli4 #conradio42:not(:checked) ~ .consbot label:nth-child(2) .radio22:hover .radio14,.conli4 #conradio43:not(:checked) ~ .consbot label:nth-child(3) .radio22:hover .radio14{
+                            transition:0.3s;
+                            background-color: #ff6700;
+                        }
+                        .conli4 .consbodylast .condes{
+                            text-align: center;
+                            height:55px;
+                            width:185px;
+                            padding: 0px 55px;
+                            line-height:20px;
+                            font-size:12px;
+                            color:#b0b0b0;
+                        }
+                        .conli4 .consbodylast .go{
+                            height:30px;
+                            width:120px;
+                            color:#2196f3;
+                            font-size: 12px;
+                            text-align: center;
+                            border:1px solid #2196f3;
+                            line-height: 30px;
+                            margin:auto;
+                        }
+                        .conli4 .consbodylast .conpic{
+                            margin-top:20px;
+                        }
+                    </style>
+                    <input id="conradio41" name="conradio4" type="radio" checked hidden>
+                    <input id="conradio42" name="conradio4" type="radio" hidden>
+                    <input id="conradio43" name="conradio4" type="radio" hidden>
+                    <div class="conradior">
+                        <label for="conradio41">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                        <label for="conradio42">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                        <label for="conradio43">
+                            <div class="conrr"><span class="iconfont">&#xe63f;</span></div>
+                        </label>
+                    </div>
+                    <div class="conradiol">
+                        <label for="conradio41">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                        <label for="conradio42">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                        <label for="conradio43">
+                            <div class="conll"><span class="iconfont">&#xe640;</span></div>
+                        </label>
+                    </div>    
+                    <div class="constop">应用</div>
+                    <div class="consbodys">
+                        <div class="consbody1 consbodynotlast consbody">
+                            <a href=""><div class="conname">2018金米奖</div></a> 
+                            <a href=""><div class="condes">最优秀的应用和游戏</div></a> 
+                            <a href=""><div class="conprice"></div></a> 
+                            <a href=""><div class="conpic"></div></a>
+                        </div>
+                        <div class="consbody2 consbodynotlast consbody">
+                            <a href=""><div class="conname">Forest</div></a> 
+                            <a href=""><div class="condes">帮助您专心于生活中每个重要时刻</div></a> 
+                            <a href=""><div class="conprice">免费</div></a> 
+                            <a href=""><div class="conpic"></div></a>
+                        </div>
+                        <div class="consbody3 consbodylast consbody">
+                            <div class="condes">帮助小米手机和其他安卓手机用户
+                                    发现好用的安卓应用</div>
+                            <a href=""><div class="go">前往小米应用商店</div></a> 
+                            <div class="conpic"></div>
+                        </div>
+                    </div>
+                    <div class="consbot">
+                        <label for="conradio41">
+                            <div class="radio22"><div class="radio14"></div></div>  
+                        </label>
+                        <label for="conradio42">
+                            <div class="radio22"><div class="radio14"></div></div>
+                        </label>
+                        <label for="conradio43">
+                            <div class="radio22"><div class="radio14"></div></div>
+                        </label>
+                    </div>
+                </li>
             </ul>
         </section>   
     </section>
+    <style>
+        .mivideo{
+            width: 100%;
+            height: 422px;
+            background-color: #f5f5f5;
+        }
+        .videos{
+            position: relative;
+            margin: auto;
+            width: 1226px;
+            height: 77px;
+            background-color: #f5f5f5;
+        }
+        .videos h2{
+            padding-top:10px;
+            font: 25px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+            font-weight: lighter;
+            display: inline-block;
+        }
+        .videos  a{
+            position: absolute;
+            text-align: right;
+            vertical-align: top;
+            width: 95px;
+            transition: 0.5s;
+            white-space: nowrap;
+            right: 0px;
+        }
+        .videos  a .seeall{
+            line-height: 100px;
+            font-size: 16px;
+        }
+        .videos  a .right{
+            color: #b0b0b0;
+            font-size: 20px;
+            line-height: 100px;
+            vertical-align: top;
+            transition: 0.5s;
+        }
+        .videos a:hover,.videos a:hover span{
+            color: #ff6700;
+            transition: 0.5s;
+        }
+        .videosec{
+            white-space: nowrap;
+            font-size: 0px;
+            box-sizing: border-box;
+            position: relative;
+            height: 285px;
+            width: 1226px;
+            margin: auto;
+            position: relative;
+        }
+        .videosec ul{
+            box-sizing: border-box;
+            display: inline-block;
+            list-style-type: none;
+            width: 1226px;
+            height: 285px;
+            margin-top: 3px; 
+            background-color: #f5f5f5;
+        }
+        .videosec ul li{
+            box-sizing: border-box;
+            float: left;
+            width: 295px;
+            height: 285px;
+            padding: 0px;
+            margin: 0px 14px 14px 0px;
+            box-sizing:border-box;
+            transition:0.3s;
+            background-color: white;
+        }
+        .videosec ul li:nth-child(4){
+            margin:0px;
+        }
+        .videosec .videopic{
+            height:180px;
+            width:295px;
+            background-size: cover;
+            box-sizing:border-box;
+            position:relative;
+        }
+        .videosec ul li:hover{
+            margin-top: -3px;
+            transition: 0.3s;
+            box-shadow: 5px 5px 20px -5px rgba(176,176, 176, 0.6),-5px 5px 20px -5px rgba(176,176, 176, 0.6);
+        }
+        .videosec .videopic .playicon{
+            position:absolute;
+            color:white;
+            font-size: 30px;
+        }
+        .playicon-border{
+            cursor:pointer;
+            width: 35px;
+            height: 25px;
+            border: 2px solid white;
+            border-radius: 12.5px;
+            box-sizing: border-box;
+            position: absolute;
+            transition:0.3s;
+            left:15px;
+            bottom:10px;
+        }
+        .playicon-border:hover,.videosec .videopic:hover .playicon-border{
+            background-color: #ff6700;
+            border: 2px solid #ff6700;
+            transition:0.3s;
+        }
+        .playicon-border span{
+            display: inline-block;
+            position: absolute;
+            color: white;
+            text-align:center;
+            left: 9px;
+            top: -11px; 
+            color:white;
+        }
+        .videopro .protop{
+            color:black;
+            font-size:14px;
+            width:295px;
+            height:25px;
+            text-align:center;
+            margin-top: 15px;
+        }
+        .videopro .probot{
+            color:#b0b0b0;
+            font-size:12px;
+            width:295px;
+            text-align:center;
+        }
+        .videopro .protop:hover{
+            color:#ff6700;
+        }
+        .videopic1{
+            background-image: url(https://i1.mifile.cn/a4/xmad_15519428237288_Exonu.jpg);
+        }
+        .videopic2{
+            background-image: url(https://i1.mifile.cn/a4/xmad_15519291062065_hikIJ.jpg);
+        }
+        .videopic3{
+            background-image: url(https://i1.mifile.cn/a4/xmad_15519293321746_ChIsr.jpg);
+        }
+        .videopic4{
+            background-image: url(https://i1.mifile.cn/a4/xmad_15519292842527_ujNMV.jpg);
+        }
+    </style>
+    <section class="mivideo">
+        <header class="videos">
+            <h2>视频</h2>
+            <a href=""><span class="seeall">查看全部&nbsp&nbsp;</span><span class="iconfont right">&#xe653;</span></a>
+        </header>
+        <section class="videosec">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="videopic videopic1">
+                            <div class="playicon-border">
+                            <span class="iconfont">&#xe633;</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="videopro">
+                        <a href=""><div class="protop">王源&nbsp;&&nbsp;小米9&nbsp;全新广告大片</div></a>
+                        <div class="probot">好看又能打！我反正被帅到了，Will You？</div>
+                    </div>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="videopic videopic2">
+                            <div class="playicon-border">
+                            <span class="iconfont">&#xe633;</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="videopro">
+                        <a href=""><div class="protop">雷军对话王源</div></a>
+                        <div class="probot">聊了3小时，这9个秘密决定公开</div>
+                    </div>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="videopic videopic3">
+                            <div class="playicon-border">
+                            <span class="iconfont">&#xe633;</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="videopro">
+                        <a href=""><div class="protop">小米MIX 3 磁动力滑盖全面屏</div></a>
+                        <div class="probot">全新滑盖交互体验，不一样的新感觉</div>
+                    </div>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="videopic videopic4">
+                            <div class="playicon-border">
+                            <span class="iconfont">&#xe633;</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="videopro">
+                        <a href=""><div class="protop">小米MIX 3 故宫特别版</div></a>
+                        <div class="probot">传承中华国宝艺术之美</div>
+                    </div>
+                </li>
+            </ul>                
+        </section>
+    </section>
+    <style>
+        .mibottoma{
+            width:100%;
+            height:275px;
+            background-color: white;
+        }
+        .mibottomb{
+            width:1226px;
+            height:275px;
+            background-color: white;
+            margin:auto;
+            box-sizing:border-box;
+        }
+        .mibottomb .server ul{
+            box-sizing:border-box;
+            width:1226px;
+            height:80px;
+            list-style-type: none;
+        }
+        .mibottomb .server ul li{
+            margin-top:27px;
+            width:244px;
+            height:26px;
+            line-height: 26px;
+            border-right:1px solid #e0e0e0;
+            float: left;
+            padding:0px;
+            color:#616161;
+            text-align:center;
+            vertical-align: top;
+            font-size: 16px;
+            transition:0.3s;
+            cursor:pointer;
+        }
+        .mibottomb .server ul a:nth-child(5) li{
+            border-right:none;
+        }
+        .mibottomb .server ul li:hover{
+            color:#ff6700;
+            transition:0.3s;
+        }
+        .more{
+            width:980px;
+            height:192px;
+            box-sizing:border-box;
+            float:left;
+        }
+        .more ul{
+            list-style-type: none;
+        }
+        .more ul li{
+            float:left;
+            width:163px;
+            height:192px;
+            box-sizing:border-box;
+            text-align: left;
+            padding:0px;
+            vertical-align: center;
+            position: relative;
+        }
+        .more ul li:nth-child(6)::after{
+            float:left;
+            content:'';
+            height: 112px;
+            width:1px;
+            background-color:#e0e0e0;
+            position:absolute;
+            right:-1px;
+            top:40px;
+        }
+        .more ul li .moreh{
+            height:70px;
+            line-height: 80px;
+        }
+        .more ul li .morecon{
+            line-height: 30px;
+            width:50px;
+            font-size: 12px;
+        }
+        .more ul li .morecon span{
+            color:#757575;
+        }
+        .more ul li .morecon .nowrap{
+            white-space: nowrap;
+        }
+        .more ul li .morecon .wrap{
+            white-space:wrap;
+        }
+        .more ul li .morecon span:hover{
+            color:#ff6700
+        }
+        .connetion{
+            float:left;
+            width:244px;
+            height:112px;\
+            box-sizing:border-box;
+            margin-top:40px;
+            text-align:center;
+        }
+        .connetion .tel{
+            color:#ff6700;
+            font-size:25px;
+            vertical-align: top;
+            line-height:25px;
+            margin-bottom: 10px;
+        }
+        .connetion .worktime{
+            color:#616161;
+            font-size:12px;
+            vertical-align: top;
+            text-align:center;
+            line-height: 5px;
+            margin-bottom:20px;
+        }
+        .connetion .worktime p{
+            word-break:break-all;
+        }
+        .connetion .conserver{
+            width:120px;
+            height:30px;
+            color:#ff6700;
+            border:1px solid #ff6700;
+            vertical-align: middle;
+            line-height: 30px;
+            margin:auto;
+        }
+    </style>
+    <section class="mibottoma">
+        <div class="mibottomb">
+            <div class="server">
+                <ul>
+                    <a href=""><li><span class="iconfont">&#xe629;</span>预约维修服务</li></a>
+                    <a href=""><li><span class="iconfont">&#xe60e;</span>7天无理由退货</li></a> 
+                    <a href=""><li><span class="iconfont">&#xe606;</span>15天免费换货</li></a> 
+                    <a href=""><li><span class="iconfont">&#xe624;</span>满150元包邮</li></a> 
+                    <a href=""><li><span class="iconfont">&#xe61a;</span>520余家售后网点</li></a> 
+                </ul>
+            </div>
+            <section class="more">
+                <ul>
+                    <li>
+                        <div class="moreh">帮助中心</div>
+                        <div class="morecon"><a href=""><span>账户管理</span></a><a href=""><span>购物指南</span></a><a href=""><span>订单操作</span></a></div>
+                    </li>
+                    <li>
+                        <div class="moreh">服务支持</div>
+                        <div class="morecon"><a href=""><span>售后政策</span></a><a href=""><span>自助服务</span></a><a href=""><span>相关下载</span></a></div>
+                    </li>
+                    <li>
+                        <div class="moreh">线下门店</div>
+                        <div class="morecon"><a href=""><span>小米之家</span></a><a href=""><span>服务网点</span></a><a href=""><span class="nowrap">授权体验店</span></a></div>
+                    </li>
+                    <li>
+                        <div class="moreh">关于小米</div>
+                        <div class="morecon"><a href=""><span>了解小米</span></a><a href=""><span>加入小米</span></a><a href=""><span class="nowrap">投资者关系</span></a></div>
+                    </li>
+                    <li>
+                        <div class="moreh">关注我们</div>
+                        <div class="morecon"><a href=""><span>新浪微博</span></a><a href=""><span>官方微信</span></a><a href=""><span>联系我们</span></a></div>
+                    </li>
+                    <li>
+                        <div class="moreh">特色服务</div>
+                        <div class="morecon"><a href=""><span>F码通道</span></a><a href=""><span class="wrap">礼物码</span></a><a href=""><span>防伪查询</span></a></div>
+                    </li>
+                </ul>
+            </section>
+            <section class="connetion">
+                <div class="tel">400-100-5678</div>
+                <div class="worktime">周一至周日 8:00-18:00 <p></p>（仅收市话费）</div>
+                <div class="conserver">联系客服</div>
+            </section>
+        </div>
+    </section>
+    <style>
+        footer{
+            height:230px;
+            width:100%;
+            background-color: #f5f5f5;
+        }
+        footer .mifoot{
+            height:170px;
+            width:1226px;
+            background-color: #f5f5f5;
+            margin:auto;
+            padding:30px 0px;
+        }
+        footer .milogo{
+            float:left;
+            width:57px;
+            height:57px;
+            background-image: url(https://s01.mifile.cn/i/logo-footer.png?v2);
+            margin-right:10px;
+        }
+        footer .foot-sites{
+            float:left;
+            height:103px;
+        }
+        footer .foot-site1{
+            font-size: 12px;
+            color:#b0b0b0;
+            margin:0px;
+        }
+        footer .foot-site1 a{
+            color:#757575;
+        }
+        footer .foot-site2 a{
+            color:#b0b0b0;
+        }
+        footer .foot-sites a:hover{
+            color:#ff6700;
+        }
+        footer .foot-site2{
+            font-size: 12px;
+            color:#b0b0b0;
+            margin:0px;
+        }
+        footer .foot-sites span,footer .foot-sites span a{
+            font-size: 12px;
+            color:#b0b0b0;
+            margin:0px;
+        }
+        .wrap2{
+            margin:0px;
+        }
+        .milinks{
+            float:left;
+            width:1159px;
+            padding-left:67px;
+            height:28px;
+        }
+        .linkpic{
+            float:left;
+            width: 83px;
+            height:28px;
+            background-size:cover;
+        }
+        .linkpic1{
+            background-image: url(https://i1.mifile.cn/f/i/17/site/truste.png);
+        }
+        .linkpic2{
+            background-image: url(https://s01.mifile.cn/i/v-logo-2.png);
+        }
+        .linkpic3{
+            background-image: url(https://s01.mifile.cn/i/v-logo-1.png);
+        }
+        .linkpic4{
+            background-image: url(https://s01.mifile.cn/i/v-logo-3.png);
+        }
+        .linkpic5{
+            background-image: url(https://i8.mifile.cn/b2c-mimall-media/ba10428a4f9495ac310fd0b5e0cf8370.png);
+        }
+        .footlogo{
+            margin-top: 25px;
+            margin-left:470px;
+            display: inline-block;
+            height:19px;
+            width:267px;
+            background-image: url(https://s01.mifile.cn/i/slogan2016.png);
+        }
+    </style>
+    <footer>
+        <section class="mifoot">
+            <div class="milogo">
+            </div>
+            <div class="foot-sites">
+                <p class="foot-site1">
+                    <a href="">小米商城</a>&nbsp;|&nbsp;<a href="">MIUI</a>&nbsp;|&nbsp;<a href="">米家</a>&nbsp;|&nbsp;<a href="">米聊</a>&nbsp;|&nbsp;<a href="">多看</a>&nbsp;|&nbsp;<a href="">游戏</a>&nbsp;|&nbsp;<a href="">路由器</a>&nbsp;|&nbsp;<a href="">米粉卡</a>&nbsp;|&nbsp;<a href="">政企服务</a>&nbsp;|&nbsp;<a href="">小米天猫店</a>&nbsp;|&nbsp;<a href="">隐私政策</a>&nbsp;|&nbsp;<a href="">商城用户协议</a>&nbsp;|&nbsp;<a href="">账号协议</a>&nbsp;|&nbsp;<a href="">问题反馈</a>&nbsp;|&nbsp;<a href="">廉正举报</a>&nbsp;|&nbsp;<a href="">诚信合规</a>&nbsp;|&nbsp;<a href="">Select Region</a>
+                </p>
+                <p class="foot-site2">
+                    <a href="">© mi.com</a> 京ICP证110507号 <a href="">京ICP备10046444号</a> <a href="">京公网安备11010802020134号</a> <a href="">京网文[2017]1530-131号 </a>
+                    <p class="wrap2"></p>
+                    <span><a href="">（京）网械平台备字（2018）第00005号</a><a href="">互联网药品信息服务资格证 (京) -非经营性-2014-0090</a><a href="">营业执照</a><a href=""> 医疗器械公告</a></span>
+                    <p class="wrap2"></p>
+                    <span><a href="">增值电信业务许可证</a><a href=""></a>  网络食品经营备案（京）【2018】WLSPJYBAHF-12<a href="">&nbsp;食品经营许可证</a></span>
+                    <p class="wrap2"></p>
+                    <span>违法和不良信息举报电话：185-0130-1238 <a href="">知识产权侵权投诉</a>  本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</span>
+                </p>
+            </div>
+            <div class="milinks">
+                <a href=""><div class="linkpic1 linkpic"></div></a> 
+                <a href=""><div class="linkpic2 linkpic"></div></a> 
+                <a href=""><div class="linkpic3 linkpic"></div></a> 
+                <a href=""><div class="linkpic4 linkpic"></div></a>
+                <a href=""><div class="linkpic5 linkpic"></div></a>  
+            </div>
+            <div class=""></div>
+            <div class="footlogo"></div>
+        </section>
+    </footer>
 </body>
 </html>
-200 150
