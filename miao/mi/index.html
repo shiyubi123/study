@@ -291,7 +291,7 @@
             display: block;
         }
     </style>
-    <header>
+    <header id="tooop">
         <nav>
             <div class="nav-bar">
                 <div class="nav-left">
@@ -6443,5 +6443,82 @@
             <div class="footlogo"></div>
         </section>
     </footer>
+    <style>
+        .fixedbar ul{
+        list-style: none;;
+        }
+        .fixedbar ul li{
+            border:1px solid #f5f5f5;
+            background-color: white;
+            text-align: center;
+            
+        }
+        .fixedbar ul li:hover{
+            cursor:pointer;
+            color: #ff6700;
+        }
+        .fixedbar ul li p{
+            margin:0px;
+        }
+
+    @media (min-width:1450px ){
+        .fixedbar ul li{
+            width:85px;
+            height: 90px;
+            box-sizing: border-box;
+            padding:0px;
+        }
+        .fixedbar ul li span{
+            margin-top:20px;
+            height:40px;
+            line-height: 50px;
+            display: block;
+            font-size: 30px;
+            margin: auto;
+            vertical-align: bottom;
+        }
+        .fixedbar{
+        position: fixed;
+        right: 0px;
+        top: 110px;
+        }
+        .shopcaricon{
+            font-weight: 100;
+        }
+    }
+
+    @media (max-width:1450px ) and (min-width:1226px ){
+        .fixedbar ul li{
+            width:25px;
+            height: 40px;
+            box-sizing: border-box;
+            padding:0px;
+        }
+        .fixedbar{
+        position: fixed;
+        right: calc(50% - 638px);
+        top: 415px;
+        }
+        .fixedbar ul li p{
+            display: none;
+        }
+    }
+
+    @media (max-width:1226px ){
+        .fixedbar {
+            display: none;
+        }
+    }
+    </style>
+    <div class="fixedbar">
+        <ul>
+            <a href=""><li><span class="iconfont">&#xe641;</span><p>手机APP</p></li></a> 
+            <a href=""><li><span class="iconfont">&#xe615;</span><p>个人中心</p></li></a> 
+            <a href=""><li><span class="iconfont">&#xe629;</span><p>售后服务</p></li></a> 
+            <a href=""><li><span class="iconfont">&#xe61b;</span><p>联系客服</p></li></a> 
+            <a href=""><li><span class="iconfont shopcaricon">&#xe6e6;</span><p>购物车</p></li></a> 
+            <a href="" target="tooop"><li><span class="iconfont">&#xe691;</span><p>回顶部</p></li></a> 
+        </ul>
+    </div>
 </body>
 </html>
