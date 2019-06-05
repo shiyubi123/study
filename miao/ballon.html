@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="balloon.css">
+</head>
+<style>
+    html{
+        min-width: 1050px;
+        background-color: #ffd748;
+    }
+    body{
+        margin: 0px;
+    }
+    header{
+        width: 100%;
+        height: 342px;
+        box-sizing: border-box;
+        margin-top:65px;
+        margin-bottom: 80px;
+    }
+    header .head{
+        box-sizing: border-box;
+        width:1100px;
+        margin: auto;
+        height: 328px;
+        padding:0px 25px 0px 25px;
+    }
+    .head .headl{
+        width: 655px;
+        height: 328px;
+    }
+    .headl img{
+        width: 272px;
+        height: 80px;
+    }
+    h2 {
+        font-size: 2.0rem;
+        font-weight: 300;
+        margin: 2rem 0 0;
+    }
+    .headl p{
+        font-size: 1.3rem;
+        font-weight: 300;
+        margin: 2rem 0 35px;
+    }
+    .headl a div{
+        width: 240px;
+        height: 60px;
+        background-color: #FF3D2e;
+        color: white;
+        text-align: center;
+        float: left;
+        line-height: 60px;
+        font-size: 1.3rem;
+    }
+    .headl a + a div{
+        margin-left: 30px;
+    }
+    main p{
+        font-size: 1.3rem;
+        font-weight: 300;
+        margin: 2rem 0 35px;
+
+    }
+    main p span{
+        display: inline-block;
+        background-color: #ffeba4;
+        font-weight: 400;
+        font-family: Consolas, Monaco, monospace;
+        padding: 4px;
+    }
+    .textarea{
+        width: 605px;
+        height: 80px;
+        margin: 0px 70px 25px 0px;
+        padding-left: 10px;
+        float: left;
+        background-color: white;
+        text-align: left;
+        line-height: 80px;
+        white-space: nowrap;
+        overflow-x:auto; 
+        font-family: Consolas, Monaco, monospace;
+    }
+    .section{
+        padding:0px 25px 0px 25px;
+        width: 1050px;
+        margin: auto;
+        margin-bottom: 150px;
+    }
+    .line{
+        width: 950px;
+        height: 80px;
+    }
+</style>
+<body>
+    <header>
+        <section class="head">
+            <div class="headl">
+                <img src="https://kazzkiq.github.io/balloon.css/assets/img/logo.svg" alt="">
+                <h2>
+                    Simple tooltips made of pure CSS 
+                </h2>
+                <p>
+                    Balloon.css lets you add tooltips to elements <strong>without JavaScript</strong> and in just a few lines of CSS.
+                </p>
+                <a href=""><div>Github Project</div></a> 
+                <a href=""><div>Download CSS</div></a> 
+            </div>
+            <div class="headr"></div>
+        </section>
+    </header>
+    <main>
+        <section class="position section">
+            <h2>Positioning</h2>
+            <p>For positioning, use <span>data-balloon-pos</span> attribute with one of the values: <span>up</span> , <span>down</span>, <span>left</span> or <span>right</span>.</p>
+            <div class="line">
+                <div class="textarea">date-ballon="Whats up!" data-balloon-pos="up"</div>
+                <button data-balloon="Whats up!" data-balloon-pos="up">Hover me!
+                    <div>
+                        "Whats up!"
+                    </div>
+                </button>
+            </div>
+            <div class="line">
+                <div class="textarea">button data-balloon="Whats up!" data-balloon-pos="left"</div>
+                <button data-balloon="Whats up!" data-balloon-pos="left">Hover me!
+                    <div>
+                        "Whats up!"
+                    </div>
+                </button>
+            </div>
+            <div class="line">
+                <div class="textarea">button data-balloon="Whats up!" data-balloon-pos="right"</div>
+                <button data-balloon="Whats up!" data-balloon-pos="right">Hover me!
+                    <div>
+                        "Whats up!"
+                    </div>
+                </button>
+            </div>
+            <div class="line">
+                <div class="textarea">button data-balloon="Whats up!" data-balloon-pos="down"</div>
+                <button data-balloon="Whats up!" data-balloon-pos="down">Hover me!
+                    <div>
+                        "Whats up!"
+                    </div>
+                </button>
+            </div>
+        </section>
+        <section class="Lenth section">
+            <h2>Lenth</h2>
+            <p>
+                By default, tooltips will always remain single-line no matter their length. You can change this behavior by using the attribute<span>data-balloon-length</span> with one of the values: <span>small</span> , <span>medium</span>, <span>large</span> or <span>fit</span>.
+            </p>
+            <div class="line">
+                <div class="textarea">data-balloon-length="small" data-balloon="Hi." data-balloon-pos="up"</div>
+                <button data-balloon-length="small" data-balloon="Hi." data-balloon-pos="up">I'm a small tooltip
+                    <div>
+                        Hi
+                    </div>
+                </button>
+            </div>
+            <div class="line">
+                <div class="textarea">data-balloon-length="medium" data-balloon="Hi."data-balloon-pos="up"</div>
+                <button data-balloon-length="medium" data-balloon="Hi."data-balloon-pos="up">I'm a medium tooltip
+                    <div>
+                        Now that's a super big text we have over here right?Lorem ipsum dolor sit I'm done.
+                    </div>
+                </button>
+            </div>
+            <div class="line">
+                <div class="textarea">data-balloon-length="large" data-balloon="Hi."data-balloon-pos="up"</div>
+                <button data-balloon-length="large" data-balloon="Hi."data-balloon-pos="up">I'm a large tooltip
+                    <div>
+                        What about something really big?This may surpass your window dimensions Imagine you're in that boring class with that boring reacher and you didn't slept so well last night.Siddenly you're sleeping in class.Can you believe it?! 
+                    </div>
+                </button>
+            </div>
+            <div class="line">
+                <div class="textarea">data-balloon-length="Xlarge" data-balloon="Hi."data-balloon-pos="up"</div>
+                <button data-balloon-length="Xlarge" data-balloon="Hi."data-balloon-pos="up">I'm a Xlarge tooltip
+                    <div>
+                        What about something really big?This may surpass your window dimensions Imagine you're in that boring class with that boring reacher and you didn't slept so well last night.Siddenly you're sleeping in class.Can you believe it?! 
+                    </div>
+                </button>
+            </div>
+            <div class="line">
+                <div class="textarea">data-balloon-length="fit" data-balloon="Hi."data-balloon-pos="up"</div>
+                <button data-balloon-length="fit" data-balloon="Hi."data-balloon-pos="up">My width will fit to element
+                    <div>
+                        What about something really big?This may surpass your window dimensions Imagine you're in that boring class with that boring reacher and you didn't slept so well last night.Siddenly you're sleeping in class.Can you believe it?! 
+                    </div>
+                </button>
+            </div>
+        </section>
+        <section class="programatically section">
+            <h2>Lenth</h2>
+            <p>
+                If you want to show tooltips even when user interaction isn't happening, you can simply use the <span>balloon-visible</span>attribute:
+            </p>
+            <div class="line">
+                <div class="textarea">data-balloon-visible data-balloon="I am always visible!" data-balloon-pos="up"</div>
+                <button data-balloon-visible data-balloon="I am always visible!" data-balloon-pos="up">Always visible!
+                    <div>
+                        I am always visible!
+                    </div>
+                </button>
+            </div>
+            <p>
+                The attribute<span>data-balloon-visible</span> can be easily added via JavaScript (e.g.<span>.setAttribute()</span>), enabling you to show tooltips whenever needed.
+            </p>
+        </section>
+        <style>
+        .Drawbacks{
+            border-top:10px solid #ff3d2e;
+        }
+        </style>
+        <section class="Drawbacks section">
+            <h2>Drawbacks</h2>
+            <p>
+                Balloon.css make use of pseudo-elements thus self-closing elements such as &lt;img>, &lt;input> and &lt;hr> will not render tooltips.
+            </p>
+            <p>
+                Also keep in mind that if pseudo elements are already in use on an element, the tooltip will conflict with them resulting in potential bugs.
+            </p>
+        </section>
+    </main>
+    <style>
+        footer{
+            color: white;
+            background-color: #FF3D2e;
+            width: 100%;
+            height: 90px;
+            line-height: 90px;
+            text-align: center;
+        }
+    </style>
+    <footer>
+        Made by Claudio Holanda <strong>(@kazzkiq)</strong>
+    </footer>
+</body>
+</html>
