@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    section{
+        perspective: 400px;
+        text-align: center;
+        width: 300px;
+        height: 200px;
+        font-size: 0px;
+        margin: auto;
+        margin-top:250px;
+        perspective-origin: 50% 50% ;  
+        position: relative;
+        transition: 2s;
+        transform-style: preserve-3d;
+    }
+    div{
+        display: inline-block;
+        width: 0px;
+        height: 0px;
+        margin: 0px;
+        position: absolute;
+    }
+    .d1{
+        border-bottom: 50px solid transparent;
+        border-right: 86.6px solid red;
+        border-top: 50px solid transparent;
+        transform-origin:right;
+        transform: rotateZ(30deg) rotateY(0deg);
+        transition: 2s;
+        left: 38px;
+        z-index: 1;
+    }
+    .d2{
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 86.6px solid rgb(58, 192, 58);
+        left:100px ;
+        top: 7px;
+    }
+    .d3{
+        border-bottom: 50px solid transparent;
+        border-left: 86.6px solid rgb(80, 80, 226);
+        border-top: 50px solid transparent;
+        left: 175px;
+        top:0px;
+        transform-origin:left;
+        transform: rotateZ(-30deg) rotateY(0deg);
+        transition: 2s;
+    }
+    .d4{
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-top: 86.6px solid rgb(202, 202, 74);
+        left: 100px;
+        bottom:20px;
+        transform-origin:top;
+        transform: rotateY(0deg);
+        transition: 2s;
+    }
+    p{  
+        cursor: pointer;
+        background-color: rgb(78, 80, 207);
+        border: 5px outset rgb(78, 80, 207);
+        width: 100px;
+        text-align: center;
+        display: inline-block;
+    }
+    input:checked + label p{
+        border: 5px inset rgb(78, 80, 207);
+        background-color: rgb(35, 37, 107);
+    }
+    input:checked ~ section .d1{
+        transform: rotateZ(30deg) rotateY(109.5deg);
+        transition: 2s;
+        z-index: 1;
+    }
+    input:checked ~ section .d3{
+        transform: rotateZ(-30deg) rotateY(-109.5deg);
+        transition: 2s;
+        z-index: 1;
+    }
+    input:checked ~ section .d4{
+        transform: rotateX(109.5deg);
+        transition: 2s;
+        z-index: 1;
+    }
+    #top:checked ~ section{
+        perspective-origin: 50% 20%;  
+    }
+    #bottom:checked ~ section{
+        perspective-origin: 50% 80%;  
+    }
+    #left:checked ~ section{
+        perspective-origin: 20% 50%;  
+    }
+    #right:checked ~ section{
+        perspective-origin: 80% 50%;  
+    }
+</style>
+<body>
+    <input type="checkbox" name="four" id="four" hidden>
+    <label for="four"><p>四面体</p></label>
+    <input type="checkbox" name="four" id="top" hidden>
+    <label for="top"><p>由上看</p></label>
+    <input type="checkbox" name="four" id="bottom" hidden>
+    <label for="bottom"><p>由下看</p></label>
+    <input type="checkbox" name="four" id="left" hidden>
+    <label for="left"><p>由左看</p></label>
+    <input type="checkbox" name="four" id="right" hidden>
+    <label for="right"><p>由右看</p></label>
+    <section>
+        <div class="d1"></div>
+        <div class="d2"></div>
+        <div class="d3"></div>
+        <div class="d4"></div>
+    </section>
+</body>
+</html>

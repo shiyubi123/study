@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .table1{
+        text-align: center;
+        border-collapse: collapse;
+    }
+    .table1 tr,col{
+        border: 3px solid rgb(0,0,240);
+    }
+    .table1 th,td{
+        display: table-cell;
+        width: 25px;
+    }
+    .table1 th:hover,.table1 td:hover{
+        cursor: pointer;
+        border: 3px solid rgb(240,0,0);
+    }
+    .table2{
+        background-color: green;
+        white-space: nowrap;
+        text-align: center;
+        border-collapse: collapse;
+        border-bottom: 3px solid red;
+    }
+    input:checked + label .table2{
+        background-color: rgb(106,228,224);
+        white-space: nowrap;
+        text-align: center;
+        border-collapse: collapse;
+        transition: background-color 1s;
+    }
+    .table2 td{
+        display: table-cell;
+        width: 200px;
+        height: 150px;
+        vertical-align: bottom;
+        text-align: left;
+        font-size: 0.5rem;
+    }
+    input:checked + label .table2 td{
+        display: table-cell;
+        width: 200px;
+        height: 150px;
+        vertical-align: bottom;
+        text-align: left;
+        font-size: 3rem;        
+        transition: font-size 3s;
+    }
+</style>
+<body>
+    <table class="table1">
+        <col>
+        <col>
+        <col>
+        <thead>
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <input type="checkbox" name="radio" id="radio" hidden>
+    <label for="radio">
+        <table class="table2">
+            <tr>
+                <td>
+                    订阅博客
+                </td>
+            </tr>
+        </table>
+    </label>
+</body>
+</html>

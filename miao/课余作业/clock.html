@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        main{
+            height: 1000px;
+            width: 100%;
+        }
+        section{
+            height: 500px;
+            width: 500px;
+            border: 10px solid grey;
+            border-radius: 250px;
+            margin: auto;
+            position: relative;
+        }
+        section .number{
+            position: absolute;
+            left: calc(50% - 15px);
+            top: calc(50% - 33px);
+            font-size: 50px;
+            font-weight: 600;
+            color: lightblue;
+            transition: 1s;
+            text-align: center;
+            pointer-events: none;
+        }
+        section div:nth-child(1) {
+            transform: rotate(-60deg) translate(220px, 0px) rotate(60deg);
+            transition: 1s;
+        }
+        section div:nth-child(2) {
+            transform: rotate(-30deg) translate(220px, 0px) rotate(30deg);
+        }
+        section div:nth-child(3) {
+            transform: rotate(0deg) translate(220px, 0px) rotate(0deg);
+        }
+        section div:nth-child(4) {
+            transform: rotate(30deg) translate(220px, 0px) rotate(-30deg);
+        }
+        section div:nth-child(5) {
+            transform: rotate(60deg) translate(220px, 0px) rotate(-60deg);
+        }
+        section div:nth-child(6) {
+            transform: rotate(90deg) translate(220px, 0px) rotate(-90deg);
+        }
+        section div:nth-child(7) {
+            transform: rotate(120deg) translate(220px, 0px) rotate(-120deg);
+        }
+        section div:nth-child(8) {
+            transform: rotate(150deg) translate(220px, 0px) rotate(-150deg);
+        }
+        section div:nth-child(9) {
+            transform: rotate(180deg) translate(220px, 0px) rotate(-180deg);
+        }
+        section div:nth-child(10) {
+            transform: rotate(210deg) translate(220px, 0px) rotate(-210deg);
+        }
+        section div:nth-child(11) {
+            transform: rotate(240deg) translate(220px, 0px) rotate(-240deg);
+        }
+        section div:nth-child(12) {
+        transform: rotate(270deg) translate(220px, 0px) rotate(-270deg);
+        }
+        #dot{
+            border: 8px solid black;
+            border-radius: 8px;
+            position: absolute;
+            left: calc(50% - 8px);
+            top: calc(50% - 8px);
+            animation: 60s dot steps(60) infinite;
+        }
+        #second{
+            width: 6px;
+            height: 230px;
+            background-color: coral;
+            left: calc(50% - 3px);
+            top: calc(50% - 180px);
+            position: absolute;
+            transform-origin: 3px 180px;
+            animation: 1s sec1 cubic-bezier(0.55, 2.82, 0.55, -0.5) both infinite; 
+        }
+        @keyframes sec1{
+            from{
+                transform: rotate(0deg);
+            }
+            10%{
+                transform: rotate(6deg);
+            }
+            to{
+                transform: rotate(6deg);
+            }
+        }
+        @keyframes dot{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="number">1</div>
+            <div class="number">2</div>
+            <div class="number">3</div>
+            <div class="number">4</div>
+            <div class="number">5</div>
+            <div class="number">6</div>
+            <div class="number">7</div>
+            <div class="number">8</div>
+            <div class="number">9</div>
+            <div class="number">10</div>
+            <div class="number">11</div>
+            <div class="number">12</div>
+            <div id="dot">
+                <div id="second"></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
