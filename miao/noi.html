@@ -754,6 +754,184 @@
     }
     console.log("End")
 </script>
+<script type="x" id="ch0105/22">
+    var left = 0
+    var save = 0
+    var a = 0
+    for (var i = 0;i < 12;i++){
+        var plan = Number(prompt('请输入津津第' + (i + 1) + '个月的预算'))
+        var left = 300 - plan + left
+        if (left < 0){
+            console.log(Number((-i - 1)).toFixed(0))
+            a = 1
+        }
+        if (parseInt(left / 100) > 0){
+            save = save + parseInt(left / 100) * 100
+            left = left - parseInt(left / 100) * 100
+        }
+    }
+    if (a == 1){
+        console.log()
+    }
+    else{
+        left = left + save * 1.2
+        console.log(Number(left).toFixed(0))
+    }
+</script>
+<script type="x" id="ch0105/23">
+    var m = Number(prompt('请输入每天开始时的药品总量m'))
+    var n = Number(prompt('请输入每天取药的人数n'))
+    var left = 0
+    for (var i = 0;i < n;i++){
+        var p = Number(prompt('请输入第' + (i + 1) + '个人的取药量'))
+        if (m - p > 0){
+            m = m - p
+        }
+        else {
+            left = left + 1
+        }
+    }
+    console.log(Number(left).toFixed(0))
+</script>
+<script type="x" id="ch0105/24">
+    var n = Number(prompt('请输入病人测血压的次数'))
+    var h = 0
+    var max = 0
+    for (var i = 0;i < n;i++){
+        var close = Number(prompt('请输入第' + (i + 1) + '次的收缩压'))
+        var loose = Number(prompt('请输入第' + (i + 1) + '次的舒张压'))
+        if ((close >= 90 && close <= 140) && (loose >= 60 && loose <= 90)){
+            h = h + 1
+            if (h > max) {
+                max = h
+            }
+        }
+        else {
+            h = 0
+        }
+    }
+    console.log(Number(max).toFixed(0))
+</script>
+<script type="x" id="ch0105/25">
+    for(var i = 81;i <= 342;i++){
+        var n = i
+        if (i % 9 == 0){
+            var n1 = 0
+        }
+        else{
+            var n1 = i % 9
+        }
+        n = parseInt(n / 9)
+        if (n % 9 == 0){
+            var n2 = 0
+        }
+        else{
+            var n2 = i % 9
+        }
+        var n3 = parseInt(n / 9)
+        var s = i
+        if (i % 7 == 0){
+            var s1 = 0
+        }
+        else{
+            var s1 = i % 7
+        }
+        s = parseInt(s / 7)
+        if (s % 7 == 0){
+            var s2 = 0
+        }
+        else{
+            var s2 = s % 7
+        }
+        var s3 = parseInt(s / 9)
+        if (s3 == n1 && s2 == n2 && s1 == n3){
+            break
+        }
+    }
+    console.log(i)
+    console.log(s3 + "" + s2 + "" + s1)
+    console.log(n3 + "" + n2 + "" + n1)
+</script>
+<script type="x" id="ch0105/26">
+    var n = Number(prompt('请输入四位数的个数n'))
+    var meet = 0
+    for(var i = 0;i < n;i++){
+        var m = Number(prompt('请输入第' + (i + 1) + '个四位数的数值'))
+        var g = m % 10
+        m = parseInt(m / 10)
+        var s = m % 10
+        m = parseInt(m / 10)
+        var b = m % 10
+        var q = parseInt(m / 10)
+        if (g - q - b - s > 0){
+            meet++
+        }
+    }
+    console.log(Number(meet).toFixed(0))
+</script>
+<script type="x" id="ch0105/27">
+    var K = Number(prompt('请输入整数K的值'))
+    var Sn = 1
+        for(var i = 2;Sn <= K;i++){
+            Sn = Sn + 1/i
+            if (Sn > K){
+                console.log(Number(i).toFixed(0))
+            }
+        }
+</script>
+<script type="x" id="ch0105/28">
+    var n = Number(prompt('请输入整数的数值'))
+    var stri = ""
+    if (n / 10 < 1){
+            console.log(n)
+        }
+    else{
+        for(var i = 0;i < 9999;i++){
+            if (n > 10){
+                var a = n % 10
+                var stri = stri + a + " "
+                n = parseInt(n / 10)
+            }
+            else{
+                var stri = stri + n
+                break
+                }
+            }
+        }
+        console.log(stri)
+</script>
+<script type="x" id="ch0105/30">
+    var m = Number(prompt('请输入整数m的数值'))
+    var k = Number(prompt('请输入整数k的数值'))
+    var n = 0
+    var m1 = m
+    for(var i = 1;i < 100000;i++){
+        if(m1 % 19 == 0){
+            if (m / 10 < 1){
+                if (m == 3){
+                    n = n + 1
+                }
+                if(n == k){
+                    console.log("YES")
+                    break
+                }
+                else{
+                    console.log("NO")
+                    break
+                }
+            }
+            var a = m % 10
+            m = parseInt(m / 10)
+            if (a == 3){
+                n++
+            }
+        }
+        else{
+            console.log("NO")
+            break
+        }
+    }
+</script>
 
 
 
