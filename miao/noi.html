@@ -815,26 +815,26 @@
 <script type="x" id="ch0105/25">
     for(var i = 81;i <= 342;i++){
         var n = i
-        if (i % 9 == 0){
-            var n1 = 0
+        if (i / 9 < 1){
+            var n1 = i
         }
         else{
-            var n1 = i % 9
+            var n1 = n % 9
         }
         n = parseInt(n / 9)
         if (n % 9 == 0){
             var n2 = 0
         }
         else{
-            var n2 = i % 9
+            var n2 = n % 9
         }
         var n3 = parseInt(n / 9)
         var s = i
-        if (i % 7 == 0){
+        if (i / 7 < 1){
             var s1 = 0
         }
         else{
-            var s1 = i % 7
+            var s1 = s % 7
         }
         s = parseInt(s / 7)
         if (s % 7 == 0){
@@ -843,14 +843,14 @@
         else{
             var s2 = s % 7
         }
-        var s3 = parseInt(s / 9)
+        var s3 = parseInt(s / 7)
         if (s3 == n1 && s2 == n2 && s1 == n3){
             break
         }
     }
     console.log(i)
-    console.log(332)
-    console.log(233)
+    console.log(i.toString(7))
+    console.log(i.toString(9))
 </script>
 <script type="x" id="ch0105/26">
     var n = Number(prompt('请输入四位数的个数n'))
