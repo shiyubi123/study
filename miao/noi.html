@@ -900,6 +900,36 @@
         }
         console.log(stri)
 </script>
+<script type="x" id="ch0105/29">
+    var N = Number(prompt('请输入整数N的数值'))
+    var strin = ""
+    if (N < 0){
+        strin = strin + "-"
+        N = -N
+    }
+    if (N / 10 < 1){
+            strin = strin + N
+        }
+    else{
+        var n1 = N % 10
+        if (n1 != 0) {
+            strin = strin + n1
+        }
+        N = parseInt(N / 10)
+        for (var i = 0;i < 9999;i++){
+            if (N / 10 < 1){
+                strin = strin + N
+                break
+            }
+            var n = N % 10
+            if (n != 0) {
+                strin = strin + n
+            }
+        N = parseInt(N / 10)
+        }
+    }
+    console.log(strin)
+</script>
 <script type="x" id="ch0105/30">
     var m = Number(prompt('请输入整数m的数值'))
     var k = Number(prompt('请输入整数k的数值'))
