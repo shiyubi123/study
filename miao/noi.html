@@ -1173,6 +1173,131 @@
     }
     console.log(Number(sum).toFixed(0))
 </script>
-
+<script type="x" id="ch0105/41">
+    var L = Number(prompt('请输入正整数L的值'))
+    var R = Number(prompt('请输入正整数R的值'))
+    var sum = 0
+    for (var i = L;i <= R;i++){
+        var a = i
+        var b = i
+        for (var I = 1;I <= 9999;I++){
+            if (a == 2){
+                sum++
+            }
+            if (a / 10 <　1){
+                break
+            }
+            else{
+                if(a == 10){
+                    sum++
+                    break
+                }
+                b = a % 10
+                if (b == 2){
+                    sum++
+                }
+                a = parseInt(a / 10)
+            }
+        }
+    }
+    console.log(Number(sum).toFixed(0))
+</script>
+<script type="x" id="ch0105/42">
+    var h = Number(prompt('请输入矩形的高'))
+    var w = Number(prompt('请输入矩形的宽'))
+    var char = prompt('请输入画图的符号')
+    var o = Number(prompt('请输入空实心的参数'))
+    if (o == 0){
+        var strin1 = ""
+        var strin2 = char
+        for (var i = 0;i < w;i++){
+            strin1 = strin1 + char
+        }
+        console.log(strin1)
+        for (var i = 0;i < h - 2;i++){
+            for (var I = 0;I < w - 2;I++){
+                strin2 = strin2 + " "
+            }
+            strin2 = strin2 + char
+            console.log(strin2)
+            strin2 = char
+        }
+        console.log(strin1)
+    }
+    else{
+        var strin1 = ""
+        for (var i = 0;i < h;i++){
+            for (var I = 0;I < w;I++){
+                strin1 = strin1 + char
+            }
+            console.log(strin1)
+            strin1 = ""
+        }
+    }
+</script>
+<script type="x" id="ch0105/43">
+    var n = Number(prompt('请输入正整数的值'))
+    for(var i = 2;i < n;i++){
+        var a
+        var b
+        if (n % i == 0){
+            var zhi1 = 1
+            var zhi2 = 1
+            a = i
+            b = n / i
+            for (var i = 2;i < a;i++){
+                if (a % i == 0){
+                    zhi1 = 0
+                }
+            }
+            for (var i = 2;i < b;i++){
+                if (b % i == 0){
+                    zhi2 = 0
+                }
+            }
+        }
+        if (zhi1 == 1 &&　zhi2 == 1){
+            console.log(b)
+            break
+        }
+    }
+</script>
+<script type="x" id="ch0105/44">
+    var n = Number(prompt('请输入第n小的质数n的值'))
+    var count = 0
+    for(var i = 2;i < 9999;i++){
+        var a = i
+        zhi1 = 1
+        for (var I = 2;I < a;I++){
+            if (a % I == 0){
+                zhi1 = 0
+            }
+        }
+        if (zhi1 == 1){
+            count++
+        }
+        if(count == n){
+            console.log(a)
+            break
+        }
+    }
+</script>
+<script type="x" id="ch0105/45">
+    var n = Number(prompt('请输入给定的天数'))
+    var sum = 0
+    var D = 0
+    var g = 0
+    for(var d = 1;d <= n;d++){
+        var lastD = D
+        D = D + d
+        g = d
+        if (D > n){
+            sum = sum + g * (n - lastD)
+            break
+        }
+        sum = sum + g * d
+    }
+    console.log(Number(sum).toFixed(0))
+</script>
 
 
