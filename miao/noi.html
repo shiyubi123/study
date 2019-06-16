@@ -962,6 +962,37 @@
         }
     }
 </script>
+<script type="x" id="ch0105/31">
+    var N = Number(prompt('请输入灯盏的数量N'))
+    var M = Number(prompt('请输入人的数量M'))
+    var strin = ""
+    for (var i = 1;i <= N;i++){
+        var a = i
+        var b = -1
+        if (a % 2 == 0){
+            b = 1
+        }
+        for (var I = 3;I <= M;I++){
+            if (a % I == 0  && i >= I){
+                b = -b
+            }
+        }
+        if (a < N - 1 && b == -1 ){
+            strin = strin + a + ","
+        }
+        else {
+            if (a == N - 1 && b == -1){
+                strin = strin + a
+            }
+            else {
+                if (a == N && b == -1){
+                    strin = strin + a
+                }
+            }
+        }
+    }
+    console.log(strin)
+</script>
 
 
 
