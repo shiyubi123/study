@@ -993,6 +993,186 @@
     }
     console.log(strin)
 </script>
+<script type="x" id="ch0105/32">
+    var n = Number(prompt('请输入这个序列的项数n'))
+    var pi = 1
+    var qi = 2
+    var sum = 2
+    for (var i = 0;i < (n - 1);i++){
+        var a = qi
+        qi = qi + pi
+        pi = a
+        sum = sum + qi / pi
+    }
+    console.log(Number(sum).toFixed(4))
+</script>
+<script type="x" id="ch0105/33">
+    var n = Number(prompt('请输入这个序列的项数n'))
+    var sum = 0
+    for (var i = 1;i <= n;i++){
+        if (i % 2 == 0){
+            sum = sum +  -1 / i 
+        }
+        else{
+            sum = sum +  1 / i 
+        }
+    }
+    console.log(Number(sum).toFixed(4))
+</script>
+<script type="x" id="ch0105/34">
+    var n = Number(prompt('请输入这个整数的数值n'))
+    var sum = 0
+    var Sum = 1
+    for (var i = 1;i <= n;i++){
+        var a = i
+        for (var I = 1;I <= a;I++){
+            var Sum = Sum * I
+        }
+        sum += Sum
+        Sum = 1
+    }
+    console.log(Number(sum).toFixed(0))
+</script>
+<script type="x" id="ch0105/35">
+    var n = Number(prompt('请输入这个整数的数值n'))
+    var e = 1
+    var Sum = 1
+    for (var i = 1;i <= n;i++){
+        var a = i
+        for (var I = 1;I <= a;I++){
+            var Sum = Sum * I
+        }
+        e = e + 1 / Sum
+        Sum = 1
+    }
+    console.log(Number(e).toFixed(10))
+</script>
+<script type="x" id="ch0105/36">
+    var x = Number(prompt('请输入这个整数的数值x'))
+    var n = Number(prompt('请输入这个整数的数值n'))
+    var X = x
+    var a = x
+    var sum = 1
+    for (var i = 1;i <= n;i++){
+        for (var I = 1;I <= (i - 1);I++){
+            X = X * a
+        }
+        sum = sum + X
+        X = x
+    }
+    console.log(Number(sum).toFixed(2))
+</script>
+<script type="x" id="ch0105/37">
+    var M = Number(prompt('请输入雇佣兵的体力的最大值M'))
+    var N = Number(prompt('请输入雇佣兵的战斗力N'))
+    var X = Number(prompt('请输入雇佣兵拥有的能量元素X'))
+    var n = N
+    var hp = 0
+    for(var i = 1;i <= n;i++){
+        if (hp < M){
+            while (hp != M){
+                if (X = 0){
+                    break
+                }
+                X = X - 1
+                hp = hp + n
+                if (hp > M){
+                    hp = M
+                }
+            }
+        }
+        if (hp == M && hp >= n){
+            n = n + 1
+            hp = 0
+        }
+        else{
+            console.log(Number(n).toFixed(0))
+            break
+        }
+    }
+</script>
+<script type="x" id="ch0105/38">
+    var n = Number(prompt('请输入多项式的最高次幂n'))
+    var strin = ""
+    for (var i = 1;i <= 9999;i++){
+        var c = Number(prompt('请输入幂次项为' + (n - i + 1) + '的数值'))
+        if (n == 0){
+            strin = "0"
+            break
+        }
+        if (i == n + 1){
+            break
+        }
+        if (c == 0){
+            strin = strin + 0 + " "
+        }
+        else{
+            var a = n - i + 1
+            if (i == n){
+                strin = strin + a * c
+            }
+            else{
+                strin = strin + a * c + " "
+            }
+        }
+    }
+    console.log(strin)
+</script>
+<script type="x" id="ch0105/39">
+    var n = Number(prompt('请输入正整数n的值'))
+    var sum = 0
+    var rel = 0
+    for (var i = 1;i <= n;i++){
+        var a = i
+        var b = i
+        for (var I = 1;I <= 9999;I++){
+            if (b == 7){
+                rel = 1
+                break
+            }
+            if (a / 10 <　1){
+                break
+            }
+            else{
+                b = a % 10
+                a = parseInt(a / 10)
+            }
+        }
+        if (rel != 1 && i % 7 != 0){
+            sum = sum + i*i
+        }
+        rel = 0
+    }
+    console.log(Number(sum).toFixed(0))
+</script>
+<script type="x" id="ch0105/40">
+    var n = Number(prompt('请输入正整数n的值'))
+    var sum = 0
+    for (var i = 1;i <= n;i++){
+        var a = i
+        var b = i
+        for (var I = 1;I <= 9999;I++){
+            if (a == 1){
+                sum++
+            }
+            if (a / 10 <　1){
+                break
+            }
+            else{
+                if(a == 10){
+                    sum++
+                    break
+                }
+                b = a % 10
+                if (b == 1){
+                    sum++
+                }
+                a = parseInt(a / 10)
+            }
+        }
+    }
+    console.log(Number(sum).toFixed(0))
+</script>
 
 
 
