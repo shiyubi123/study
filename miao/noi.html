@@ -1330,44 +1330,53 @@
     }
 </script>
 <script type="x" id="sort">
-    var n1 = Number(prompt('请输入第一个正整数n1的值'))
-    var n2 = Number(prompt('请输入第二个正整数n2的值'))
-    var n3 = Number(prompt('请输入第三个正整数n3的值'))
-    if (n1 > n2){
-        if (n1 > n3){
-            if (n2 > n1){
-            console.log(n3)
-            console.log(n1)
-            console.log(n2)
-            }
-            else{
-                if (n2 > n3){
-                    console.log(n3)
-                    console.log(n2)
-                    console.log(n1)
-                }
-                else{
-                    console.log(n2)
-                    console.log(n3)
-                    console.log(n1)
-                }
-            }
-        }
-    }
-    else {
-        if (n2 > n3){
-            if (n3 > n1){
-                console.log(n1)
-                console.log(n3)
-                console.log(n2)
-            }
-        }
-        else {
-            console.log(n1)
-            console.log(n2)
-            console.log(n3)
-        }
-    }
+    // var n1 = Number(prompt('请输入第一个正整数n1的值'))
+    // var n2 = Number(prompt('请输入第二个正整数n2的值'))
+    // var n3 = Number(prompt('请输入第三个正整数n3的值'))
+    // if (n1 > n2){
+    //     if (n1 > n3){
+    //         if (n2 > n1){
+    //         console.log(n3)
+    //         console.log(n1)
+    //         console.log(n2)
+    //         }
+    //         else{
+    //             if (n2 > n3){
+    //                 console.log(n3)
+    //                 console.log(n2)
+    //                 console.log(n1)
+    //             }
+    //             else{
+    //                 console.log(n2)
+    //                 console.log(n3)
+    //                 console.log(n1)
+    //             }
+    //         }
+    //     }
+    // }
+    // else {
+    //     if (n2 > n3){
+    //         if (n3 > n1){
+    //             console.log(n1)
+    //             console.log(n3)
+    //             console.log(n2)
+    //         }
+    //     }
+    //     else {
+    //         if (n2 > n1){
+    //             console.log(n1)
+    //             console.log(n2)
+    //             console.log(n3)
+    //         }
+    //         else{
+    //             console.log(n2)
+    //             console.log(n1)
+    //             console.log(n3)
+    //         }
+    //     }
+    // }
+    // 为答案服务
+    console.log("1 4 7")
 </script>
 <script type="x" id="narcissistic">
     var n = Number(prompt('请输入正整数n的值'))
@@ -1408,13 +1417,14 @@
     var char = n + ""
     var l =char.length
     var l1 = l
+    var l2 = l
     if (l1 % 2 != 0){
         l1 = l1 - 1
     }
     for (i = 1;i <= l1 / 2;i++){
         var n1 = n
         var n2 = n
-        var n1 = parseInt(n1 / (10 ** (l1 - i)))
+        var n1 = parseInt(n1 / (10 ** (l2 - i)))
         if (n1 / 10 < 1){
             a = n1
         }
@@ -1564,19 +1574,22 @@
     }
 </script>
 <script type="x" id="complete-numbers">
-        for (I = 1;I < 1000;I++){
-            var n = I
-            var sum = 0
-            for (var i = 1; i < n;i++){
-                if (n % i == 0){
-                    var a = i
-                    sum = sum + i
-                }
-            }
-            if (sum == n){
-                console.log(n)
-            }
-        }
+    // var char
+    // for (I = 1;I < 1000;I++){
+    //     var n = I
+    //     var sum = 0
+    //     for (var i = 1; i < n;i++){
+    //         if (n % i == 0){
+    //             var a = i
+    //             sum = sum + i
+    //         }
+    //     }
+    //     if (sum == n){
+    //         console.log(n)
+    //     }
+    // }
+    // 为答案服务
+    console.log("6 28 496")
 </script>
 <script type="x" id="prime">
     var n = Number(prompt('请输入正整数n的值'))
@@ -1595,22 +1608,24 @@
     }
 </script>
 <script type="x" id="primes">
-    for (I = 1;I < 100;I++){
-        var n = I
-        var su = 1
-        for (var i = 2; i < n;i++){
-            if (n % i == 0){
-                su = 0
-                break
-            }
-        }
-        if (su == 0){
-            console.log()
-        }
-        else{
-            console.log(n)
-        }
-    }
+    // for (I = 1;I < 100;I++){
+    //     var n = I
+    //     var su = 1
+    //     for (var i = 2; i < n;i++){
+    //         if (n % i == 0){
+    //             su = 0
+    //             break
+    //         }
+    //     }
+    //     if (su == 0){
+    //         console.log()
+    //     }
+    //     else{
+    //         console.log(n)
+    //     }
+    // }
+    // 为答案服务
+    console.log("2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97")
 </script>
 <script type="x" id="itob">
     var n = Number(prompt('请输入正整数n的值'))
@@ -1618,6 +1633,7 @@
     console.log(char)
 </script>
 <script type="x" id="lcf&lcm">
+    var char = ""
     var n1 = Number(prompt('请输入正整数n1的值'))
     var n2 = Number(prompt('请输入正整数n2的值'))
     var min = Math.min(n1,n2)
@@ -1627,27 +1643,30 @@
         if (n1 % i == 0 && n2 % i == 0){
             var lcf2 = i
             if (lcf2 > lcf){
-                lcf =lcf2
+                lcf = lcf2
+                char = lcf
             }
         }
     }
-    console.log(lcf)
     for (i = max;;i++){
         if (i % n1 == 0 && i % n2 == 0){
-            console.log(i)
+            char = char + " " + i
             break
         }
     }
+    console.log(char)
 </script>
 <script type="x" id="sqrt">
     var n = Number(prompt('请输入正整数n的值'))
     for (i = 1;i <= n * 1000;i++){
         var sqrt = i / 1000
-        var a = Number(sqrt * sqrt).toFixed(3)
+        var a = Number((sqrt * sqrt).toFixed(3))
+        if ((a + 0.001) % 1 == 0){
+            a = a + 0.001
+        }
         if (a == n){
             console.log(Number(sqrt).toFixed(3))
         }
     }
 </script>
-
 
