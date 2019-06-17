@@ -1592,20 +1592,26 @@
     console.log("6 28 496")
 </script>
 <script type="x" id="prime">
+<script type="x" id="prime">
     var n = Number(prompt('请输入正整数n的值'))
-    var su = 1
-    for (var i = 2; i < n;i++){
-        if (n % i == 0){
-            su = 0
-            break
-        }
-    }
-    if (su == 0){
+    if (n == 1){
         console.log("NO")
     }
     else{
-        console.log("YES")
-    }
+        var su = 1
+        for (var i = 2; i < n;i++){
+            if (n % i == 0){
+                su = 0
+                break
+            }
+        }
+        if (su == 0){
+            console.log("NO")
+        }
+        else{
+            console.log("YES")
+        }
+}
 </script>
 <script type="x" id="primes">
     // for (I = 1;I < 100;I++){
