@@ -1299,5 +1299,355 @@
     }
     console.log(Number(sum).toFixed(0))
 </script>
+<script type="x" id="7">
+    var n = Number(prompt('请输入正整数n的值'))
+    var rel = 0
+    var a = n
+    var b = n
+    if (a % 7 == 0){
+        console.log("YES")
+    }
+    else{
+        for (;;){
+            if (b == 7){
+                rel = 1
+                break
+            }
+            if (a / 10 <　1){
+                break
+            }
+            else{
+                b = a % 10
+                a = parseInt(a / 10)
+            }
+        }
+        if (rel == 1){
+            console.log("YES")
+        }
+        else{
+            console.log("NO")
+        }
+    }
+</script>
+<script type="x" id="sort">
+    var n1 = Number(prompt('请输入第一个正整数n1的值'))
+    var n2 = Number(prompt('请输入第二个正整数n2的值'))
+    var n3 = Number(prompt('请输入第三个正整数n3的值'))
+    if (n1 > n2){
+        if (n1 > n3){
+            if (n2 > n1){
+            console.log(n3)
+            console.log(n1)
+            console.log(n2)
+            }
+            else{
+                if (n2 > n3){
+                    console.log(n3)
+                    console.log(n2)
+                    console.log(n1)
+                }
+                else{
+                    console.log(n2)
+                    console.log(n3)
+                    console.log(n1)
+                }
+            }
+        }
+    }
+    else {
+        if (n2 > n3){
+            if (n3 > n1){
+                console.log(n1)
+                console.log(n3)
+                console.log(n2)
+            }
+        }
+        else {
+            console.log(n1)
+            console.log(n2)
+            console.log(n3)
+        }
+    }
+</script>
+<script type="x" id="narcissistic">
+    var n = Number(prompt('请输入正整数n的值'))
+    var n1 = n
+    var a
+    var b
+    var c
+    a = n % 10
+    n = parseInt(n / 10)
+    b = n % 10
+    n = parseInt(n / 10)
+    c = n
+    if (a * a * a + b * b * b + c * c * c == n1){
+        console.log("YES")
+    }
+    else{
+        console.log("NO")
+    }
+</script>
+<script type="x" id="narcissistics">
+    for (i = 100;i < 1000;i++){
+        var n1 = i
+        var a
+        var b
+        var c
+        a = n1 % 10
+        n1 = parseInt(n1 / 10)
+        b = n1 % 10
+        n1 = parseInt(n1 / 10)
+        c = n1
+        if (a * a * a + b * b * b + c * c * c == i){
+            console.log(i)
+        }
+    }
+</script>
+<script type="x" id="palindrom">
+    var n = Number(prompt('请输入正整数n的值'))
+    var char = n + ""
+    var l =char.length
+    var l1 = l
+    if (l1 % 2 != 0){
+        l1 = l1 - 1
+    }
+    for (i = 1;i <= l1 / 2;i++){
+        var n1 = n
+        var n2 = n
+        var n1 = parseInt(n1 / (10 ** (l1 - i)))
+        if (n1 / 10 < 1){
+            a = n1
+        }
+        else{
+            a = n1 % 10
+        }
+        if (i == 1){
+            var b = n % 10
+        }
+        else{
+            n2 = parseInt(n2 / (10 ** (i - 1)))
+            var b = n2 % 10
+        }
+        if (a != b){
+            break
+        }
+    }
+    if (a != b){
+        console.log("NO")
+    }
+    else{
+        console.log("YES")
+    }
+</script>
+<script type="x" id="weekday">
+    var y = Number(prompt('请输入年份'))
+    var m = Number(prompt('请输入月份'))
+    var sum = 0
+    var y1 = y - 1
+    for (var i = 0;i <= y1;i++){
+        if (((i % 4 == 0 && i % 100 != 0) || i % 400 == 0) && i % 3200 != 0 ){
+            var d = 366
+        }
+        else{
+            var d = 365
+        }
+        if (m == 1){
+            var m1 = 1
+            sum = sum + i * d + m1
+        }
+        if (m == 2 && d == 366){
+            var m2 = 32
+            sum = sum + i * d + m2
+        }
+        else{
+            var m2 = 32
+            sum = sum + i * d + m2
+        }
+        if (m == 3 && d == 366){
+            var m3 = 61
+            sum = sum + i * d + m3
+        }
+        else{
+            var m3 = 60
+            sum = sum + i * d + m3
+        }
+        if (m == 4 && d == 366){
+            var m4 = 92
+            sum = sum + i * d + m4
+        }
+        else{
+            var m4 = 91
+            sum = sum + i * d + m4
+        }
+        if (m == 5 && d == 366){
+            var m5 = 122
+            sum = sum + i * d + m5
+        }
+        else{
+            var m5 = 121
+            sum = sum + i * d + m5
+        }
+        if (m == 6 && d == 366){
+            var m6 = 153
+            sum = sum + i * d + m6
+        }
+        else{
+            var m6 = 152
+            sum = sum + i * d + m6
+        }
+        if (m == 7 && d == 366){
+            var m7 = 183
+            sum = sum + i * d + m7
+        }
+        else{
+            var m7 = 182
+            sum = sum + i * d + m7
+        }
+        if (m == 8 && d == 366){
+            var m8 = 214
+            sum = sum + i * d + m8
+        }
+        else{
+            var m8 = 213
+            sum = sum + i * d + m8
+        }
+        if (m == 9 && d == 366){
+            var m9 = 245
+            sum = sum + i * d + m9
+        }
+        else{
+            var m9 = 244
+            sum = sum + i * d + m9
+        }
+        if (m == 10 && d == 366){
+            var m10 = 275
+            sum = sum + i * d + m10
+        }
+        else{
+            var m10 = 274
+            sum = sum + i * d + m10
+        }
+        if (m == 11 && d == 366){
+            var m11 = 306
+            sum = sum + i * d + m11
+        }
+        else{
+            var m11 = 305
+            sum = sum + i * d + m11
+        }
+        if (m == 12 && d == 366){
+            var m12 = 336
+            sum = sum + i * d + m12
+        }
+        else{
+            var m12 = 335
+            sum = sum + i * d + m12
+        }
+    }
+    var a = (sum - 2) % 7
+    console.log(a)
+</script>
+<script type="x" id="complete-number">
+    var n = Number(prompt('请输入正整数n的值'))
+    var sum = 0
+    for (var i = 1; i < n;i++){
+        if (n % i == 0){
+            var a = i
+            sum = sum + i
+        }
+    }
+    if (sum == n){
+        console.log("YES")
+    }
+    else{
+        console.log("NO")
+    }
+</script>
+<script type="x" id="complete-numbers">
+        for (I = 1;I < 1000;I++){
+            var n = I
+            var sum = 0
+            for (var i = 1; i < n;i++){
+                if (n % i == 0){
+                    var a = i
+                    sum = sum + i
+                }
+            }
+            if (sum == n){
+                console.log(n)
+            }
+        }
+</script>
+<script type="x" id="prime">
+    var n = Number(prompt('请输入正整数n的值'))
+    var su = 1
+    for (var i = 2; i < n;i++){
+        if (n % i == 0){
+            su = 0
+            break
+        }
+    }
+    if (su == 0){
+        console.log("NO")
+    }
+    else{
+        console.log("YES")
+    }
+</script>
+<script type="x" id="primes">
+    for (I = 1;I < 100;I++){
+        var n = I
+        var su = 1
+        for (var i = 2; i < n;i++){
+            if (n % i == 0){
+                su = 0
+                break
+            }
+        }
+        if (su == 0){
+            console.log()
+        }
+        else{
+            console.log(n)
+        }
+    }
+</script>
+<script type="x" id="itob">
+    var n = Number(prompt('请输入正整数n的值'))
+    var char = n + ""
+    console.log(char)
+</script>
+<script type="x" id="lcf&lcm">
+    var n1 = Number(prompt('请输入正整数n1的值'))
+    var n2 = Number(prompt('请输入正整数n2的值'))
+    var min = Math.min(n1,n2)
+    var max = Math.max(n1,n2)
+    var lcf = 1
+    for (i = 1;i <= min;i++){
+        if (n1 % i == 0 && n2 % i == 0){
+            var lcf2 = i
+            if (lcf2 > lcf){
+                lcf =lcf2
+            }
+        }
+    }
+    console.log(lcf)
+    for (i = max;;i++){
+        if (i % n1 == 0 && i % n2 == 0){
+            console.log(i)
+            break
+        }
+    }
+</script>
+<script type="x" id="sqrt">
+    var n = Number(prompt('请输入正整数n的值'))
+    for (i = 1;i <= n * 1000;i++){
+        var sqrt = i / 1000
+        var a = Number(sqrt * sqrt).toFixed(3)
+        if (a == n){
+            console.log(Number(sqrt).toFixed(3))
+        }
+    }
+</script>
 
 
