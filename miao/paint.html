@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>画图</title>
+  <style>
+    canvas {
+      border: 2px solid #f0f;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas width="400" height="300"></canvas>
+</body>
+<script>
+  var canvas = document.querySelector('canvas')
+  canvas.style.imageRendering = 'pixelated'
+  var ctx = canvas.getContext('2d')
+
+  function dot(x, y, color = 'black') {
+    ctx.fillStyle = color
+    ctx.fillRect(x, y, 1, 1)
+  }
+  /**
+   * YOUR TASK
+画图的题：
+画一条实线
+画一条一个实点一个空点的虚线
+画一条两个实点两个空点的虚线
+画一条三个实点两个空点的虚线
+画一条45度的斜线
+画一条跨越画布左上角和右下角的对角线
+画一个空心矩形
+画一个实心矩形
+画一个rgb色彩空间的某一面
+画一个空心的圆
+画一个实心的圆
+画一个大小合适的sin(x)的图像
+   */
+</script>
+<script>
+  // YOUR CODE GOES BELOW
+  for (var x = 20 ;x <= 320;x++){
+    var y = 20
+    dot (x,y,color = 'lightblue - 1')
+  }
+  for (var x = 20 ;x <= 320;x += 4){
+    var y = 30
+    dot (x,y)
+    dot (x + 1,y)
+  }
+  for (var x = 20 ;x <= 320;x += 5){
+    var y = 40
+    dot (x,y)
+    dot (x + 1,y)
+    dot (x + 2,y)
+  }
+  for (var x = 0 ;x <= 300;x++){
+    var y = x
+    dot (x,y)
+  }
+  for (var x = 0 ;x <= 400;x++){
+    var y = x * 3 / 4
+    dot (x,y)
+  }
+  for (var x = 200 ;x <= 240;x++){
+    for (var y = 50;y <= 100;y++){
+      dot (x,y)
+    }
+  }
+  for (var x = 245 ;x <= 285;x++){
+    for (var y = 50;y <= 100;y++){
+      if(x == 245 || x == 285 || y == 50 || y == 100){
+        dot (x,y)
+      }
+    }
+  }
+  for (var i = 0; i <= 255; i++) {
+    var x = 50 + (i / 5);
+    var green = (255 - i) ;
+    for (var j = 0; j <= 255; j++) {
+      var y = 200 + (j / 5);
+      var red =(255 - j);
+      dot (x, y, "rgb(" + red +"," + green + ",255)");
+    }
+  }
+  for (var x = 210 ;x <= 250;x++){
+    for (var y = 260;y <= 300;y++){
+      if ((x - 230) * (x - 230) + (y - 280) * (y - 280) <= 400){
+        dot (x,y)
+      }
+    }
+  }
+  for (var x = 250 ;x <= 300;x +=  0.1){
+    var y = Math.sqrt(360 - (x -250) * (x -250)) + 150
+    dot (x,y)
+    var y = - (Math.sqrt(360 - (x -250) * (x -250))) + 150
+    dot (x,y)
+  }
+  for (var y = 100 ;y <= 300;y +=  0.1){
+    var x = Math.sqrt(360 - (y - 150) * (y - 150)) + 250
+    dot (x,y)
+    var x = - (Math.sqrt(360 - (y - 150) * (y - 150))) + 250
+    dot (x,y)
+  }
+  for (var x = 0 ;x <= 400;x +=  0.1){
+    var y = Math.sin(0.3 * x)*10 + 150
+    dot (x,y)
+  }
+</script>
+</html>
