@@ -1308,7 +1308,7 @@
         console.log("YES")
     }
     else{
-        for (;;){
+        for (var i = 0;i < 9999;i++){
             if (b == 7){
                 rel = 1
                 break
@@ -1452,109 +1452,138 @@
 <script type="x" id="weekday">
     var y = Number(prompt('请输入年份'))
     var m = Number(prompt('请输入月份'))
-    var sum = 0
+    var sum = 1
     var y1 = y - 1
-    for (var i = 0;i <= y1;i++){
+    for (var i = 1;i <= y1;i++){
         if (((i % 4 == 0 && i % 100 != 0) || i % 400 == 0) && i % 3200 != 0 ){
-            var d = 366
+            var d1 = 366
         }
         else{
-            var d = 365
+            var d1 = 365
         }
-        if (m == 1){
-            var m1 = 1
-            sum = sum + i * d + m1
-        }
-        if (m == 2 && d == 366){
+        sum = sum + d1
+    }
+    if (((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && y % 3200 != 0 ){
+        var d = 366
+    }
+    else{
+        var d = 365
+    }
+    if (m == 1){
+        var m1 = 1
+        sum = sum + m1
+    }
+    if (m == 2 && d == 366){
+        var m2 = 32
+        sum = sum + m2
+    }
+    else{
+        if (m == 2){
             var m2 = 32
-            sum = sum + i * d + m2
-        }
-        else{
-            var m2 = 32
-            sum = sum + i * d + m2
-        }
-        if (m == 3 && d == 366){
-            var m3 = 61
-            sum = sum + i * d + m3
-        }
-        else{
-            var m3 = 60
-            sum = sum + i * d + m3
-        }
-        if (m == 4 && d == 366){
-            var m4 = 92
-            sum = sum + i * d + m4
-        }
-        else{
-            var m4 = 91
-            sum = sum + i * d + m4
-        }
-        if (m == 5 && d == 366){
-            var m5 = 122
-            sum = sum + i * d + m5
-        }
-        else{
-            var m5 = 121
-            sum = sum + i * d + m5
-        }
-        if (m == 6 && d == 366){
-            var m6 = 153
-            sum = sum + i * d + m6
-        }
-        else{
-            var m6 = 152
-            sum = sum + i * d + m6
-        }
-        if (m == 7 && d == 366){
-            var m7 = 183
-            sum = sum + i * d + m7
-        }
-        else{
-            var m7 = 182
-            sum = sum + i * d + m7
-        }
-        if (m == 8 && d == 366){
-            var m8 = 214
-            sum = sum + i * d + m8
-        }
-        else{
-            var m8 = 213
-            sum = sum + i * d + m8
-        }
-        if (m == 9 && d == 366){
-            var m9 = 245
-            sum = sum + i * d + m9
-        }
-        else{
-            var m9 = 244
-            sum = sum + i * d + m9
-        }
-        if (m == 10 && d == 366){
-            var m10 = 275
-            sum = sum + i * d + m10
-        }
-        else{
-            var m10 = 274
-            sum = sum + i * d + m10
-        }
-        if (m == 11 && d == 366){
-            var m11 = 306
-            sum = sum + i * d + m11
-        }
-        else{
-            var m11 = 305
-            sum = sum + i * d + m11
-        }
-        if (m == 12 && d == 366){
-            var m12 = 336
-            sum = sum + i * d + m12
-        }
-        else{
-            var m12 = 335
-            sum = sum + i * d + m12
+            sum = sum + m2
         }
     }
-    var a = (sum - 2) % 7
+    if (m == 3 && d == 366){
+        var m3 = 51
+        sum = sum + m3
+    }
+    else{
+        if (m == 3){
+            var m3 = 50
+            sum = sum + m3
+        }
+    }
+    if (m == 4 && d == 366){
+        var m4 = 82
+        sum = sum + m4
+    }
+    else{
+        if (m == 4){
+            var m4 = 81
+            sum = sum + m4
+        }
+    }
+    if (m == 5 && d == 366){
+        var m5 = 112
+        sum = sum + m5
+    }
+    else{
+        if (m == 5){
+            var m5 = 111
+            sum = sum + m5
+        }
+    }
+    if (m == 6 && d == 366){
+        var m6 = 143
+        sum = sum + m6
+    }
+    else{
+        if (m == 6){
+            var m6 = 142
+            sum = sum + m6
+        }
+    }
+    if (m == 7 && d == 366){
+        var m7 = 173
+        sum = sum + m7
+    }
+    else{
+        if (m == 7){
+            var m7 = 172
+            sum = sum + m7
+        }
+    }
+    if (m == 8 && d == 366){
+        var m8 = 204
+        sum = sum + m8
+    }
+    else{
+        if (m == 8){
+            var m8 = 203
+            sum = sum + m8
+        }
+    }
+    if (m == 9 && d == 366){
+        var m9 = 235
+        sum = sum + m9
+    }
+    else{
+        if (m == 9){
+            var m9 = 234
+            sum = sum + m9
+        }
+    }
+    if (m == 10 && d == 366){
+        var m10 = 265
+        sum = sum + m10
+    }
+    else{
+        if (m == 10){
+            var m10 = 264
+            sum = sum + m10
+        }
+    }
+    if (m == 11 && d == 366){
+        var m11 = 296
+        sum = sum + m11
+    }
+    else{
+        if (m == 11){
+            var m11 = 295
+            sum = sum + m11
+        }
+    }
+    if (m == 12 && d == 366){
+        var m12 = 326
+        sum = sum + m12
+    }
+    else{
+        if (m == 12){
+            var m12 = 325
+            sum = sum + m12
+        }
+    }
+    var a = (sum + 2) % 7
     console.log(a)
 </script>
 <script type="x" id="complete-number">
