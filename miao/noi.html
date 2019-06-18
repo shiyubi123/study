@@ -1668,7 +1668,6 @@
     console.log(char)
 </script>
 <script type="x" id="lcf&lcm">
-    var char = ""
     var n1 = Number(prompt('请输入正整数n1的值'))
     var n2 = Number(prompt('请输入正整数n2的值'))
     var min = Math.min(n1,n2)
@@ -1679,17 +1678,15 @@
             var lcf2 = i
             if (lcf2 > lcf){
                 lcf = lcf2
-                char = lcf
             }
         }
     }
     for (i = max;;i++){
         if (i % n1 == 0 && i % n2 == 0){
-            char = char + " " + i
             break
         }
     }
-    console.log(char)
+    console.log(i,lcf)
 </script>
 <script type="x" id="sqrt">
     var n = Number(prompt('请输入正整数n的值'))
