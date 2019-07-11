@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            background-color: rgb(128,128,128,0.5);
+            border: 1px solid black;
+            margin-bottom: 30px;
+            height: 200px;
+            float: left;
+        }
+        td {
+            background-color: rgb(128,128,128,0.5)
+        }
+        caption {
+            background-color: rgb(128,128,128,0.8)
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function isLeapYear (year) {
+            return ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+        } 
+        function getMonthDays (year,month) {
+            switch(month) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12: return 31
+                case 2: if (isLeapYear(year)) {
+                    return 28
+                } else {
+                    return 29
+                }
+                default:return 30
+            }
+        }
+        function weekday(year, month) {
+            var days = 0
+            for(var y = 1; y < year; y++) {
+                if (isLeapYear(y)) {
+                    days += 366
+                } else {
+                    days += 365
+                }
+            }
+            for(var m = 1; m < month; m++) {
+                days += getMonthDays(year, m)
+            }
+            return (days + 1) % 7
+        } 
+        function monthcal(year,month) {
+            var result = ''
+            result += 
+            `            
+            <table>
+                <caption> ` + month + `月 </caption>
+                <thead>
+                    <tr>
+                        <td>日</td>
+                        <td>一</td>
+                        <td>二</td>
+                        <td>三</td>
+                        <td>四</td>
+                        <td>五</td>
+                        <td>六</td>
+                    </tr>
+                </thead>
+                <tbody>
+            `
+            var wd = weekday(year,month)
+            result += '<tr>\n'
+            for (var i = 0;i < wd;i++) {
+                result += '<td></td>'
+            }
+            var monthday = getMonthDays(year,month)
+            for (var day = 1;day <= monthday;day++) {
+                result += '<td>' + day + '</td>'
+                if ((day + wd) % 7 == 0) {
+                    result += '</tr>\n<tr>\n'
+                }
+            }
+            result += '</tr>\n</tbody>\n</table>\n'
+            return result
+        }
+        function yearcal(year) {
+            var result = ''
+            for (var month = 1;month <= 12;month++) {
+                result += monthcal(year,month)
+            }
+            return result
+        }
+    </script> 
+    <script>
+        document.write(yearcal(2019))
+    </script>
+</body>
+</html>
