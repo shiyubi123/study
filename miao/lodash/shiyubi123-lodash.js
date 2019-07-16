@@ -30,7 +30,21 @@ var shiyubi123 = {
             map[values[i]] = 1
         }
         for(var i = 0;i < array.length;i++) {
-            if(！(array[i] map)) {
+            if(!(array[i] in map)) {
+                dif.push(array[i])
+            }
+        }
+        return dif
+    },
+    differenceBy: function differenceBy (array, values,comparator) {
+        debugger
+        var dif = []
+        var map = {}
+        for(var i = 0;i < values.length;i++) {
+            map[comparator(values[i])] = 1
+        }
+        for(var i = 0;i < array.length;i++) {
+            if(!(comparator(array[i]) in map)) {
                 dif.push(array[i])
             }
         }
