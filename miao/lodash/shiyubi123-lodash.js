@@ -4,10 +4,14 @@ var shiyubi123 = {
                 for (var i = 0;i + size - 1 < array.length;i += size) {
                     newary.push(array.slice(i,i + size))
                 }
-                newary.push(array.slice(i))
+                if(i < array.length){
+                    newary.push(array.slice(i))
+                }
                 return newary
             },
-    compact: function (array) {
+    
+    compact: function compact(array) {
+        debugger
         var newary = []
         for (var i = 0;i < array.length;i++) {
             if (array[i] != false && array[i] != null) {
@@ -16,13 +20,20 @@ var shiyubi123 = {
         }
         return newary
     },
-    concat: function (array, values) {
+    
+    concat: function concat (array, values) {
+        debugger
         var newary = []
-        for (var i = 0;i < arguments.length - 1;i++) {
-            newary.push(...arguments[i])
+        for (var i = 0;i < arguments.length;i++) {
+            if(typeof(arguments[i]) == 'object'){
+                newary.push(...arguments[i])
+            } else {
+                newary.push(arguments[i])
+            }
         }
         return newary
     },
+    
     difference: function (array, values) {
         var dif = []
         var map = {}
@@ -36,6 +47,7 @@ var shiyubi123 = {
         }
         return dif
     },
+    
     differenceBy: function differenceBy (array, values,comparator) {
         debugger
         var dif = []
@@ -50,4 +62,8 @@ var shiyubi123 = {
         }
         return dif
     },
+    
+    drop: (array, n = 1) => array.slice(n),
+    
+    dropright: (array, n = 1) => array.length > n ? array.slice(0,array.length - n) : [],
 }
