@@ -34,11 +34,14 @@ var shiyubi123 = {
         return newary
     },
     
-    difference: function (array, values) {
+    difference: function difference (array, ...values) {
+        debugger
         var dif = []
         var map = {}
         for(var i = 0;i < values.length;i++) {
-            map[values[i]] = 1
+            for(var j = 0;j < values[i].length;j++){
+                map[values[i][j]] = 1
+            }
         }
         for(var i = 0;i < array.length;i++) {
             if(!(array[i] in map)) {
@@ -48,12 +51,14 @@ var shiyubi123 = {
         return dif
     },
     
-    differenceBy: function differenceBy (array, values,comparator) {
+    differenceBy: function differenceBy (array, ...values,comparator) {
         debugger
         var dif = []
         var map = {}
         for(var i = 0;i < values.length;i++) {
-            map[comparator(values[i])] = 1
+            for(var j = 0;j < values[i].length;j++){
+                map[comparator(values[i][i])] = 1
+            }
         }
         for(var i = 0;i < array.length;i++) {
             if(!(comparator(array[i]) in map)) {
