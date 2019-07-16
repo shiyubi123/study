@@ -70,5 +70,5 @@ var shiyubi123 = {
     
     drop: (array, n = 1) => array.slice(n),
     
-    dropright: (array, n = 1) => array.length > n ? array.slice(0,array.length - n) : [],
+    dropRight: (array, n = 1) => array.length > n ? array.slice(0,array.length - n) : [],
 }
