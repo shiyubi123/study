@@ -71,4 +71,29 @@ var shiyubi123 = {
     drop: (array, n = 1) => array.slice(n),
     
     dropRight: (array, n = 1) => array.length > n ? array.slice(0,array.length - n) : [],
+
+    dropRightWhile: function dropRightWhile(users,f) {
+        for(key in users){
+            if(f(users[key])){
+                delete users.key
+            } else {
+                break
+            }
+        }
+        return users
+    },
+    
+    dropWhile: function dropWhile(users,f) {
+        for(key in users){
+            if(f(users[key])){
+                delete users.key
+            } else {
+                break
+            }
+        }
+        return users
+    },
+
+    fill:
+
 }
