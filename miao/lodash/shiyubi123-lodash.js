@@ -214,10 +214,26 @@ var shiyubi123 = {
             return result
         },
     
+    join: function (array, separator = ',') => return array.reduce((a,b) => a + separator + b),
     
-    
-    
-    
+    last: array => array[array.length - 1],
+
+    lastIndexOf: function lastIndexOf(array, value, fromIndex = array.length-1){
+                for(var i = fromIndex;i >= 0;i--){
+                    if(array[i] == value){
+                        return i
+                    }
+                }
+                return -1
+            },
+
+    pull: function pull(array, ...values){
+        var map = {}
+            for(var i = 0;i < values.length;i++) {
+                map[values[i]] = 1
+            }
+        return array.filter((a,values) => !(a in map))
+    },
     
     isArray: function isArray (value) {
         if(typeof(value) == 'object'){
@@ -225,6 +241,35 @@ var shiyubi123 = {
         } else {
             return false
         }
+    },
+
+    reverse: function reverse(array) {
+        var len = array.length - 1
+        var halflen = Math.floor(array.length / 2)
+        for(var i = 0;i < halflen;i++){
+                var buffer = array[i]
+                array[i] = array[len - i]
+                array[len - i] = buffer
+            }
+        }
+    
+    sortedIndex: function sortedIndex(array, value){
+        var low = 0
+        var high = array.length - 1
+        var mid = Math.floor((low + high) / 2)
+
+        while(low < high) {
+            if(array[mid] == value){
+                return mid
+            } else if(array[mid] > value){
+                high = mid - 1
+                mid = Math.floor((low + high) / 2)
+            } else {
+                low = mid + 1
+                mid = Math.floor((low + high) / 2)
+            }
+        }
+        return mid
     },
 
     identity: function identity(value){
