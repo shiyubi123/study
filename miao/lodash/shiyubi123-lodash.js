@@ -214,7 +214,7 @@ var shiyubi123 = {
             return result
         },
     
-    join: (array, separator = ',') => array.reduce((a,b) => a + separator + '' + b),
+    join: (array, separator = ',') => array.reduce((a,b) => a + '' + separator + '' + b),
     
     last: array => array[array.length - 1],
 
