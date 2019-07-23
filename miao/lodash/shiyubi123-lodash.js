@@ -180,7 +180,7 @@ var shiyubi123 = {
         return result
     },
 
-    head: array => array[0] ? array[0] : [], 
+    head: array => array[0] ? array[0] : '', 
     
     indexOf : function indexOf(array, value, fromIndex = 0){
             for(var i = fromIndex;i < array.length;i++) {
@@ -208,7 +208,7 @@ var shiyubi123 = {
             }
             for(key in map) {
                 if(map[key] >= 2){
-                    result.push(key)
+                    result.push(+key)
                 }
             }
             return result
