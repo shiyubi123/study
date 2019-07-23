@@ -70,26 +70,26 @@ var shiyubi123 = {
     
     dropRight: (array, n = 1) => array.length > n ? array.slice(0,array.length - n) : [],
 
-    dropRightWhile: function dropRightWhile(users,f) {
-        for(key in users){
-            if(f(users[key])){
-                delete users.key
+    dropRightWhile: function dropRightWhile(array,predicate = identity()) {
+        for(var i = array.length - 1;i >= 0;i--){
+            if(predicate(array[i])){
+                array.splice(i,1)
             } else {
                 break
             }
         }
-        return users
+        return array
     },
     
-    dropWhile: function dropWhile(users,f) {
-        for(key in users){
-            if(f(users[key])){
-                delete users.key
+    dropWhile: function dropWhile(array,predicate = identity()) {
+        for(key in array){
+            if(predicate(array[i])){
+                array.splice(i,1)
             } else {
                 break
             }
         }
-        return users
+        return array
     },
 
     fill: function fill(array, value, start = 0, end = array.length){
@@ -115,20 +115,59 @@ var shiyubi123 = {
                     }   
                 },
 
-    flatten: function(array) {
+    flatten: function flatten (array) {
         var result = []
         for(item of array){
             if(Array.isArray(item)){
                 for(val of item) {
                     result.push(val)
-                }
+                }//result.push(...item)
             } else {
                 result.push(item)
             }
         }
+        return result
     },
-    //return
 
+    flattenDeep: function flattenDeep (array){
+        debugger
+        var result = []
+        for(var i = 0;i < array.length;i++) {
+            if(isArray(array[i])){
+                var falttedItem = flattenDeep(array[i])
+                result.push(...falttedItem)
+            } else {
+                result.push(array[i])
+            }
+        }
+        return result 
+    },
+
+    flattenDepth: function flattenDepth (array,depth = 1){
+        debugger
+        var result = []
+        if(depth == 0){
+            return array.slice()
+        } else {
+            for(var i = 0;i < array.length;i++) {
+                if(isArray(array[i])){
+                    var falttedItem = flattenDepth(array[i],depth - 1)
+                    result.push(...falttedItem)
+                } else {
+                    result.push(array[i])
+                } 
+            }
+        }
+        return result
+    },
+
+    isArray: function isArray (value) {
+        if(typeof(value) == 'object'){
+            return true
+        } else {
+            return false
+        }
+    },
 
     identity: function identity(value){
                 return arguments[0]
