@@ -133,16 +133,18 @@ var shiyubi123 = {
                 result.push(array[i])
             }
         }
-        return result 
-    }
-    
-    function isArray (value) {
-        if(typeof(value) == 'object'){
-            return true
-        } else {
-            return false
+        return result
+
+        function isArray (value) {
+            if(typeof(value) == 'object'){
+                return true
+            } else {
+                return false
+            }
         }
     },
+    
+    
 
     flattenDepth: function flattenDepth (array,depth = 1){
         debugger
@@ -160,15 +162,17 @@ var shiyubi123 = {
             }
         }
         return result
-    }
-    
-    function isArray (value) {
-        if(typeof(value) == 'object'){
-            return true
-        } else {
-            return false
+
+        function isArray (value) {
+            if(typeof(value) == 'object'){
+                return true
+            } else {
+                return false
+            }
         }
     },
+    
+    
 
     
     
