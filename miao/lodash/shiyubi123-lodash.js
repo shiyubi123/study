@@ -51,14 +51,12 @@ var shiyubi123 = {
         return dif
     },
     
-    differenceBy: function differenceBy (array, ...values,comparator) {
+    differenceBy: function differenceBy (array, values,comparator) {
         debugger
         var dif = []
         var map = {}
         for(var i = 0;i < values.length;i++) {
-            for(var j = 0;j < values[i].length;j++){
-                map[comparator(values[i][i])] = 1
-            }
+            map[comparator(array[i],i,array)] = 1
         }
         for(var i = 0;i < array.length;i++) {
             if(!(comparator(array[i]) in map)) {
@@ -130,13 +128,6 @@ var shiyubi123 = {
         }
     },
     //return
-
-    
-
-
-
-
-
 
 
     identity: function identity(value){
