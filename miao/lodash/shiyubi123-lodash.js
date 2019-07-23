@@ -214,7 +214,7 @@ var shiyubi123 = {
             return result
         },
     
-    join: (array, separator = ',') => array.reduce((a,b) => a + separator + b),
+    join: (array, separator = ',') => array.reduce((a,b) => a + toString(separator) + b),
     
     last: array => array[array.length - 1],
 
@@ -244,13 +244,14 @@ var shiyubi123 = {
     },
 
     reverse: function reverse(array) {
-        var len = array.length - 1
-        var halflen = Math.floor(array.length / 2)
-        for(var i = 0;i < halflen;i++){
+            var len = array.length - 1
+            var halflen = Math.floor(array.length / 2)
+            for(var i = 0;i < halflen;i++){
                 var buffer = array[i]
                 array[i] = array[len - i]
                 array[len - i] = buffer
             }
+            return array
         },
     
     sortedIndex: function sortedIndex(array, value){
