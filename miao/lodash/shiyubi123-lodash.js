@@ -172,7 +172,7 @@ var shiyubi123 = {
         }
     },
     
-    fromParis: function fromPairs(pairs) {
+    fromPairs: function fromPairs(pairs) {
         var result = {}
         for(var i = 0;i < pairs.length;i++) {
             result[pairs[i][0]] = pairs[i][1]
