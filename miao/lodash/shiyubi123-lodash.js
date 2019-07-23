@@ -251,7 +251,7 @@ var shiyubi123 = {
                 array[i] = array[len - i]
                 array[len - i] = buffer
             }
-        }
+        },
     
     sortedIndex: function sortedIndex(array, value){
         var low = 0
