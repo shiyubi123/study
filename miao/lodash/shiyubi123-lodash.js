@@ -11,14 +11,7 @@ var shiyubi123 = {
             },
     
     compact: function compact(array) {
-        debugger
-        var newary = []
-        for (var i = 0;i < array.length;i++) {
-            if (array[i] != false && array[i] != null) {
-                newary.push(array[i])
-            }
-        }
-        return newary
+        return array.filter(it => it)
     },
     
     concat: function concat (array, values) {
