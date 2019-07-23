@@ -172,10 +172,47 @@ var shiyubi123 = {
         }
     },
     
-    
+    fromParis: function fromPairs(pairs) {
+        var result = {}
+        for(var i = 0;i < pairs.length;i++) {
+            result[pairs[i][0]] = pairs[i][1]
+        }
+        return result
+    },
 
+    head: array => array[0] ? array[0] : [], 
     
-    
+    indexOf : function indexOf(array, value, fromIndex = 0){
+            for(var i = fromIndex;i < array.length;i++) {
+                if(array[i] == value){
+                    return i
+                }
+            }
+            return -1
+        },
+
+    initial: array => array.slice(0,array.length - 1),
+
+    intersection: function intersection(...arrays) {
+            debugger
+            var result = []
+            var map = {}
+            for(var i = 0;i < arrays.length;i++) {
+                for(var j = 0;j < arrays[i].length;j++){
+                    if(!(arrays[i][j] in map)){
+                        map[arrays[i][j]] = 1
+                    } else {
+                        map[arrays[i][j]]++
+                    }
+                }
+            }
+            for(key in map) {
+                if(map[key] >= 2){
+                    result.push(key)
+                }
+            }
+            return result
+        },
     
     
     
