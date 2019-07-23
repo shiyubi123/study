@@ -94,6 +94,53 @@ var shiyubi123 = {
         return users
     },
 
-    fill:
+    fill: function fill(array, value, start = 0, end = array.length){
+            for(var i = start;i < end;i++) {
+                array[i] = value
+            }
+            return array
+        },
+    
+    findIndex: function findIndex(array, predicate = identity(value), fromIndex = 0){
+                for(var i = fromIndex;i < array.length;i++) {
+                    if (predicate(array[i],i,array)){
+                        return i
+                    }
+                }
+            },
+    
+    findLastIndex: function findLastIndex(array, predicate = identity(value), fromIndex = array.length-1){
+                    for(var i = fromIndex;i >= 0;i--) {
+                        if (predicate(array[i],i,array)){
+                            return i
+                        }
+                    }   
+                },
 
+    flatten: function(array) {
+        var result = []
+        for(item of array){
+            if(Array.isArray(item)){
+                for(val of item) {
+                    result.push(val)
+                }
+            } else {
+                result.push(item)
+            }
+        }
+    },
+    //return
+
+    
+
+
+
+
+
+
+
+    identity: function identity(value){
+                return arguments[0]
+            },
+        
 }
