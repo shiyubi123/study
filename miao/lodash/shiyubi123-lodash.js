@@ -141,6 +141,14 @@ var shiyubi123 = {
             }
         }
         return result 
+    }
+    
+    function isArray (value) {
+        if(typeof(value) == 'object'){
+            return true
+        } else {
+            return false
+        }
     },
 
     flattenDepth: function flattenDepth (array,depth = 1){
@@ -159,8 +167,24 @@ var shiyubi123 = {
             }
         }
         return result
+    }
+    
+    function isArray (value) {
+        if(typeof(value) == 'object'){
+            return true
+        } else {
+            return false
+        }
     },
 
+    
+    
+    
+    
+    
+    
+    
+    
     isArray: function isArray (value) {
         if(typeof(value) == 'object'){
             return true
