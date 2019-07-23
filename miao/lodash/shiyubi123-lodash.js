@@ -261,6 +261,9 @@ var shiyubi123 = {
 
         while(low < high) {
             if(array[mid] == value){
+                while(array[mid - 1] == value){
+                    mid--
+                }
                 return mid
             } else if(array[mid] > value){
                 high = mid - 1
