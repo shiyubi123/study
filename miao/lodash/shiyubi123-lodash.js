@@ -67,7 +67,7 @@ var shiyubi123 = function () {
         predicate = iteratee(predicate)
         for(var i = array.length - 1;i >= 0;i--){
             if(predicate(array[i])){
-                array = array.slice(0,i)
+                array.pop()
             }else {
                 break
             }
@@ -79,7 +79,7 @@ var shiyubi123 = function () {
         predicate = iteratee(predicate)
         for(var i = 0;i < array.length;i++){
             if(predicate(array[i])){
-                array = array.slice(1)
+                array.shift()
             }else {
                 break
             }
@@ -293,14 +293,14 @@ var shiyubi123 = function () {
     }
 
     function uniq(array){
-        return new Set(array)
+        return Array.from(new Set(array))
     }
 
     function uniqBy(array, predicate =_.identity){
         predicate = iteratee(predicate)
         var newary = []
         var store = new Map()
-        for(var i = array;i < array.length;i++){
+        for(var i = 0;i < array.length;i++){
             if(!store.has(predicate(array[i]))){
                 newary.push(array[i])
                 store.set(predicate(array[i]))
@@ -337,6 +337,11 @@ var shiyubi123 = function () {
         return newary
     }
 
+    function without(array,...args){
+        debugger
+        return filter(array,it => !includes(args,it))
+    }
+
     function bind(f,thisArgs,...fixedArgs){
         return function(...args){
             var actualArgs = [...fixedArgs]
@@ -371,7 +376,7 @@ var shiyubi123 = function () {
     }
 
     function toPath(path){
-        return path.split(/\.|\[|\]./g)
+        return path._split(/\.|\[|\]./g)
     }
 
     function get(obj,path,defaultVal = false){
@@ -498,6 +503,7 @@ var shiyubi123 = function () {
         uniqBy,
         unzip,
         zip,
+        without,
         isArray,
         isEqual,
         isMatch,

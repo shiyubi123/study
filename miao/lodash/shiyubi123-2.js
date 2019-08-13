@@ -115,7 +115,7 @@
         predicate = iteratee(predicate)
         for(var i = array.length - 1;i >= 0;i--){
             if(predicate(array[i])){
-                array = array.slice(0,i)
+                array.pop()
             }else {
                 break
             }
@@ -127,7 +127,7 @@
         predicate = iteratee(predicate)
         for(var i = 0;i < array.length;i++){
             if(predicate(array[i])){
-                array = array.slice(1)
+                array.shift()
             }else {
                 break
             }
@@ -436,17 +436,31 @@
     }
 
     function uniq(array){
-        return new Set(array)
+        return Array.from(new Set(array))
     }
 
     function uniqBy(array, predicate =_.identity){
         predicate = iteratee(predicate)
         var newary = []
         var store = new Map()
-        for(var i = array;i < array.length;i++){
+        for(var i = 0;i < array.length;i++){
             if(!store.has(predicate(array[i]))){
                 newary.push(array[i])
                 store.set(predicate(array[i]))
+            }
+        }
+        return newary
+    }
+
+    function unzip(array){
+        var newary = []
+        var len = array[0].length
+        for(var i = 0;i < array.length;i++){
+            newary[i] = []
+        }
+        for(var i = 0;i < len;i++){
+            for(var j = 0;j < array.length;j++){
+                newary[j].push(array[j][i])
             }
         }
         return newary
@@ -464,4 +478,9 @@
             }
         }
         return newary
+    }
+
+    function without(array,...args){
+        debugger
+        return filter(array,it => !includes(args,it))
     }
