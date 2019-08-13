@@ -46,11 +46,10 @@ var shiyubi123 = function () {
     
     function differenceBy (array, ...args) {
         debugger       
-        if(!Array.isArray(args[args.length - 1]) || typeof args[args.length - 1][0] != 'number'){
-            var newary = array.slice()
+        if(!Array.isArray(args[args.length - 1]) || typeof args[args.length - 1][0] != 'number'){ 
             var predicate = iteratee(args.pop())
             var values = flatten(args)
-            newary.filter(function hasit(it) {
+            var newary = filter(array,function hasit(it) {
                 return !values.map(it2 => predicate(it2)).includes(predicate(it))
             })
         }else {
@@ -225,7 +224,7 @@ var shiyubi123 = function () {
     }
     
     function isArray (value) {
-        return Object.prototype.toString.call(value) == 'object Array'
+        return Object.prototype.toString.call(value) == '[object Array]'
     }
 
     function reverse(array) {
@@ -459,5 +458,6 @@ var shiyubi123 = function () {
         matches,
         property,
         includes,
+        filter,
     }
 }()

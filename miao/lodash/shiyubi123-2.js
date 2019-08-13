@@ -46,11 +46,10 @@
     
     function differenceBy (array, ...args) {
         debugger       
-        if(!Array.isArray(args[args.length - 1]) || typeof args[args.length - 1][0] != 'number'){
-            var newary = array.slice()
+        if(!Array.isArray(args[args.length - 1]) || typeof args[args.length - 1][0] != 'number'){ 
             var predicate = iteratee(args.pop())
             var values = flatten(args)
-            newary.filter(function hasit(it) {
+            var newary = filter(array,function hasit(it) {
                 return !values.map(it2 => predicate(it2)).includes(predicate(it))
             })
         }else {
@@ -422,4 +421,33 @@
             }
         }
         return false
+    }
+
+    function filter(collection,predicate = identity){
+        debugger
+        var res = []
+        predicate = iteratee(predicate)
+        for(key in collection){
+            if(predicate(collection[key])){
+                res.push(collection[key])
+            }
+        }
+        return res
+    }
+
+    function uniq(array){
+        return new Set(array)
+    }
+
+    function uniqBy(array, predicate =_.identity){
+        predicate = iteratee(predicate)
+        var newary = []
+        var store = new Map()
+        for(var i = array;i < array.length;i++){
+            if(!store.has(predicate(array[i]))){
+                newary.push(array[i])
+                store.set(predicate(array[i]))
+            }
+        }
+        return newary
     }
