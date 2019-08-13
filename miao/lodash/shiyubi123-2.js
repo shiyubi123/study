@@ -44,10 +44,36 @@
         return dif
     }
     
-    function differenceBy (array, values,comparator) {
-       
+    function differenceBy (array, values,predicate = identity) {
+        debugger
+        var newary = []
+        predicate = iteratee(predicate)
+        for(key in values){
+            if(predicate(array[key]) != predicate(values[key])){
+                    newary.push(array[key])
+            }
+        }
+        return newary
     }
 
+    function findIndex(array, predicate = identity(), fromIndex = 0){
+        predicate = iteratee(predicate)
+        for(var i = fromIndex;i < array.length;i++) {
+            if (predicate(array[i])){
+                return i
+            }
+        }
+        return -1
+    }
+
+    function findLastIndex(array, predicate = identity(value), fromIndex = array.length-1){
+        for(var i = fromIndex;i >= 0;i--) {
+            if (predicate(array[i])){
+                return i
+            }
+        }
+        return -1
+    }
 
     function dropRightWhile(array,predicate = identity()) {
         debugger
@@ -325,6 +351,8 @@
     function property(path){
         return bind(get,null,window,path)
     }
+
+
 
     function iteratee(value){
         debugger

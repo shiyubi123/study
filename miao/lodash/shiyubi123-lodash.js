@@ -44,8 +44,16 @@ var shiyubi123 = {
         return dif
     },
     
-    differenceBy: function differenceBy (array, values,comparator) {
-       
+    differenceBy: function differenceBy (array, values,predicate = identity) {
+        debugger
+        var newary = []
+        predicate = iteratee(predicate)
+        for(key in values){
+            if(predicate(array[key]) != predicate(values[key])){
+                    newary.push(array[key])
+            }
+        }
+        return newary
     },
     
     drop: (array, n = 1) => array.slice(n),
@@ -82,20 +90,23 @@ var shiyubi123 = {
             return array
         },
     
-    findIndex: function findIndex(array, predicate = identity(value), fromIndex = 0){
+    findIndex: function findIndex(array, predicate = identity(), fromIndex = 0){
+                predicate = iteratee(predicate)
                 for(var i = fromIndex;i < array.length;i++) {
-                    if (predicate(array[i],i,array)){
+                    if (predicate(array[i])){
                         return i
                     }
                 }
+                return -1
             },
     
     findLastIndex: function findLastIndex(array, predicate = identity(value), fromIndex = array.length-1){
                     for(var i = fromIndex;i >= 0;i--) {
-                        if (predicate(array[i],i,array)){
+                        if (predicate(array[i])){
                             return i
                         }
-                    }   
+                    }
+                    return -1
                 },
 
     flatten: function flatten (array) {
@@ -334,7 +345,7 @@ var shiyubi123 = {
         return true
     },
 
-    iteratee: function(value){
+    iteratee: function iteratee(value){
         if(typeof value == 'string') {
             return property(value)
         }
