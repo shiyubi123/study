@@ -77,14 +77,15 @@ var shiyubi123 = function () {
     
     function dropWhile(array,predicate = identity()) {
         predicate = iteratee(predicate)
+        var newary = array.slice()
         for(var i = 0;i < array.length;i++){
             if(predicate(array[i])){
-                array.shift()
+                newary.shift()
             }else {
                 break
             }
         }
-        return array
+        return newary
     }
 
     function fill(array, value, start = 0, end = array.length){
@@ -94,7 +95,7 @@ var shiyubi123 = function () {
             return array
         }
     
-    function findIndex(array, predicate = identity(), fromIndex = 0){
+    function findIndex(array, predicate = identity(value), fromIndex = 0){
         debugger
         predicate = iteratee(predicate)
         for(var i = fromIndex;i < array.length;i++) {
@@ -106,6 +107,7 @@ var shiyubi123 = function () {
     }
     
     function findLastIndex(array, predicate = identity(value), fromIndex = array.length-1){
+        predicate = iteratee(predicate)
         for(var i = fromIndex;i >= 0;i--) {
             if (predicate(array[i])){
                 return i
@@ -171,6 +173,7 @@ var shiyubi123 = function () {
     function head (array) {return array[0]} 
     
     function indexOf(array, value, fromIndex = 0){
+            fromIndex = fromIndex < 0 ? fromIndex + array.length : fromIndex
             for(var i = fromIndex;i < array.length;i++) {
                 if(array[i] == value){
                     return i
