@@ -10,7 +10,7 @@ var shiyubi123 = function () {
                 return newary
             }
     
-    compact: function compact(array) {
+    function compact(array) {
         return array.filter(it => it)
     }
     
@@ -431,10 +431,11 @@ var shiyubi123 = function () {
     }
 
     function iteratee(value){
+        debugger
         if(typeof value == 'string') {
             return property(value)
         }
-        if(typeof Array.isArray(value) == true){
+        if(Array.isArray(value) == true){
             return matchesProperty(value[0],value[1])
         }
         if(typeof value == 'object') {
