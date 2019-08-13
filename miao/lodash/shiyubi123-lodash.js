@@ -174,7 +174,7 @@ var shiyubi123 = function () {
             return -1
         }
 
-    var initial = array => array.slice(0,array.length - 1)
+    function initial (array) {return array.slice(0,array.length - 1)} 
 
     function intersection(...arrays) {
             debugger
