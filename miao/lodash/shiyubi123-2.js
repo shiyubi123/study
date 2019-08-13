@@ -451,3 +451,17 @@
         }
         return newary
     }
+
+    function zip(array){
+        var newary = []
+        var len = array[0].length
+        for(var i = 0;i < len;i++){
+            newary[i] = []
+        }
+        for(var i = 0;i < array.length;i++){
+            for(var j = 0;j < len;j++){
+                newary[j].push(array[i][j])
+            }
+        }
+        return newary
+    }

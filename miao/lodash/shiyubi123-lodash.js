@@ -292,6 +292,51 @@ var shiyubi123 = function () {
         return newary
     }
 
+    function uniq(array){
+        return new Set(array)
+    }
+
+    function uniqBy(array, predicate =_.identity){
+        predicate = iteratee(predicate)
+        var newary = []
+        var store = new Map()
+        for(var i = array;i < array.length;i++){
+            if(!store.has(predicate(array[i]))){
+                newary.push(array[i])
+                store.set(predicate(array[i]))
+            }
+        }
+        return newary
+    }
+
+    function unzip(array){
+        var newary = []
+        var len = array[0].length
+        for(var i = 0;i < array.length;i++){
+            newary[i] = []
+        }
+        for(var i = 0;i < len;i++){
+            for(var j = 0;j < array.length;j++){
+                newary[j].push(array[j][i])
+            }
+        }
+        return newary
+    }
+
+    function zip(array){
+        var newary = []
+        var len = array[0].length
+        for(var i = 0;i < len;i++){
+            newary[i] = []
+        }
+        for(var i = 0;i < array.length;i++){
+            for(var j = 0;j < len;j++){
+                newary[j].push(array[i][j])
+            }
+        }
+        return newary
+    }
+
     function bind(f,thisArgs,...fixedArgs){
         return function(...args){
             var actualArgs = [...fixedArgs]
@@ -449,6 +494,10 @@ var shiyubi123 = function () {
         sortedIndex,
         union,
         unionBy,
+        uniq,
+        uniqBy,
+        unzip,
+        zip,
         isArray,
         isEqual,
         isMatch,
