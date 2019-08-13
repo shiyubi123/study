@@ -197,9 +197,9 @@ var shiyubi123 = function () {
             return result
         }
     
-    var join = (array, separator = ',') => array.reduce((a,b) => a + '' + separator + '' + b),
+    function join (array, separator = ',') {return array.reduce((a,b) => a + '' + separator + '' + b)}
     
-    var last = array => array[array.length - 1],
+    function last (array) {return array[array.length - 1]} 
 
     function lastIndexOf(array, value, fromIndex = array.length-1){
                 for(var i = fromIndex;i >= 0;i--){
