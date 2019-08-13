@@ -163,7 +163,7 @@ var shiyubi123 = function () {
         return result
     }
 
-    var head = array => array[0]
+    function head (array) {return array[0]} 
     
     function indexOf(array, value, fromIndex = 0){
             for(var i = fromIndex;i < array.length;i++) {
