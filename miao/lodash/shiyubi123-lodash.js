@@ -376,7 +376,7 @@ var shiyubi123 = function () {
     }
 
     function toPath(path){
-        return path._split(/\.|\[|\]./g)
+        return path.split(/\.|\[|\]./g)
     }
 
     function get(obj,path,defaultVal = false){
