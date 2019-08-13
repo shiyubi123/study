@@ -127,12 +127,15 @@
     function dropWhile(array,predicate = identity()) {
         predicate = iteratee(predicate)
         for(var i = 0;i < array.length;i++){
-            if(!predicate(array[i])){
+            if(predicate(array[i])){
                 array = array.slice(1)
+            }else {
+                break
             }
         }
         return array
     }
+
     function fill(array, value, start = 0, end = array.length){
             for(var i = start;i < end;i++) {
                 array[i] = value
@@ -264,7 +267,7 @@
     }
     
     function isArray (value) {
-        return Object.prototype.toString.apply(value) == 'object Array'
+        return Object.prototype.toString.call(value) == 'object Array'
     }
 
     function reverse(array) {   

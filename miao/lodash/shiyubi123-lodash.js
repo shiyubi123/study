@@ -96,23 +96,24 @@ var shiyubi123 = function () {
         }
     
     function findIndex(array, predicate = identity(), fromIndex = 0){
-                predicate = iteratee(predicate)
-                for(var i = fromIndex;i < array.length;i++) {
-                    if (predicate(array[i])){
-                        return i
-                    }
-                }
-                return -1
+        debugger
+        predicate = iteratee(predicate)
+        for(var i = fromIndex;i < array.length;i++) {
+            if (predicate(array[i])){
+                return i
             }
+        }
+        return -1
+    }
     
     function findLastIndex(array, predicate = identity(value), fromIndex = array.length-1){
-                    for(var i = fromIndex;i >= 0;i--) {
-                        if (predicate(array[i])){
-                            return i
-                        }
-                    }
-                    return -1
-                }
+        for(var i = fromIndex;i >= 0;i--) {
+            if (predicate(array[i])){
+                return i
+            }
+        }
+        return -1
+    }
 
     function flatten (array) {
         var result = []
@@ -224,7 +225,7 @@ var shiyubi123 = function () {
     }
     
     function isArray (value) {
-        return Object.prototype.toString.apply(value) == 'object Array'
+        return Object.prototype.toString.call(value) == 'object Array'
     }
 
     function reverse(array) {
@@ -260,7 +261,7 @@ var shiyubi123 = function () {
         return mid
     }
 
-    function union(arrays){
+    function union(...arrays){
         var newary = []
         var map = {}
         for(var i = 0;i < arrays.length;i++){
