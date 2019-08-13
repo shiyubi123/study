@@ -257,6 +257,38 @@ var shiyubi123 = {
         return mid
     },
 
+    union:function union(arrays){
+        var newary = []
+        var map = {}
+        for(var i = 0;i < arrays.length;i++){
+            var len = arrays[i].length
+            for(var j = 0;j < len;j++){
+                if(!(arrays[i][j] in map)){
+                    newary.push(arrays[i][j])
+                    map[arrays[i][j]] = 1
+                }
+            }
+        }
+        return newary
+    },
+
+    unionBy: function unionBy(...args){
+        var predicate = iteratee(args[args.length - 1])
+        var newary = []
+        var store = new Map()
+        for(var i = 0;i < args.length - 1;i++){
+            var len = args[i].length
+            for(var j = 0;j < len;j++){
+                var res = predicate(args[i][j])
+                if(!store.has(res)){
+                    newary.push(args[i][j])
+                    store.set(res,1)
+                }
+            }
+        }
+        return newary
+    },
+
     bind: function bind(f,thisArgs,...fixedArgs){
         return function(...args){
             var actualArgs = [...fixedArgs]
@@ -356,6 +388,6 @@ var shiyubi123 = {
             return matches(value)
         }
         return value
-    }//这个iteratee方法的任务就是把一个数组，一个对象，或者一个字符串变成一个有效的function来遍历数组或对象找到符合要求的属性
-    ,
+    },//这个iteratee方法的任务就是把一个数组，一个对象，或者一个字符串变成一个有效的function来遍历数组或对象找到符合要求的属性
+    
 }

@@ -57,6 +57,7 @@
     }
 
     function findIndex(array, predicate = identity(), fromIndex = 0){
+        debugger
         predicate = iteratee(predicate)
         for(var i = fromIndex;i < array.length;i++) {
             if (predicate(array[i])){
@@ -73,6 +74,38 @@
             }
         }
         return -1
+    }
+
+    function unionBy(...args){
+        var predicate = iteratee(args[args.length - 1])
+        var newary = []
+        var store = new Map()
+        for(var i = 0;i < args.length - 1;i++){
+            var len = args[i].length
+            for(var j = 0;j < len;j++){
+                var res = predicate(args[i][j])
+                if(!store.has(res)){
+                    newary.push(args[i][j])
+                    store.set(res,1)
+                }
+            }
+        }
+        return newary
+    }
+
+    function union(...arrays){
+        var newary = []
+        var map = {}
+        for(var i = 0;i < arrays.length;i++){
+            var len = arrays[i].length
+            for(var j = 0;j < len;j++){
+                if(!(arrays[i][j] in map)){
+                    newary.push(arrays[i][j])
+                    map[arrays[i][j]] = 1
+                }
+            }
+        }
+        return newary
     }
 
     function dropRightWhile(array,predicate = identity()) {
