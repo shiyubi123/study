@@ -44,14 +44,20 @@ var shiyubi123 = function () {
         return dif
     }
     
-    function differenceBy (array, values,predicate = identity) {
-        debugger
-        var newary = []
-        predicate = iteratee(predicate)
-        for(key in values){
-            if(predicate(array[key]) != predicate(values[key])){
-                    newary.push(array[key])
+    function differenceBy (array, ...args) {
+        debugger       
+        if(!Array.isArray(args[args.length - 1]) || typeof args[args.length - 1][0] != 'number'){
+            var newary = array.slice()
+            var predicate = iteratee(args[args.length - 1])
+            for(var i = 0;i < args.length - 1;i++){
+                for(key in args[i]){
+                    if(includes(array,predicate(args[i][key]))){
+                            newary.splice(key,1)
+                    }
+                }
             }
+        }else {
+            return difference (array, ...args)
         }
         return newary
     }
@@ -78,6 +84,8 @@ var shiyubi123 = function () {
         for(var i = 0;i < array.length;i++){
             if(predicate(array[i])){
                 array = array.slice(1)
+            }else {
+                break
             }
         }
         return array
@@ -388,6 +396,23 @@ var shiyubi123 = function () {
         return value
     }//这个iteratee方法的任务就是把一个数组，一个对象，或者一个字符串变成一个有效的function来遍历数组或对象找到符合要求的属性
 
+    function includes(collection, value, fromIndex = 0){
+        if(Array.isArray(collection)){
+            return indexOf(collection, value, fromIndex) > -1
+        }
+        if(typeof collection == 'string'){
+            var reg = new RegExp('' + value + '','gi')
+            return reg.test(collection)
+        } else {
+            for(key in collection){
+                if(collection[key] == value){
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
     return {
         chunk,
         compact,
@@ -424,5 +449,6 @@ var shiyubi123 = function () {
         identity,
         matches,
         property,
+        incluedes,
     }
 }()
