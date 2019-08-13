@@ -388,7 +388,7 @@ var shiyubi123 = function () {
         return value
     }//这个iteratee方法的任务就是把一个数组，一个对象，或者一个字符串变成一个有效的function来遍历数组或对象找到符合要求的属性
 
-    retrun {
+    return {
         chunk,
         compact,
         difference,
