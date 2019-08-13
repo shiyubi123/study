@@ -1,4 +1,4 @@
-function shiyubi123 {
+var shiyubi123 = function () {
     function chunk (array, size = 1) {
                 var  newary = []
                 for (var i = 0;i + size - 1 < array.length;i += size) {
@@ -8,7 +8,7 @@ function shiyubi123 {
                     newary.push(array.slice(i))
                 }
                 return newary
-            },
+            }
     
     compact: function compact(array) {
         return array.filter(it => it)
