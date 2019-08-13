@@ -48,14 +48,11 @@
         debugger       
         if(!Array.isArray(args[args.length - 1]) || typeof args[args.length - 1][0] != 'number'){
             var newary = array.slice()
-            var predicate = iteratee(args[args.length - 1])
-            for(var i = 0;i < args.length - 1;i++){
-                for(key in args[i]){
-                    if(includes(predicate(array[key]),predicate(args[i][key]))){
-                            newary.splice(key,1)
-                    }
-                }
-            }
+            var predicate = iteratee(args.pop())
+            var values = flatten(args)
+            newary.filter(function hasit(it) {
+                return !values.map(it2 => predicate(it2)).includes(predicate(it))
+            })
         }else {
             return difference (array, ...args)
         }
