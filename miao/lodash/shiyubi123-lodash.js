@@ -56,9 +56,9 @@ var shiyubi123 = function () {
         return newary
     }
     
-    function drop (array, n = 1) => array.slice(n)
+    function drop (array, n = 1) {return array.slice(n)} 
     
-    function dropRight (array, n = 1) => array.length > n ? array.slice(0,array.length - n) : []
+    function dropRight (array, n = 1) {return array.length > n ? array.slice(0,array.length - n) : []} 
 
     function dropRightWhile(array,predicate = identity()) {
         debugger
