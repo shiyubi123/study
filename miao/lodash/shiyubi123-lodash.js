@@ -376,6 +376,9 @@ var shiyubi123 = function () {
     }
 
     function toPath(path){
+        if(Array.isArray(path)){
+            path = path.join('')
+        }
         return path.split(/\.|\[|\]./g)
     }
 
