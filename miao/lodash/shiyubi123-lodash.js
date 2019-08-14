@@ -554,7 +554,7 @@ var shiyubi123 = function () {
         countBy,
         every,
         find,
-        flatmap,
+        flatMap,
         without,
         isArray,
         isEqual,
