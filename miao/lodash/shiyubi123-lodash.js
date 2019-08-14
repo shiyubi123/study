@@ -315,29 +315,70 @@ var shiyubi123 = function () {
     function unzip(array){
         var newary = []
         var len = array[0].length
-        for(var i = 0;i < array.length;i++){
+        for(var i = 0;i < len;i++){
             newary[i] = []
         }
         for(var i = 0;i < len;i++){
             for(var j = 0;j < array.length;j++){
-                newary[j].push(array[j][i])
+                newary[i].push(array[j][i])
             }
         }
         return newary
     }
 
-    function zip(array){
+    function zip(...arrays){
         var newary = []
-        var len = array[0].length
+        var len = arrays[0].length
         for(var i = 0;i < len;i++){
             newary[i] = []
         }
-        for(var i = 0;i < array.length;i++){
-            for(var j = 0;j < len;j++){
-                newary[j].push(array[i][j])
+        for(var i = 0;i < len;i++){
+            for(var j = 0;j < arrays.length;j++){
+                newary[i].push(arrays[j][i])
             }
         }
         return newary
+    }
+
+    function countBy(collection,predicate = identity){
+        predicate = iteratee(predicate)
+        var res = {}
+        collection.forEach(element => {
+            if(!(predicate(element) in res)){
+                res[predicate(element)] = 1
+            }else {
+                res[predicate(element)]++
+            }
+        });
+        return res
+    }
+
+    function every (collection, predicate=_.identity){
+        predicate = iteratee(predicate)
+        for(key in collection){
+            if(!predicate(collection[key])){
+                return false
+            }
+        }
+        return true
+    }
+
+    function find (collection,predicate = identity,fromIndex = 0){
+        predicate = iteratee(predicate)
+        for(var i = fromIndex;i < collection.length;i++){
+            if(predicate(collection[i])){
+                return collection[i]
+            }   
+        }
+    }
+
+    function flatMap (collection, predicate = identity){
+        predicate = iteratee(predicate)
+        var res = []
+        for(key in collection){
+            res.push(...flatten(predicate(collection[key])))
+        }
+        return res
     }
 
     function without(array,...args){
@@ -510,6 +551,10 @@ var shiyubi123 = function () {
         uniqBy,
         unzip,
         zip,
+        countBy,
+        every,
+        find,
+        flatmap,
         without,
         isArray,
         isEqual,
