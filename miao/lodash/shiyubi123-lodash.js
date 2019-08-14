@@ -327,8 +327,13 @@ var shiyubi123 = function () {
     }
 
     function zip(...arrays){
+        var len = -1
         var newary = []
-        var len = arrays[0].length
+        for(var i = 0;i < arrays.length;i++){
+            if(len < arrays[i].length){
+                len = arrays[i].length
+            }
+        }
         for(var i = 0;i < len;i++){
             newary[i] = []
         }
