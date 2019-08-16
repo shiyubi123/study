@@ -386,6 +386,71 @@ var shiyubi123 = function () {
         return res
     }
 
+    function flatMapDepth(collection, predicate = identity, depth = 1){
+        predicate = iteratee(predicate)
+        var res = []
+        for(key in collection){
+            res.push(...flattenDepth(predicate(collection[key],depth - 1)))
+        }
+        return res
+    }
+
+    function forEach(collection, predicate = identity){
+        predicate = iteratee(predicate)
+        for(key in collection){
+            predicate(collection[key],key,collection)
+        }
+        return collection
+    }
+
+    function groupBy(collection, predicate=identity){
+        predicate = iteratee(predicate)
+        var res = {}
+        for(key in collection){
+            if(!(predicate(collection[key]) in res)){
+                res[predicate(collection[key])] = []
+            }
+            res[predicate(collection[key])].push(collection[key])
+        }
+        return res
+    }
+
+    function keyBy(collection, predicate = identity){
+        predicate = iteratee(predicate)
+        var res = {}
+        for(key in collection){
+            if(!(predicate(collection[key]) in res)){
+                res[predicate(collection[key])] = collection[key]
+            }
+        }
+        return res
+    }
+
+    function map(collection, predicate = identity){
+        predicate = iteratee(predicate)
+        var res = []
+        for(key in collection){
+            res.push(predicate(collection[key]))
+        }
+        return res
+    }
+
+    function partition(collection, predicate = identity){
+        predicate = iteratee(predicate)
+        var res = []
+        var map = {}
+        var count = 0
+        for(key in collection){
+            if(!(predicate(collection[key]) in map)){
+                map[predicate(collection[key])] = count
+                res[count] = []
+                count++
+            }
+            res[map[predicate(collection[key])]].push(collection[key])
+        }
+        return res
+    }
+
     function without(array,...args){
         debugger
         return filter(array,it => !includes(args,it))
@@ -483,7 +548,6 @@ var shiyubi123 = function () {
     }
 
     function iteratee(value){
-        debugger
         if(typeof value == 'string') {
             return property(value)
         }
@@ -560,6 +624,12 @@ var shiyubi123 = function () {
         every,
         find,
         flatMap,
+        flatMapDepth,
+        forEach,
+        groupBy,
+        keyBy,
+        map,
+        partition,
         without,
         isArray,
         isEqual,
