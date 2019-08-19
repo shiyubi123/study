@@ -430,26 +430,131 @@ var shiyubi123 = function () {
         predicate = iteratee(predicate)
         var res = []
         for(key in collection){
-            res.push(predicate(collection[key]))
+            res.push(predicate(collection[key],key,collection))
         }
         return res
     }
 
     function partition(collection, predicate = identity){
         predicate = iteratee(predicate)
-        var res = []
-        var map = {}
+        var res = [[],[]]
         var count = 0
         for(key in collection){
-            if(!(predicate(collection[key]) in map)){
-                map[predicate(collection[key])] = count
-                res[count] = []
-                count++
+            if(predicate(collection[key])){
+                res[0].push(collection[key])
+            }else {
+                res[1].push(collection[key])
             }
-            res[map[predicate(collection[key])]].push(collection[key])
         }
         return res
     }
+
+    function reduce(collection, predicate = identity, accumulator){
+        predicate = iteratee(predicate)
+        for(key in collection){        
+            if(accumulator == undefined){
+                accumulator = collection[key]
+            } else {
+                accumulator = predicate(accumulator,collection[key],key,collection)
+            }
+        }
+        return accumulator
+    }
+
+    function reduceRight(collection, predicate = identity, accumulator){
+        var buffer = []
+        for(key in collection){
+            buffer.push(collection[key])
+        }
+        buffer.reverse()
+        for(key in buffer){        
+            if(accumulator == undefined){
+                accumulator = buffer[key]
+            } else {
+                accumulator = predicate(accumulator,buffer[key],key,buffer)
+            }
+        }
+        return accumulator
+    }
+
+    function reject(collection,predicate = identity){
+        predicate = iteratee(predicate)
+        var res = []
+        for(key in collection){
+            if(!predicate(collection[key])){
+                res.push(collection[key])
+            }
+        }
+        return res
+    }
+
+    function sample(collection){
+        return collection[Math.floor(Math.random() * collection.length)]
+    }
+
+    function sampleSize(collection, n = 1){
+        n = n > collection.length ? collection.length : n
+        var res = []
+        var map = {}
+        while(res.length < n){
+            var sam = collection[Math.floor(Math.random() * collection.length)]
+            if(!(sam in map)){
+                res.push(sam)
+                map[sam] = 1
+            }
+        }
+        return res
+    }
+
+    function shuffle(collection){
+        var len = collection.length
+        var buffer = []
+        var res = []
+        for(var i = 0;i < len;i++){
+            buffer[i] = i
+        }
+        for(var i = 0;i < len;i++){
+            var index = Math.floor(Math.random() * buffer.length)
+            res[buffer[index]] = collection[i]
+            buffer.splice(index,1)
+        }
+        return res
+    }
+
+    function size(collection){
+        if(Object.prototype.toString.call(collection) == "[object Object]"){
+            var count = 0
+            for(key in collection){
+                count++
+            }
+            return count
+        }
+        return collection.length
+    }
+
+    function some(collection, predicate = identity){
+        predicate = iteratee(predicate)
+        for(key in collection){
+            if(predicate([collection[key]])){
+                return true
+            }
+        }
+        return false
+    }
+
+    function defer(func, ...args){
+        setTimeout(func(...args),1)
+    }
+
+    function delay(func, wait, ...args){
+        setTimeout(func(...args),wait)
+    }
+
+    function isArguments(value){
+        return typeof value.callee == 'function'
+    }
+
+
 
     function without(array,...args){
         debugger
@@ -591,6 +696,7 @@ var shiyubi123 = function () {
     return {
         chunk,
         compact,
+        concat,
         difference,
         differenceBy,
         drop,
@@ -630,6 +736,17 @@ var shiyubi123 = function () {
         keyBy,
         map,
         partition,
+        reduce,
+        reduceRight,
+        reject,
+        sample,
+        sampleSize,
+        shuffle,
+        size,
+        some,
+        defer,
+        delay,
+        isArguments,
         without,
         isArray,
         isEqual,
