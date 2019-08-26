@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="bar">barrr</div>
+        <div class="baz">bazzz</div>
+        <div class="bao">baooo</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        function getInput(node){
+            debugger
+            $(node).children().wrapAll('<div class = "tabs-inner"></div>').map((idx,child) => {
+                debugger
+                return $("<button>" + child.className +"</button>")[0]}).prependTo(node).wrapAll('<div class = "btns"></div>').click(function(e){
+                debugger
+                var idx = $(this).addClass('active').siblings().removeClass('active').end().index()
+                $('.tabs-inner').children().eq(idx).show().siblings().hide()
+                })
+        }
+        //line27：为什么可以用className原生属性，因为child取到的是原生节点，children()内包含的都是原生节点
+        getInput($('.tabs'))
+
+    </script>
+</body>
+</html>

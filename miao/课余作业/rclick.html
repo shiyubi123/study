@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    ul{
+      margin: 0px;
+      padding: 0px;
+      width: 200px;
+      border: 3px solid black;
+      border-radius: 10px;
+      list-style-type: none;
+      background-color: white;
+      display: none;
+    }
+    ul li{
+      text-align: center;
+      font-family: monospace;
+      font-size:15px;
+    }
+    img{
+      margin-left: 10%;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <div>
+      <ul style="position: absolute">
+          <li>黑暗之魂-深渊行者</li>
+          <li>阿尔特留斯</li>
+        </ul>
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/787414050226538060/BD868F5376A1E533850DDE840E1AB4129F76005F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/787414050226538060/BD868F5376A1E533850DDE840E1AB4129F76005F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/787414050226538060/BD868F5376A1E533850DDE840E1AB4129F76005F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/787414050226538060/BD868F5376A1E533850DDE840E1AB4129F76005F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/787414050226538060/BD868F5376A1E533850DDE840E1AB4129F76005F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/787414050226538060/BD868F5376A1E533850DDE840E1AB4129F76005F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/787414050226538060/BD868F5376A1E533850DDE840E1AB4129F76005F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/787414050226538060/BD868F5376A1E533850DDE840E1AB4129F76005F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="">
+  </div>
+<script>
+  var img = document.querySelector("img")
+  var bubble = document.querySelector("ul")
+  img.addEventListener("contextmenu",function(event){
+    debugger
+      bubble.style.display = "block"
+      bubble.style.left = (event.offsetX + 20) + "px"
+      bubble.style.top = (event.offsetY - 50) + "px"
+      event.preventDefault()
+  })
+  img.addEventListener("mousedown",function(event){
+    if(event.which == 1){
+      bubble.style.display = "none"
+    }
+  })
+
+  addEventListener("keydown",function(){
+    debugger
+    if(event.keyCode == 74){
+      var count = 0
+      function animate1(){
+        window.scrollBy(0,-5)
+        count++
+        if(count < 20){
+          requestAnimationFrame(animate1)
+        }
+      }
+      requestAnimationFrame(animate1)
+    }
+    if(event.keyCode == 75){
+      var count = 0
+      function animate2(){
+        window.scrollBy(0,5)
+        count++
+        if(count < 20){
+          requestAnimationFrame(animate2)
+        }
+      }
+      requestAnimationFrame(animate2)
+    }
+  })
+</script>
+</body>
+</html>

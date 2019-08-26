@@ -58,6 +58,16 @@ var shiyubi123 = function () {
         return newary
     }
     
+    function differenceWith(array, values, comparator){
+        var res = []
+        for(var i = 0;i < array.length;i++){
+            if(comparator(array[i],values)){
+                res.push(array[i])
+            }
+        }
+        return res
+    }
+
     function drop (array, n = 1) {return array.slice(n)} 
     
     function dropRight (array, n = 1) {return array.length > n ? array.slice(0,array.length - n) : []} 
@@ -205,6 +215,31 @@ var shiyubi123 = function () {
             return result
         }
     
+    function intersectionBy(arrays, predicate=identity){
+        predicate = iteratee(predicate)
+        var result = []
+            var map = {}
+            for(var i = 0;i < arrays.length;i++) {
+                for(var j = 0;j < arrays[i].length;j++){
+                    if(!(predicate(arrays[i][j]) in map)){
+                        map[predicate(arrays[i][j])] = arrays[i][j]
+                    } else {
+                        map[predicate(arrays[i][j])] = -1
+                    }
+                }
+            }
+            for(key in map) {
+                if(map[key] != -1){
+                    result.push(map[key])
+                }
+            }
+        return result
+    }
+
+    function intersectionWith(arrays, comparator){
+        
+    }
+
     function join (array, separator = ',') {return array.reduce((a,b) => a + '' + separator + '' + b)}
     
     function last (array) {return array[array.length - 1]} 
@@ -543,11 +578,11 @@ var shiyubi123 = function () {
     }
 
     function defer(func, ...args){
-        setTimeout(func(...args),1)
+        return setTimeout(func(...args),1)
     }
 
     function delay(func, wait, ...args){
-        setTimeout(func(...args),wait)
+        return setTimeout(func(...args),wait)
     }
 
     function isArguments(value){
@@ -699,6 +734,7 @@ var shiyubi123 = function () {
         concat,
         difference,
         differenceBy,
+        differenceWith,
         drop,
         dropRight,
         dropRightWhile,

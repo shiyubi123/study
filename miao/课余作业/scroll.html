@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 20px;
+            border: 1px solid black;
+        }
+        img{
+            position: absolute;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div>></div>
+    <img id = b src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/15fd933713d8f323ba532490e6c00bf8.jpg?thumb=1&w=1226&h=460&f=webp&q=90" alt="">
+    <img id = a src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/23000c5e8cf97ca33d49494de1bb80fb.jpg?thumb=1&w=1226&h=460&f=webp&q=90" alt="">
+<script>
+    var imga = document.querySelector("#a")
+    var imgb = document.querySelector("#b")
+
+    var rbutton = document.querySelector("div")
+    var count = 0
+    rbutton.addEventListener("mousedown",function(event){
+        debugger
+        count = (count + 1) % 2 
+        if(event.which == 1){
+            if(count == 0){
+                imga.style.opacity = 1
+                imgb.style.zIndex = 1
+                imga.style.zIndex = -1
+                function animate1(){
+                    debugger
+                    imgb.style.opacity -= 0.05
+                    if(!(imgb.style.opacity < 0)){
+                        requestAnimationFrame(animate1)
+                    }
+                }
+                animate1()
+            }
+            if(count == 1){
+                imgb.style.opacity = 1
+                imga.style.zIndex = 1
+                imgb.style.zIndex = -1
+                function animate2(){
+                    debugger
+                    imga.style.opacity -= 0.05
+                    if(!(imga.style.opacity < 0)){
+                        requestAnimationFrame(animate2)
+                    }
+                }
+                animate2()
+            }
+        }
+    })
+
+    
+</script>
+</body>
+</html>
