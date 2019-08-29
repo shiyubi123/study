@@ -188,7 +188,9 @@ var shiyubi123 = function () {
             fromIndex = fromIndex < 0 ? fromIndex + array.length : fromIndex
             for(var i = fromIndex;i < array.length;i++) {
                 if(isNaN(array[i])){
-                    return isNaN(value)
+                    if(isNaN(value)){
+                        return 1
+                    }
                 }else if(array[i] === value){
                     return i
                 }
@@ -242,7 +244,9 @@ var shiyubi123 = function () {
     function lastIndexOf(array, value, fromIndex = array.length-1){
         for(var i = fromIndex;i >= 0;i--){
             if(isNaN(array[i])){
-                return isNaN(value)
+                if(isNaN(value)){
+                    return 1
+                }
             }else if(array[i] === value){
                 return i
             }
@@ -468,7 +472,8 @@ var shiyubi123 = function () {
         var res = collection.slice()
         for(var i = predicates.length - 1;i >= 0 ;i--){
             debugger
-            mergeSort(res,predicates[i])
+            var compare = iteratee(predicates[i])
+            mergeSort(res,compare)
             if(orders[i] == 'desc'){
                 res = res.reverse()
             }
@@ -476,7 +481,7 @@ var shiyubi123 = function () {
         return res
     }
 
-    function mergeSort(ary,num){
+    function mergeSort(ary,compare){
         if(ary.length < 2){
         return ary.slice()
         }
@@ -484,15 +489,15 @@ var shiyubi123 = function () {
         var left = ary.slice(0,mid)
         var right = ary.slice(mid)
     
-        mergeSort(left,num)
-        mergeSort(right,num)
+        mergeSort(left,compare)
+        mergeSort(right,compare)
     
         var i = 0
         var j = 0
         var k = 0
     
         while(i < left.length && j < right.length){
-            if(left[i][num] <= right[j][num]) {
+            if(compare(left[i]) <= compare(right[j])) {
                 ary[k++] = left[i++]
             } else {
                 ary[k++] = right[j++]
@@ -614,20 +619,21 @@ var shiyubi123 = function () {
         return false
     }
 
-    function sortBy(collection, predicates=identity){
+    function sortBy(collection, predicates){
+        debugger
         var orders = []
         for(var i = 0;i < predicates.length;i++){
             orders.push('sec')
         }
-        return orderBy(collection, predicates=identity,['sec'])
+        return orderBy(collection, predicates,['sec'])
     }
 
     function defer(func, ...args){
-        return setTimeout(func(...args),0)
+        return setTimeout(func(...args),1)
     }
 
     function delay(func, wait, ...args){
-        return setTimeout(func(...args),wait - 1)
+        return setTimeout(func(...args),wait)
     }
 
     function isArguments(value){
