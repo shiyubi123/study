@@ -465,15 +465,9 @@ var shiyubi123 = function () {
 
     function orderBy(collection, predicates=identity, orders){
         var res = collection.slice()
-        var map = {}
-        var count = 0
-        for(key of predicates){
-            map[key] = count
-            count++
-        }
         for(var i = predicates.length - 1;i >= 0 ;i--){
             debugger
-            mergeSort(res,map[predicates[i]])
+            mergeSort(res,predicates[i])
             if(orders[i] == 'desc'){
                 res = res.reverse()
             }
