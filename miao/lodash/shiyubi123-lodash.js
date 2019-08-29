@@ -61,8 +61,10 @@ var shiyubi123 = function () {
     function differenceWith(array, values, comparator){
         var res = []
         for(var i = 0;i < array.length;i++){
-            if(comparator(array[i],values)){
-                res.push(array[i])
+            for(var j = 0;j < values.length;j++){
+                if(!comparator(array[i],values[j])){
+                    res.push(array[i])
+                }
             }
         }
         return res
@@ -185,7 +187,7 @@ var shiyubi123 = function () {
     function indexOf(array, value, fromIndex = 0){
             fromIndex = fromIndex < 0 ? fromIndex + array.length : fromIndex
             for(var i = fromIndex;i < array.length;i++) {
-                if(array[i] == value){
+                if(array[i] === value){
                     return i
                 }
             }
@@ -215,22 +217,17 @@ var shiyubi123 = function () {
             return result
         }
     
-    function intersectionBy(arrays, predicate=identity){
+    function intersectionBy(array,...arguments){
+        debugger
+        var predicate = arguments.pop()
         predicate = iteratee(predicate)
         var result = []
-            var map = {}
-            for(var i = 0;i < arrays.length;i++) {
-                for(var j = 0;j < arrays[i].length;j++){
-                    if(!(predicate(arrays[i][j]) in map)){
-                        map[predicate(arrays[i][j])] = arrays[i][j]
-                    } else {
-                        map[predicate(arrays[i][j])] = -1
+            for(var i = 0;i < array.length;i++) {
+                for(var k = 0;k < arguments.length;k++){
+                    for(var j = 0;j < arguments[k].length;j++){
+                        if(predicate(array[i]) == predicate(arguments[k][j]))
+                        result.push(array[i])
                     }
-                }
-            }
-            for(key in map) {
-                if(map[key] != -1){
-                    result.push(map[key])
                 }
             }
         return result
@@ -242,7 +239,7 @@ var shiyubi123 = function () {
     
     function lastIndexOf(array, value, fromIndex = array.length-1){
         for(var i = fromIndex;i >= 0;i--){
-            if(array[i] == value){
+            if(array[i] === value){
                 return i
             }
                 }
@@ -614,15 +611,15 @@ var shiyubi123 = function () {
     }
 
     function sortBy(collection, predicates=identity){
-        return orderBy(collection, predicates=identity)
+        return orderBy(collection, predicates=identity,['sec'])
     }
 
     function defer(func, ...args){
-        return setTimeout(func(...args),1)
+        return setTimeout(func(...args),0)
     }
 
     function delay(func, wait, ...args){
-        return setTimeout(func(...args),wait)
+        return setTimeout(func(...args),wait - 1)
     }
 
     function isArguments(value){
@@ -634,7 +631,7 @@ var shiyubi123 = function () {
     }
 
     function isBoolean(value){
-        return typeof value == 'boolean'
+        return Object.prototype.toString.call(value) == '[object Boolean]'
     }
 
     function isDate(value){
@@ -707,7 +704,7 @@ var shiyubi123 = function () {
         return true
     }
     function isNaN(value){
-        return (typeof value == 'number') && (value + '' == 'NaN') || value == null
+        return (typeof value == 'number') && (value + '' == 'NaN') || value === null
     }
 
     function isNil(value){
