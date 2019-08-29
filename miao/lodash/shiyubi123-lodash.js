@@ -464,19 +464,12 @@ var shiyubi123 = function () {
     }
 
     function orderBy(collection, predicates=identity, orders){
-        var res = []
+        var res = collection.slice()
         var map = {}
         var count = 0
         for(key of predicates){
             map[key] = count
             count++
-        }
-        for(var i = 0;i < collection.length;i++){
-            res[i] = []
-            for(var j = 0;j < predicates.length;j++){
-                var predicate = iteratee(predicates[j])
-                res[i].push(predicate(collection[i]))
-            }
         }
         for(var i = predicates.length - 1;i >= 0 ;i--){
             debugger
@@ -720,15 +713,15 @@ var shiyubi123 = function () {
         return true
     }
     function isNaN(value){
-        return (typeof value == 'number') && (value + '' == 'NaN')
+        return (typeof value == 'number') && (value + '' == 'NaN') || value == null
     }
 
     function isNil(value){
-        return (value == null) || (value == undefined)
+        return (value === null) || (value === undefined)
     }
 
-    function isNull(){
-        
+    function isNull(value){
+        return value === null
     }
 
     function without(array,...args){
@@ -904,6 +897,8 @@ var shiyubi123 = function () {
         isFinite,
         isFunction,
         isNaN,
+        isNil,
+        isNull,
         isEqual,
         isMatch,
         get,
