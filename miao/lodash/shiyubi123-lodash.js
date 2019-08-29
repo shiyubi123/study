@@ -914,6 +914,5 @@ var shiyubi123 = function () {
         includes,
         filter,
         mergeSort,
-        objLength,
     }
 }()
