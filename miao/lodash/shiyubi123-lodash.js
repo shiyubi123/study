@@ -236,104 +236,97 @@ var shiyubi123 = function () {
         return result
     }
 
-    function intersectionWith(arrays, comparator){
-        
-    }
-
     function join (array, separator = ',') {return array.reduce((a,b) => a + '' + separator + '' + b)}
     
     function last (array) {return array[array.length - 1]} 
-
+    
     function lastIndexOf(array, value, fromIndex = array.length-1){
-                for(var i = fromIndex;i >= 0;i--){
-                    if(array[i] == value){
-                        return i
-                    }
+        for(var i = fromIndex;i >= 0;i--){
+            if(array[i] == value){
+                return i
+            }
                 }
                 return -1
             }
-
-    function pull(array, ...values){
+            
+            function pull(array, ...values){
         var map = {}
-            for(var i = 0;i < values.length;i++) {
-                map[values[i]] = 1
-            }
+        for(var i = 0;i < values.length;i++) {
+            map[values[i]] = 1
+        }
         return array.filter((a,values) => !(a in map))
     }
     
-    function isArray (value) {
-        return Object.prototype.toString.call(value) == '[object Array]'
-    }
-
+    
     function reverse(array) {
-            var len = array.length - 1
-            var halflen = Math.floor(array.length / 2)
-            for(var i = 0;i < halflen;i++){
+        var len = array.length - 1
+        var halflen = Math.floor(array.length / 2)
+        for(var i = 0;i < halflen;i++){
                 var buffer = array[i]
                 array[i] = array[len - i]
                 array[len - i] = buffer
             }
             return array
         }
+        
+        function sortedIndex(array, value){
+            var low = 0
+            var high = array.length - 1
+            var mid = Math.floor((low + high) / 2)
+            
+            while(low < high) {
+                if(array[mid] == value){
+                    while(array[mid - 1] == value){
+                        mid--
+                    }
+                    return mid
+                } else if(array[mid] > value){
+                    high = mid - 1
+                    mid = Math.floor((low + high) / 2)
+                } else {
+                    low = mid + 1
+                    mid = Math.floor((low + high) / 2)
+                }
+            }
+            return mid
+        }
+        
+        function union(...arrays){
+            var newary = []
+            var map = {}
+            for(var i = 0;i < arrays.length;i++){
+                var len = arrays[i].length
+                for(var j = 0;j < len;j++){
+                    if(!(arrays[i][j] in map)){
+                        newary.push(arrays[i][j])
+                        map[arrays[i][j]] = 1
+                    }
+                }
+            }
+            return newary
+        }
+        
+        function unionBy(...args){
+            var predicate = iteratee(args[args.length - 1])
+            var newary = []
+            var store = new Map()
+            for(var i = 0;i < args.length - 1;i++){
+                var len = args[i].length
+                for(var j = 0;j < len;j++){
+                    var res = predicate(args[i][j])
+                    if(!store.has(res)){
+                        newary.push(args[i][j])
+                        store.set(res,1)
+                    }
+                }
+        }
+        return newary
+    }
     
-    function sortedIndex(array, value){
-        var low = 0
-        var high = array.length - 1
-        var mid = Math.floor((low + high) / 2)
-
-        while(low < high) {
-            if(array[mid] == value){
-                while(array[mid - 1] == value){
-                    mid--
-                }
-                return mid
-            } else if(array[mid] > value){
-                high = mid - 1
-                mid = Math.floor((low + high) / 2)
-            } else {
-                low = mid + 1
-                mid = Math.floor((low + high) / 2)
-            }
-        }
-        return mid
-    }
-
-    function union(...arrays){
-        var newary = []
-        var map = {}
-        for(var i = 0;i < arrays.length;i++){
-            var len = arrays[i].length
-            for(var j = 0;j < len;j++){
-                if(!(arrays[i][j] in map)){
-                    newary.push(arrays[i][j])
-                    map[arrays[i][j]] = 1
-                }
-            }
-        }
-        return newary
-    }
-
-    function unionBy(...args){
-        var predicate = iteratee(args[args.length - 1])
-        var newary = []
-        var store = new Map()
-        for(var i = 0;i < args.length - 1;i++){
-            var len = args[i].length
-            for(var j = 0;j < len;j++){
-                var res = predicate(args[i][j])
-                if(!store.has(res)){
-                    newary.push(args[i][j])
-                    store.set(res,1)
-                }
-            }
-        }
-        return newary
-    }
-
     function uniq(array){
         return Array.from(new Set(array))
     }
-
+    
     function uniqBy(array, predicate =_.identity){
         predicate = iteratee(predicate)
         var newary = []
@@ -346,7 +339,7 @@ var shiyubi123 = function () {
         }
         return newary
     }
-
+    
     function unzip(array){
         var newary = []
         var len = array[0].length
@@ -360,7 +353,7 @@ var shiyubi123 = function () {
         }
         return newary
     }
-
+    
     function zip(...arrays){
         var len = -1
         var newary = []
@@ -379,7 +372,7 @@ var shiyubi123 = function () {
         }
         return newary
     }
-
+    
     function countBy(collection,predicate = identity){
         predicate = iteratee(predicate)
         var res = {}
@@ -465,9 +458,65 @@ var shiyubi123 = function () {
         predicate = iteratee(predicate)
         var res = []
         for(key in collection){
-            res.push(predicate(collection[key],key,collection))
+            res.push(predicate(collection[key],+key,collection))
         }
         return res
+    }
+
+    function orderBy(collection, predicates=identity, orders){
+        var res = []
+        var map = {}
+        var count = 0
+        for(key of predicates){
+            map[key] = count
+            count++
+        }
+        for(var i = 0;i < collection.length;i++){
+            res[i] = []
+            for(var j = 0;j < predicates.length;j++){
+                var predicate = iteratee(predicates[j])
+                res[i].push(predicate(collection[i]))
+            }
+        }
+        for(var i = predicates.length - 1;i >= 0 ;i--){
+            debugger
+            mergeSort(res,map[predicates[i]])
+            if(orders[i] == 'desc'){
+                res = res.reverse()
+            }
+        }
+        return res
+    }
+
+    function mergeSort(ary,num){
+        if(ary.length < 2){
+        return ary.slice()
+        }
+        var mid = ary.length >> 1
+        var left = ary.slice(0,mid)
+        var right = ary.slice(mid)
+    
+        mergeSort(left,num)
+        mergeSort(right,num)
+    
+        var i = 0
+        var j = 0
+        var k = 0
+    
+        while(i < left.length && j < right.length){
+            if(left[i][num] <= right[j][num]) {
+                ary[k++] = left[i++]
+            } else {
+                ary[k++] = right[j++]
+            }
+        }
+        while(i < left.length) {
+            ary[k++] = left[i++]
+        }
+        while(j < right.length) {
+            ary[k++] = right[j++]
+        }
+        return ary
     }
 
     function partition(collection, predicate = identity){
@@ -570,11 +619,15 @@ var shiyubi123 = function () {
     function some(collection, predicate = identity){
         predicate = iteratee(predicate)
         for(key in collection){
-            if(predicate([collection[key]])){
+            if(predicate(collection[key])){
                 return true
             }
         }
         return false
+    }
+
+    function sortBy(collection, predicates=identity){
+        return orderBy(collection, predicates=identity)
     }
 
     function defer(func, ...args){
@@ -589,7 +642,94 @@ var shiyubi123 = function () {
         return typeof value.callee == 'function'
     }
 
+    function isArray (value) {
+        return Object.prototype.toString.call(value) == '[object Array]'
+    }
 
+    function isBoolean(value){
+        return typeof value == 'boolean'
+    }
+
+    function isDate(value){
+        return value instanceof Date
+    }
+
+    function isElement(value){
+        return value instanceof Node
+    }
+
+    function isEmpty(value){
+        if(typeof value != 'object'){
+            return true 
+        } else {
+            for(var i in value){
+                return false
+            }
+            return true
+        }
+    }
+
+    function isEqual(value, other){
+        debugger
+        if(typeof value == 'object' || typeof value == 'array'){
+            if(Object.keys(value).length != Object.keys(other).length){
+                return false
+            }
+            for(key in value){
+                if(!isEqual(value[key],other[key])){
+                    return false
+                }
+            }
+        }else if(typeof value == "number" || typeof value == 'string'){
+            return value === other   
+        }else if(typeof value == 'boolean'){
+            return value == other
+        }
+        return true
+    }
+
+    function isError(value){
+        return value instanceof Error
+    }
+
+    function isFinite(value){
+        if(typeof value != 'number'){
+            return false
+        }else {
+            return value != Infinity
+        }
+    }
+
+    function isFunction(value){
+        return typeof value == 'function'
+    }
+    
+    function isMatch(obj,src){
+        if(obj === src){
+            return true
+        }
+        for(var key in src){
+            if(typeof src[key] == 'object'){
+                if(!isMatch(obj[key],src[key])){
+                    return false
+                }
+            }else if(src[key] != obj[key]){
+                return false
+            }
+        }
+        return true
+    }
+    function isNaN(value){
+        return (typeof value == 'number') && (value + '' == 'NaN')
+    }
+
+    function isNil(value){
+        return (value == null) || (value == undefined)
+    }
+
+    function isNull(){
+        
+    }
 
     function without(array,...args){
         debugger
@@ -609,21 +749,6 @@ var shiyubi123 = function () {
         }
     }
 
-    function isMatch(obj,src){
-        if(obj === src){
-            return true
-        }
-        for(var key in src){
-            if(typeof src[key] == 'object'){
-                if(!isMatch(obj[key],src[key])){
-                    return false
-                }
-            }else if(src[key] != obj[key]){
-                return false
-            }
-        }
-        return true
-    }
 
     function matches(src){
         return bind(isMatch,null,window,src)
@@ -668,24 +793,6 @@ var shiyubi123 = function () {
         return bind(get,null,window,path)
     }
 
-    function isEqual(value, other){
-        debugger
-        if(typeof value == 'object' || typeof value == 'array'){
-            if(Object.keys(value).length != Object.keys(other).length){
-                return false
-            }
-            for(key in value){
-                if(!isEqual(value[key],other[key])){
-                    return false
-                }
-            }
-        }else if(typeof value == "number" || typeof value == 'string'){
-            return value === other   
-        }else if(typeof value == 'boolean'){
-            return value == other
-        }
-        return true
-    }
 
     function iteratee(value){
         if(typeof value == 'string') {
@@ -728,6 +835,7 @@ var shiyubi123 = function () {
         return res
     }
 
+
     return {
         chunk,
         compact,
@@ -750,6 +858,7 @@ var shiyubi123 = function () {
         indexOf,
         initial,
         intersection,
+        intersectionBy,
         join,
         last,
         lastIndexOf,
@@ -771,6 +880,7 @@ var shiyubi123 = function () {
         groupBy,
         keyBy,
         map,
+        orderBy,
         partition,
         reduce,
         reduceRight,
@@ -780,11 +890,20 @@ var shiyubi123 = function () {
         shuffle,
         size,
         some,
+        sortBy,
         defer,
         delay,
         isArguments,
         without,
         isArray,
+        isBoolean,
+        isDate,
+        isElement,
+        isEmpty,
+        isError,
+        isFinite,
+        isFunction,
+        isNaN,
         isEqual,
         isMatch,
         get,
@@ -794,5 +913,7 @@ var shiyubi123 = function () {
         property,
         includes,
         filter,
+        mergeSort,
+        objLength,
     }
 }()
