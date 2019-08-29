@@ -187,7 +187,9 @@ var shiyubi123 = function () {
     function indexOf(array, value, fromIndex = 0){
             fromIndex = fromIndex < 0 ? fromIndex + array.length : fromIndex
             for(var i = fromIndex;i < array.length;i++) {
-                if(array[i] === value){
+                if(isNaN(array[i])){
+                    return isNaN(value)
+                }else if(array[i] === value){
                     return i
                 }
             }
@@ -239,14 +241,16 @@ var shiyubi123 = function () {
     
     function lastIndexOf(array, value, fromIndex = array.length-1){
         for(var i = fromIndex;i >= 0;i--){
-            if(array[i] === value){
+            if(isNaN(array[i])){
+                return isNaN(value)
+            }else if(array[i] === value){
                 return i
             }
-                }
-                return -1
-            }
+        }
+        return -1
+    }
             
-            function pull(array, ...values){
+    function pull(array, ...values){
         var map = {}
         for(var i = 0;i < values.length;i++) {
             map[values[i]] = 1
@@ -611,6 +615,10 @@ var shiyubi123 = function () {
     }
 
     function sortBy(collection, predicates=identity){
+        var orders = []
+        for(var i = 0;i < predicates.length;i++){
+            orders.push('sec')
+        }
         return orderBy(collection, predicates=identity,['sec'])
     }
 
