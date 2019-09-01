@@ -718,7 +718,7 @@ var shiyubi123 = function () {
         return true
     }
     function isNaN(value){
-        return (typeof value == 'number') && (value + '' == 'NaN') || value === null
+        return ((typeof value == 'number') && (value + '' == 'NaN')) || (value === null)
     }
 
     function isNil(value){
@@ -729,8 +729,101 @@ var shiyubi123 = function () {
         return value === null
     }
 
-    function without(array,...args){
+    function isNumber(value){
+        return typeof value == 'number'
+    }
+
+    function isObject(value){
+        return typeof value == 'object'
+    }
+
+    function isRegExp(value){
+        return value instanceof RegExp
+    }
+
+    function isString(value){
+        return typeof valeu == 'string'
+    }
+
+    function isUndefined(value){
+        return value === undefined
+    }
+
+    function toArray(value){
+        if(typeof value == 'object'){
+            if(isArray(value)){
+                return value 
+            } else {
+                var ary = []
+                for(key in value){
+                    ary.push(value[key])
+                }
+            }
+        }else if(typeof value == 'string'){
+            return value.split('')
+        }
+        return []
+    }
+
+    function ceil(number, precision=0){
         debugger
+        if(precision >= 0){
+            var fixed = number.toFixed(precision)
+            if(number > fixed){
+                return +fixed + 1 / 10 ** (precision)
+            }
+            return fixed
+        }else {
+            var multy = 10 ** (-precision)
+            var fixed = number/multy
+            fixed = +(fixed.toFixed(0)) * multy
+            if(number > fixed){
+                return fixed + 1 * 10 ** (-precision)
+            }
+            return fixed
+        }
+    }
+
+    function max(array){
+        return array.length == 0 ? undefined : Math.max.apply(null,array)
+    }
+
+    function maxBy(array, predicate=identity){
+        predicate = iteratee(predicate)
+        var ary = []
+        array.forEach((value) => {ary.push(predicate(value))})
+        return array[ary.indexOf(max(ary))]
+    }
+
+    function min(array){
+        return array.length == 0 ? undefined : Math.min.apply(null,array)
+    }
+
+    function round(number, precision=0){
+        if(precision >= 0){
+            var fixed = number.toFixed(precision)
+            return +fixed
+        }else {
+            var multy = 10 ** (-precision)
+            var fixed = number/multy
+            fixed = +(fixed.toFixed(0)) * multy
+            return +fixed
+        }
+    }
+
+    function sumBy(array, predicate=identity){
+        predicate2 = iteratee(predicate)
+        return reduce(array.slice(1),(a,b) => {return a + predicate2(b)},predicate2(array[0]))
+    }
+
+    function random(lower=0, upper=1, floating = false){
+        if(lower % 1 > 0 || upper % 1 > 0 || floating){
+            return Math.random() * (10 ** 16) * (upper - lower) / 10 ** 16
+        }
+        return Math.floor(Math.random() * (upper - lower))
+    }
+
+    function without(array,...args){
         return filter(array,it => !includes(args,it))
     }
 
@@ -904,6 +997,19 @@ var shiyubi123 = function () {
         isNaN,
         isNil,
         isNull,
+        isNumber,
+        isObject,
+        isRegExp,
+        isString,
+        isUndefined,
+        toArray,
+        ceil,
+        max,
+        maxBy,
+        min,
+        round,
+        sumBy,
+        random,
         isEqual,
         isMatch,
         get,
