@@ -429,6 +429,7 @@ var shiyubi123 = function () {
     }
 
     function forEach(collection, predicate = identity){
+        debugger
         predicate = iteratee(predicate)
         for(key in collection){
             predicate(collection[key],key,collection)
@@ -734,7 +735,7 @@ var shiyubi123 = function () {
     }
 
     function isObject(value){
-        return typeof value == 'object'
+        return Object.prototype.toString.call(value) == '[object Object]'
     }
 
     function isRegExp(value){
@@ -742,7 +743,7 @@ var shiyubi123 = function () {
     }
 
     function isString(value){
-        return typeof valeu == 'string'
+        return typeof value == 'string'
     }
 
     function isUndefined(value){
@@ -750,6 +751,7 @@ var shiyubi123 = function () {
     }
 
     function toArray(value){
+        debugger
         if(typeof value == 'object'){
             if(isArray(value)){
                 return value 
@@ -758,6 +760,7 @@ var shiyubi123 = function () {
                 for(key in value){
                     ary.push(value[key])
                 }
+                return ary
             }
         }else if(typeof value == 'string'){
             return value.split('')
@@ -816,11 +819,101 @@ var shiyubi123 = function () {
         return reduce(array.slice(1),(a,b) => {return a + predicate2(b)},predicate2(array[0]))
     }
 
-    function random(lower=0, upper=1, floating = false){
-        if(lower % 1 > 0 || upper % 1 > 0 || floating){
-            return Math.random() * (10 ** 16) * (upper - lower) / 10 ** 16
+    function random(lower=0, upper='unvalued', floating = false){
+        if(lower > upper){
+            var buffer = lower
+            if(upper == 'unvalued'){
+                lower = 0 
+            }else {
+                lower = upper
+            }
+            upper = buffer
         }
-        return Math.floor(Math.random() * (upper - lower))
+        if(lower % 1 > 0 || upper % 1 > 0 || floating){
+            return Math.random() * (10 ** 16) * (upper - lower) / 10 ** 16 + lower
+        }
+        return round(Math.random() * (upper - lower)) + lower
+    }
+
+    function assignIn(object, ...sources){
+        for(var i = 0;i < sources.length;i++){
+            for(key in sources[i]){
+                object[key] = sources[i][key]
+            }
+        }
+        return object
+    }
+
+    function defaults (object, ...sources){
+        for(var i = 0;i < sources.length;i++){
+            for(key in sources[i]){
+                if(!(key in object)){
+                    object[key] = sources[i][key]
+                }
+            }
+        }
+        return object
+    }
+
+    function findKey(object, predicate=identity){
+        predicate = iteratee(predicate)
+        for(key in object){
+            if(predicate(object[key])){
+                return key
+            }
+        }
+    }
+
+    function forIn(object, predicate=identity){
+        predicate = iteratee(predicate)
+        return forEach(object,predicate)
+    }
+
+    function forInRight(object, predicate=identity){
+        var ary = []
+        var obj2 = {}
+        for(key in object){
+            ary.push(key)
+        }
+        for(var i = ary.length - 1;i >= 0 ;i--){
+            obj2[ary[i]] = object[ary[i]]
+        }
+        forIn(obj2,predicate)
+    }
+
+    function functions(object){
+        var res = []
+        for(key in object){
+            if(!(key in object.__proto__)){
+                res.push(key)
+            }
+        }
+        return res
+    }
+
+    function has(object, path){
+        var proto = object.__proto__
+        object.__proto__ = null
+        if(get(object,path)){
+            object.__proto__ = proto
+            return true
+        }
+        object.__proto__ = proto
+        return false
+    }
+
+    function invert(object){
+        for(key in object){
+            var key2 = key
+            key = object[key]
+            object[key] = key2
+        }
+        return object
+    }
+
+    function invoke(object, path, ...args){
+        debugger
+        return get(object,path)(...args)
     }
 
     function without(array,...args){
@@ -839,7 +932,6 @@ var shiyubi123 = function () {
             return f.apply(thisArgs,actualArgs)
         }
     }
-
 
     function matches(src){
         return bind(isMatch,null,window,src)
@@ -1010,6 +1102,15 @@ var shiyubi123 = function () {
         round,
         sumBy,
         random,
+        assignIn,
+        defaults,
+        findKey,
+        forIn,
+        forInRight,
+        functions,
+        has,
+        invert,
+        invoke,
         isEqual,
         isMatch,
         get,
