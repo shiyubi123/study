@@ -429,7 +429,6 @@ var shiyubi123 = function () {
     }
 
     function forEach(collection, predicate = identity){
-        debugger
         predicate = iteratee(predicate)
         for(key in collection){
             predicate(collection[key],key,collection)
@@ -719,7 +718,7 @@ var shiyubi123 = function () {
         return true
     }
     function isNaN(value){
-        return ((typeof value == 'number') && (value + '' == 'NaN')) || (value === null)
+        return ((typeof value == 'number') && (value + '' == 'NaN')) || (isNull(value))
     }
 
     function isNil(value){
@@ -735,7 +734,7 @@ var shiyubi123 = function () {
     }
 
     function isObject(value){
-        return Object.prototype.toString.call(value) == '[object Object]'
+        return typeof value == 'object'
     }
 
     function isRegExp(value){
@@ -819,10 +818,16 @@ var shiyubi123 = function () {
         return reduce(array.slice(1),(a,b) => {return a + predicate2(b)},predicate2(array[0]))
     }
 
-    function random(lower=0, upper='unvalued', floating = false){
+    function random(lower=0, upper=1, floating = false){
+        if(arguments.length == 2){
+            if(typeof arguments[1] == 'boolean'){
+                floating = typeof arguments[1]
+                upper = 1
+            }
+        }
         if(lower > upper){
             var buffer = lower
-            if(upper == 'unvalued'){
+            if(upper == 1 && arguments[1] != 1){
                 lower = 0 
             }else {
                 lower = upper
@@ -870,15 +875,15 @@ var shiyubi123 = function () {
     }
 
     function forInRight(object, predicate=identity){
+        debugger
         var ary = []
-        var obj2 = {}
         for(key in object){
             ary.push(key)
         }
         for(var i = ary.length - 1;i >= 0 ;i--){
-            obj2[ary[i]] = object[ary[i]]
+            predicate(object[ary[i]],ary[i],object)
         }
-        forIn(obj2,predicate)
+        return object
     }
 
     function functions(object){
@@ -903,22 +908,132 @@ var shiyubi123 = function () {
     }
 
     function invert(object){
+        var res = {}
         for(key in object){
             var key2 = key
             key = object[key]
-            object[key] = key2
+            res[key] = key2
         }
-        return object
+        return res
     }
 
     function invoke(object, path, ...args){
         debugger
-        return get(object,path)(...args)
+        var predicate = iteratee(path.replace(/.\w+$/gm,""))
+        var obj = predicate(object)
+        return get(object,path).apply(obj,args)
+    }
+
+    function keys(object){
+        var res = []
+        for(key in object){
+            if(!(key in object.__proto__)){
+                res.push(key)
+            }
+        }
+        return res
+    }
+
+    function mapKeys(object, predicate=identity){
+        var newAry = {}
+        predicate = iteratee(predicate)
+        for(key in object){
+            newAry[predicate(key)] = object[key]
+        }
+        return newAry
+    }
+
+    function mapValues(object, iteratee=identity){
+        var newAry = {}
+        predicate = iteratee(predicate)
+        for(key in object){
+            newAry[key] = predicate(object[key])
+        }
+        return newAry
+    }
+
+    function merge(object,sources){
+        debugger
+        for(key in sources){
+            if(typeof sources[key] == 'object'){
+                object[key] = merge(object[key],sources[key])
+            }else {
+                if(isArray(object)){
+                    object[key].push(sources[key])
+                }else {
+                    object[key] = sources[key]
+                }
+            }
+        }
+        return object
+    }
+
+    function omit(object, paths){
+        var newObj = {}
+        if(typeof paths == 'string'){
+            for(key in object){
+                if(key != paths){
+                    newObj[key] = object[key]
+                }
+            }
+        }else {
+            for(key in object){
+                if(paths.indexOf(key) < 0){
+                    newObj[key] = object[key]
+                }
+            }
+        }
+        return newObj
+    }
+
+    function pick(object, paths){
+        var newObj = {}
+        if(typeof paths == 'string'){
+            newObj[key] = object[paths]
+        }else {
+            for(key in object){
+                if(paths.indexOf(key) >= 0){
+                    newObj[key] = object[key]
+                }
+            }
+        }
+        return newObj
+    }
+
+    function result(object, path, defaultValue){
+        var res = get(object,path)
+        if(isUndefined(res)){
+            return typeof defaultValue == 'function' ? defaultValue() : defaultValue
+        }
+        return typeof res == 'function' ? res() : res
+    }
+
+    function set(object, path, value){
+        debugger
+        if(isString(path)){
+            path = path.split(/\W/g)
+        }
+        if(path[0] == ''){
+            path = path.slice(1)
+        }
+        if(path.length != 1){
+            if(get(object,path)){
+                obj = object[path[0]]
+                set(obj,path.slice(1),value)
+            }else {
+                isNumber(path[0]) ? object[path[0]] = [] : object[path[0]] = {}             
+                set(object[path[0]],path.slice(1),value)
+            }
+        }else {
+            object[path[0]] = value
+        }
+        return object
     }
 
     function without(array,...args){
         return filter(array,it => !includes(args,it))
     }
+
 
     function bind(f,thisArgs,...fixedArgs){
         return function(...args){
@@ -1111,6 +1226,14 @@ var shiyubi123 = function () {
         has,
         invert,
         invoke,
+        keys,
+        mapKeys,
+        mapValues,
+        merge,
+        omit,
+        pick,
+        result,
+        set,
         isEqual,
         isMatch,
         get,

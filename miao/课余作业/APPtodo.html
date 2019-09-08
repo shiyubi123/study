@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .completed span {
+        text-decoration: line-through;
+    }
+    /* body {
+        counter-reset: count;
+    }
+    ul > li:not(.completed) {
+        counter-increment: count;
+    }
+
+    #count::before {
+        content: counter(count);
+    } */
+    ul[data-show="all"] {
+
+    }
+    ul[data-show="active"] li.completed {
+        display: none;
+    }
+    ul[data-show="completed"] li:not(.completed) {
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <div id="todo-app"></div>
+    <script>
+    var todos = [{
+        done: true,
+        content: 'eat',
+    }, {
+        done: false,
+        content: 'drink',
+    }, {
+        done: false,
+        content: 'sleep',
+    }]
+
+    var todoAppEl = document.querySelector('#todo-app')
+
+    render()
+    
+    function render() {
+        var html = `
+            <input type="checkbox" class="secectAll">
+            <input type="text" class ="todo-input">
+            <ul>
+        `
+        html += creatItem()
+
+        todoAppEl.innerHTML = html
+    }
+
+    function creatItem(){
+        var res = ''
+        var i = 0
+        for(var item of todos){
+            if(item.done){
+                res += `<li class = "item${i}">\r\n<input type ="checkbox" checked>\r\n`
+            }else {
+                res += '<li class = "item">\r\n<input type ="checkbox">\r\n'
+            }
+            res += '<span>' + item.content + '</span>\r\n'
+            res += '<button class ="delete-todo">x</button>\r\n</li>'
+        }
+        res += '</ul>'
+        return res
+    }
+
+
+    todoAppEl.addEventListener('keyup', e => {
+        if (e.target.matches('input.todo-input')) {
+            if (e.keyCode == 13) {
+                var todoText = e.target.value
+                todos.push({
+                    content: todoText,
+                    done: false,
+                })
+                render()
+            }
+        }
+        e.target.tabIndex = 1
+    })
+
+    
+    todoAppEl.addEventListener('click', e => {
+        if (e.target.matches('button.delete-todo')) {
+            var idx = +e.target.parentElement.className.replace(/D+/g,'')
+
+            todos.splice(idx, 1)
+
+            render()
+        }
+    })
+
+
+    </script>
+</body>
+</html>

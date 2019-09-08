@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <button>点击获取图片</button>
+    <script>
+        
+        var body = document.body
+        var button = document.querySelector("button")
+        button.addEventListener('mousedown',(e) => {
+            debugger
+            body.removeChild(button)
+            var load = document.createElement('span')
+            load.innerText = 'loading...'
+            body.appendChild(load)
+            
+            var req = new XMLHttpRequest()
+            req.open('GET',"https://xieranmaya.github.io/images/cats/cats.json",true)
+            req.addEventListener('load',function(){
+                body.removeChild(load)
+                var images = JSON.parse(req.responseText)
+                for(var i = 0;i < images.length;i++){
+                    var img = document.createElement("img")
+                    img.setAttribute('src','http://xieranmaya.github.io/images/cats/' + images[i].url) 
+                    body.appendChild(img)
+                }
+            })
+            req.send(null)
+        })
+        
+    </script>
+</body>
+</html>
+
+
