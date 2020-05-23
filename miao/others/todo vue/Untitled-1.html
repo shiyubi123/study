@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="todolist.css"></link>
+</head>
+<body>
+    <div id="todoapp">
+        <todo-list></todo-list>
+    </div>
+    
+    <script src="./vue.js"></script>
+    <script src="./vuex.js"></script>
+    
+    
+    <script>
+        Vue.component('todo-list',{
+            template:`
+            <div>
+                111
+            </div>
+            `,
+            data(){
+                return {}
+            },
+        })
+        
+        
+
+        var app = new Vue({
+            el:'#todoapp',
+        })
+    </script>
+</body>
+</html>

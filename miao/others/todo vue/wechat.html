@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./vue.js"></script>
+    <script src="./vuex.js"></script>
+    <script src="./vue-router.js"></script>
+
+    <style>
+        #app{
+            width: 300px;
+            height:500px;
+            border: 1px solid black;
+            position: relative;
+        }
+        #buttomBar{
+            position: absolute;
+            bottom: 0px;
+            width: 300px;
+            height: 40px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            margin: 0px;
+        }
+        #topBar{
+            position: absolute;
+            top: 0px;
+            width: 300px;
+            height: 30px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            margin: 0px;
+        }
+        .bar{
+            box-sizing: border-box;
+            border: 1px solid black;
+            float: left;
+            text-align: center;
+            width: 33.3%;
+            height: 40px;
+        }
+        ul{ 
+            margin:0px;
+            height:430px;
+            width: 100%;
+            border: 1px solid black;
+            box-sizing: border-box;
+            top: 30px;
+            position: absolute;
+            list-style-type: none;
+            padding:0px;
+        }
+        ul .user{
+            height: 30px;
+            box-sizing: border-box;
+            margin: 0px;
+            border: 1px solid black;
+
+        }
+        img{
+            width:30px; 
+            height:30px;
+            float: right;
+        }
+    </style>
+    <div id="app">
+        <router-view></router-view>
+        <p id="buttomBar">
+            <router-link class="bar" to="/friends">微信</router-link>
+            <router-link class="bar" to="/find">发现</router-link>
+            <router-link class="bar" to="/myself">我</router-link>
+        </p>
+    </div>
+
+    <script>
+
+        Vue.component('friends',{
+            template:`
+                <div>
+                    <div id="topBar">微信</div>
+                    <ul>
+                        <li class="user"" v-for="user in users">
+                            {{ user.name }}
+                            <img :src="usersImg.src">
+                        </li>
+                    </ul>
+                </div>
+            `,
+            data(){
+                return {
+                    users:[{name:'ad001'},{name:'ad002'},{name:'ad003'}],
+                    usersImg:[{src:'http://mms-graph.cdn.bcebos.com/1.jpeg'},{src:'https://pic2.zhimg.com/v2-03ce83bf0c2d9b1ba5a132f91a26671c_1200x500.jpg'},{src:'http://img5.dwstatic.com/wuxia/1909/432831996192/432832070277.jpeg'}]
+                }
+            },
+        })
+
+        Vue.component('find',{
+            template:`
+                <div>
+                    <div id="topBar">发现</div>
+                    <ul>
+                        <li v-for="findInfo in findInfos">
+                            {{ findInfo.name }}
+                        </li>
+                    </ul>
+                </div>
+            `,
+            data(){
+                return {
+                    findInfos:[{name:'朋友圈'},{name:'扫一扫'},{name:'通讯录'}],
+                }
+            },
+        })
+
+        Vue.component('myself',{
+            template:`
+                <div>
+                    <div id="topBar">个人信息</div>
+                    <ul>
+                        <li v-for="myselfInfo in myselfInfos">
+                            {{ myselfInfo.name }}
+                        </li>
+                    </ul>
+                </div>
+            `,
+            data(){
+                return {
+                    myselfInfos:[{name:'支付'},{name:'收藏'},{name:'相册'}]
+                }
+            },
+        })
+
+        const friendsOP = { template: '<friends></friends>' }
+        const findInfosOP = { template: '<find></find>' }
+        const myselfInfosOP = {template:`<myself></myself>`}
+
+        const routes = [
+            { path: '/friends', component: friendsOP },
+            { path: '/find', component: findInfosOP },
+            { path: '/myself', component:  myselfInfosOP },
+        ]
+
+        const router = new VueRouter({
+            routes: routes
+        })
+
+        var app = new Vue({
+            router,
+            el:'#app',
+        })
+
+
+    </script>
+</body>
+</html>

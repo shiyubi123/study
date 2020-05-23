@@ -1021,7 +1021,7 @@ var shiyubi123 = function () {
                 obj = object[path[0]]
                 set(obj,path.slice(1),value)
             }else {
-                isNumber(path[0]) ? object[path[0]] = [] : object[path[0]] = {}             
+                isNumber(+path[1]) ? object[path[0]] = [] : object[path[0]] = {}             
                 set(object[path[0]],path.slice(1),value)
             }
         }else {

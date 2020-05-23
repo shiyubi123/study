@@ -1,0 +1,25 @@
+.countmember{
+    border:2px solid black;
+    width: 400px;
+    height: 100px;
+    box-sizing: border-box;
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0px;
+}
+
+.countmember li {
+    border:1px solid black;
+    width:80px;
+    height: 80px;
+    margin: 5px;
+    float: left;
+    cursor: default;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.active{
+    border:4px solid red;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="todolist.css"></link>
+</head>
+<body>
+    <div id="todoapp">
+        <todolist></todolist>
+    </div>
+    
+    <script src="./vue.js"></script>
+    <script src="./vuex.js"></script>
+    
+    
+    <script>
+        Vue.use(Vuex)
+        Vue.component('todolist',{
+            template:`
+                <div>
+                    <todo-input></todo-input>
+                    <todo-list></todo-list>
+                    <todo-footer></todo-footer>
+                </div>
+            `,
+            data(){
+                return {}
+            },
+        })
+        
+        Vue.component('todo-input',{
+            template:`
+            <div>
+                <input type="checkbox" @click="toggelAll" :checked="todos.every(it => it.done)">
+                <input type="text" v-model="textVal"  @keyup.enter="add">
+            </div>
+            `,
+            data(){
+                return {
+                    textVal:'',
+                }
+            },
+            methods:{
+                add(e){
+                    if(this.textVal){
+                        store.commit('addItem',this.textVal)
+                    }
+                    this.textVal = ''
+                },
+                toggelAll(e){
+                    debugger
+                    store.commit('toggleAllItem',this.todos)
+                }
+            },
+            computed:{
+                
+                todos(){
+                    return this.$store.state.todos
+                }
+            }
+        })
+
+        Vue.component('todo-list',{
+            template:`
+                <ul>
+                    <li v-for="(todo,idx) in todos" :key="idx">
+                        <input type="checkbox" @click="toggle-item" :checked="todo.done">
+                        {{todo.text}}
+                        <button @click="deleteTodos" :todotext="todo.text">x</button>
+                    </li>
+                </ul>
+            `,
+            data(){
+                return {}
+            },
+            computed:{
+                todos(){
+                    return this.$store.state.todos
+                }
+            },
+            methods:{
+                deleteTodos(e){
+                    store.commit('deleteItem',e.target.attributes[0].value)
+                }
+            }
+        })
+
+        Vue.component('todo-footer',{
+            template:`
+                <div>
+                    <span> {{todos.length}} item'todos' left</span>
+                    <state-todos></state-todos>
+                    <button>clear all completed</button>
+                </div>
+            `,
+            data(){
+                return {
+
+                }
+            },
+            computed:{
+                todos(){
+                    return this.$store.state.todos
+                }
+            }
+        })
+        
+        Vue.component('state-todos',{
+            template:`
+                <div>
+                    <input v-for="state in this.data.states">{{state.name}}</input>
+                </div>
+            `,
+            data(){
+                return {
+                    states:[{
+                        name:'all'
+                    },{
+                        name:'left'
+                    },{
+                        name:'complete'
+                    }]
+                }
+            },
+        })
+
+        var store = new Vuex.Store({
+            state:{
+                todos:[{
+                    text:'eat',
+                    done:false,
+                },{
+                    text:'sleep',
+                    done:false,
+                }]
+            },
+            
+            mutations:{
+                addItem(state,content){
+                    var obj = {}
+                    obj.text = content
+                    obj.done = false
+                    state.todos.push(obj)
+                },
+                deleteItem(state,text){
+                    state.todos = state.todos.filter(it => it.text !== text)
+                },
+                toggleItem(state){},
+                toggleAllItem(state,todos){
+                    debugger
+                    if(!(todos.every(it => it.done))){
+                        todos.forEach(it => it.done = true)
+                    } else {
+                        todos.forEach(it => it.done = false)
+                    }
+                },
+            }
+        })
+
+        var app = new Vue({
+            el:'#todoapp',
+            store:store,
+        })
+    </script>
+</body>
+</html>

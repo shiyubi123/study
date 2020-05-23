@@ -1,0 +1,22 @@
+.logContainer{
+    width: 300px;
+    left: calc(50% - 150px);
+    position: absolute;
+    top: 20%;
+}
+
+.logContainer h1{
+    font-weight: 600;
+    text-align: center;
+}
+
+.logContainer img{
+    float: right;
+    border: 1px solid black;
+}
+
+.logContainer a{
+    float: right;
+}
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .numbox{
+            font-size: 40px;
+            float: left;
+            height: 80px;
+            width:50px;
+            border: 5px solid lightblue;
+        }
+        #captchaBox{
+            height: 100px;
+            width: 400px;
+            border: 1px solid black;
+        }
+    </style>
+    <div id="captchaBox">
+        <captcha-input  v-for="num in 6"></captcha-input>
+    </div>
+    
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        function focusIt(){
+            document.getElementById('captchaBox').childNodes[count].focus()
+        }
+        var nums = ''
+        var count = 0
+        Vue.component('captcha-input',{
+            props:{
+                value:{
+                    type:Number,
+                    require:true,
+                }
+            },
+            template:`                
+            <input class="numbox" @keyup="change"></input>
+            `,
+            data:function(){
+                return {
+                    count,
+                    number:this.value,
+                }
+            },
+            methods:{
+                change(e){
+                    if(event.keyCode >=48 && event.keyCode <= 57){
+                        addnum()
+                    }else if(e.key =="Backspace"){
+                        deletenum()
+                    }else {
+                        return
+                    }
+                    function addnum(){
+                        if(count + 1 != 6){
+                            debugger
+                            nums += '' + this.value
+                            count++
+                        }else{
+                            if(count < 5){
+                                count++
+                            }
+                            console.log(nums)
+                        }
+                        document.getElementById('captchaBox').childNodes[count].innerText = this.value
+                    }
+                    function deletenum(){
+                        if(count != 0){
+                            count--
+                        }else{
+                            return
+                        }
+                        document.getElementById('captchaBox').childNodes[count].innerText = ''
+                    }
+                    focusIt()
+                }
+            },
+        })
+        
+        new Vue({ el: '#captchaBox' })
+        focusIt()
+    </script>
+</body>
+</html>

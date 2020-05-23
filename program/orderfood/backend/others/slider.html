@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    html{
+        height: 100%;
+        width: 100%;
+    }
+    body{
+        margin: 0px;
+        height: 100%;
+        width: 100%;
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/bg.jpg);
+    }
+    header{
+        width: 640px;
+        margin: auto;
+        height: 165px;
+    }
+    header p{
+        text-align: center;
+        font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+        font-size:40px;
+        margin-top:0px;
+        color: #7cbcd6;
+        font-weight: 600;
+        line-height: 85px;
+    }
+    header p span{
+        color:#2d6682;
+    }
+    main{
+        width: 100%;
+        height: 440px;
+    }
+    section{
+        box-sizing: border-box;
+        height: 440px;
+        width: 640px;
+        margin: auto;
+        padding: 20px;
+        background-color: white;
+    }
+    section .picbox{
+        height: 400px;
+        width:150px;
+        float: left;
+        position: relative;
+        overflow: hidden;
+    }
+    .pics1,.pics2,.pics3,.pics4{
+        transition: 1s;
+    }
+    /*为什么在进入的时候不采用animation而是transition，这是因为animation在每次进入页面时会自动播放，而transition不会*/
+    .pic11{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/1.jpg);
+    }
+    .pic12{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/1.jpg);
+        background-position-x: -150px;
+    }
+    .pic13{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/1.jpg);
+        background-position-x: -300px;
+    }
+    .pic14{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/1.jpg);
+        background-position-x: -450px;
+    }
+    .pic21{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/2.jpg);
+    }
+    .pic22{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/2.jpg);
+        background-position-x: -150px;
+    }
+    .pic23{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/2.jpg);
+        background-position-x: -300px;    
+    }
+    .pic24{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/2.jpg);
+        background-position-x: -450px;        
+    }
+    .pic31{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/3.jpg);
+    }
+    .pic32{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/3.jpg);
+        background-position-x: -150px;
+    }
+    .pic33{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/3.jpg);
+        background-position-x: -300px;    
+    }
+    .pic34{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/3.jpg);
+        background-position-x: -450px;        
+    }
+    .pic41{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/4.jpg);
+    }
+    .pic42{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/4.jpg);
+        background-position-x: -150px;
+    }
+    .pic43{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/4.jpg);
+        background-position-x: -300px;    
+    }
+    .pic44{
+        background-image: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/4.jpg);
+        background-position-x: -450px;        
+    }
+    @keyframes sliderout{
+        from{left: 0px;}
+        99.9%{left: 150px;}
+        to{left: -150px;}
+    }
+    #radio1:checked ~ section .picbox .pics1,#radio2:checked ~ section .picbox .pics2,#radio3:checked ~ section .picbox .pics3,#radio4:checked ~ section .picbox .pics4{
+        z-index: 10;
+        left: 0px;
+        animation: none;
+    }
+    #radio1:not(:checked) ~ section .picbox .pics1,#radio2:not(:checked) ~ section .picbox .pics2,#radio3:not(:checked) ~ section .picbox .pics3,#radio4:not(:checked) ~ section .picbox .pics4{
+        left: -150px;
+        animation: 1s sliderout; 
+        z-index: 6;
+    }
+    section .picbox div{
+        height: 400px;
+        width:150px;
+        position: absolute;
+        animation: none; 
+    }
+    .outcircle{
+        cursor: pointer;
+        width: 45px;
+        height: 45px;
+        border-radius: 23px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+        float: left;
+        margin-left: 32px;
+    }
+    .insidecircle{
+        width: 35px;
+        height: 35px;
+        border-radius:18px;
+        background-color: #7cbcd6;
+        color:white;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        text-align: center;
+        line-height: 35px;
+        font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+        font-size:25px;
+        font-weight: 300;
+    }
+    footer{
+        width: 100%;
+        height: 100px;
+    }
+    footer section{
+        width: 400px;
+        height: 100px;
+        margin: auto;
+        background-color: transparent;
+    }
+</style>
+<body>
+    <header>
+        <p><span>Sliding Image Panels</span> with CSS3</p>
+    </header>
+    <main>
+        <input type="radio" name="radios" id="radio1"checked hidden>
+        <input type="radio" name="radios" id="radio2" hidden>
+        <input type="radio" name="radios" id="radio3" hidden>
+        <input type="radio" name="radios" id="radio4" hidden>
+        <section>
+            <div class="picbox">
+                <div class="pic11 pics1"></div>
+                <div class="pic21 pics2"></div>
+                <div class="pic31 pics3"></div>
+                <div class="pic41 pics4"></div>
+            </div>
+            <div class="picbox">
+                <div class="pic12 pics1"></div>
+                <div class="pic22 pics2"></div>
+                <div class="pic32 pics3"></div>
+                <div class="pic42 pics4"></div>
+            </div>
+            <div class="picbox">
+                <div class="pic13 pics1"></div>
+                <div class="pic23 pics2"></div>
+                <div class="pic33 pics3"></div>
+                <div class="pic43 pics4"></div>
+            </div>
+            <div class="picbox">
+                <div class="pic14 pics1"></div>
+                <div class="pic24 pics2"></div>
+                <div class="pic34 pics3"></div>
+                <div class="pic44 pics4"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section>
+            <label for="radio1">
+                <div class="outcircle">
+                    <div class="insidecircle">1</div>
+                </div>
+            </label>
+            <label for="radio2">
+                <div class="outcircle">
+                    <div class="insidecircle">2</div>
+                </div>
+            </label>
+            <label for="radio3">
+                <div class="outcircle">
+                    <div class="insidecircle">3</div>
+                </div>
+            </label>
+            <label for="radio4">
+                <div class="outcircle">
+                    <div class="insidecircle">4</div>
+                </div>
+            </label>
+        </section>
+    </footer>
+</body>
+</html>

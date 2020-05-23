@@ -1,0 +1,19 @@
+#wholeList{
+    margin: auto;
+    width: 80%;
+}
+#todo-list{
+    list-style-type: none;
+}
+.categories{
+    position: relative;
+}
+.category{
+    box-sizing: border-box;
+    border: 1px solid black;
+    width:100px;
+    text-align: center;
+}
+.choosedCategory{
+    border: 1px solid blue;
+}
