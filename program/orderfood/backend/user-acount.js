@@ -54,7 +54,7 @@ app.route('/register')
             })
         }
     })
-
+//登录验证码
 app.get('/captcha',(req,res,next) => {
     var captcha = svgCaptcha.create({
         ignoreChars: '0o1il',
@@ -67,7 +67,7 @@ app.get('/captcha',(req,res,next) => {
 	res.status(200).send(captcha.data);
     captchaText = captcha.text
 })
-//登录验证码
+
 app.get('/userinfo',async (req,res,next) => {
     var userid = req.cookies.userid
     console.log(req.cookies)
