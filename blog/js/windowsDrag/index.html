@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="drag-container">
+        <div>1</div>
+        <div>2</div>
+        <div id="1">3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>0</div>
+    </section>
+    <button class="add">添加</button>
+    <p>移到外面进行删除</p>
+</body>
+</html>
+
+<style>
+    .drag-container {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items:flex-start;
+        position: relative;
+        transition: flex;
+    }
+
+    div {
+        user-select: none;
+        flex: 0 0 90px;
+        width: 90px;
+        height: 90px;
+        margin: 5px;
+        box-sizing: border-box;
+        background-color: rgb(84,84,84);
+    }
+
+    .drag-container div:hover {
+        border: 2px solid white;
+        background-color: rgba(84,84,84,0.8);;
+    }
+
+    .add{
+        margin: 10px;
+    }
+
+    @keyframes remove {
+        from {
+            flex: 0 0 90px;
+        }
+        to {
+            flex: 0 0 180px;
+        }
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<script src="./main.js">
+</script>
