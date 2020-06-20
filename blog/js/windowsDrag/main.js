@@ -53,7 +53,7 @@ function moveItem(moveEvent){
         let ItemPosition = getItemPosition(target,e)
         
         //摘出拖拽元素
-        litOutDragItem(target)
+        litOutDragItem(target,ItemPosition)
         
         //原处添加占位元素
         layoutContainer(ItemPosition.X - 50,ItemPosition.Y - 50)
@@ -68,7 +68,7 @@ function moveItem(moveEvent){
         //删除判断
         judgeDelete(newLeft,newTop)
 
-        //替换站位元素
+        //替换占位元素
         exchangeSpaceItem(target)
 
         //清除绑定事件以及多余站位元素
@@ -142,6 +142,7 @@ function moveItem(moveEvent){
     }
 
     function exchangeSpaceItem(target){
+        console.log(isMoving)
         if(isMoving){
             setTimeout(()=>{
                 exchangeItem(target)
@@ -170,18 +171,19 @@ function moveItem(moveEvent){
         })
 
         isMoving = true
-        if(isMoving){
-            clearTimeout(moveCheck)
-            moveCheck = setTimeout(()=>{
-                layoutContainer(newLeft,newTop)
-            },50)
-        }
+        clearTimeout(moveCheck)
+        moveCheck = setTimeout(()=>{
+            layoutContainer(newLeft,newTop)
+            isMoving =false
+        },50)
     }
 
-    function litOutDragItem(target){
+    function litOutDragItem(target,ItemPosition){
         $(target).css({
             ['z-index']:1,
             position:'absolute',
+            left:ItemPosition.X - 50,
+            top:ItemPosition.Y - 50
         }).prependTo('body')
     }
 
